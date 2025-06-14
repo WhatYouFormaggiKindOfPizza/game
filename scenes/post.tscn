@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dvs4jdoyar4pt" path="res://scripts/post.gd" id="1_epv1v"]
 [ext_resource type="Texture2D" uid="uid://pmxs45i0iwy8" path="res://assets/icon.svg" id="2_7rr5g"]
-[ext_resource type="PackedScene" path="res://scenes/pixel_label.tscn" id="2_ax5sd"]
+[ext_resource type="PackedScene" uid="uid://bibasatxhl56l" path="res://scenes/pixel_label.tscn" id="2_ax5sd"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7rr5g"]
 shadow_color = Color(0, 0, 0, 0.733333)

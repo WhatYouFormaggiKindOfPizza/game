@@ -95,4 +95,3 @@ func _on_button_pressed() -> void:
 	var player = game_manager.get_player()
 	populate_effects(player)
 	game_manager.end_turn()
-

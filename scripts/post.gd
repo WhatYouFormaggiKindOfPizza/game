@@ -1,5 +1,9 @@
 class_name Post extends Node2D
 
+var title_label: Label = $Title
+var content_label: Label = $Content
+
+
 var id: int
 static var next_id: int = 0
 
@@ -28,21 +32,25 @@ enum EffectType {
 
 
 func _init(post_data: Dictionary = {}) -> void:
+	id = next_id
+	next_id += 1
+
 	if post_data.is_empty():
 		push_error("Post data is empty, cannot initialize Post.")
 		return
 
-	id = next_id
-	next_id += 1
+	map_post_data(post_data)
+	assign_labels()
 
+
+
+func map_post_data(post_data: Dictionary) -> void:
 	lobbyist = post_data.get("lobbyist", "")
 	title = post_data.get("title", "")
 	content = post_data.get("content", "")
 	author = post_data.get("author", "")
 	date = post_data.get("date", "")
 	likes = post_data.get("likes", 0)
-
-	
 	# comments = post_data.get("comments", [])
 	
 	effects = []
@@ -51,16 +59,21 @@ func _init(post_data: Dictionary = {}) -> void:
 			"type": effect.get("type", EffectType.NONE),
 			"target": effect.get("target", ""),
 			"value": effect.get("value", 0),
-			"event_name": effect.get("event_name", "")
+			"event_name": effect.get("event_name", "") # TODO: change to event_resolution_name (or just move to event json)
 		}
 		effects.append(effect_dict)
 
+func assign_labels() -> void:
+	if title_label:
+		title_label.text = title
+	if content_label:
+		content_label.text = content
+
 
 func _on_button_mouse_entered() -> void:
-	position.y -= 10  # Example of moving the post down when hovered
-	pass # Replace with function body.
+	position.y -= 10  
 
 
 func _on_button_mouse_exited() -> void:
-	position.y += 10  # Example of moving the post back up when hover ends
-	pass # Replace with function body.
+	position.y += 10 
+

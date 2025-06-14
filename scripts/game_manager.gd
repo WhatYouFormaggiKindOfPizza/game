@@ -49,19 +49,10 @@ func load_posts_from_json() -> void:
 		push_error("Error parsing JSON: ", posts_json_path)
 		return
 
-
-	if show_logs:
-		print("Loaded posts from JSON: " + str(json_as_dict))
-
 	for post_data in json_as_dict:
 		var post = Post.new(post_data, self)
 		posts.append(post)
 
-		if show_logs:
-			print("Loaded Post: " + str(post))
-
-
-	pass
 	
 func get_player() -> King:
 	var player = null
@@ -84,9 +75,24 @@ func get_entity_group(entity_group_name: String) -> EntityGroup:
 	
 # logs
 func log_ready() -> void:
-	print("GameManager is ready with " + str(entity_groups.size()) + " entity groups and " + str(kings.size()) + " kings.")
+	print("GameManager is ready")
+	
+	print("--- Entity Groups ---")
+	print("Loaded " + str(entity_groups.size()) + " entity groups from scene.")
 	for e in entity_groups:
 		print("EntityGroup: " + e.group_name + " with ID: " + str(e.id))
+
+	print("--- Kings ---")
+	print("Loaded " + str(kings.size()) + " kings from scene.")
 	for k in kings:
 		print("King: " + k.king_name + " with ID: " + str(k.id) + " and is_player: " + str(k.is_player))
+		
+	print("--- Posts ---")
+	print("Loaded " + str(posts.size()) + " posts from JSON.")
+	for p in posts:
+		print("Post: " + p.title + " with ID: " + str(p.id))
+
+
+func end_turn() -> void:
+	print("Ending turn...")  # Placeholder for ending the turn logic
 	pass

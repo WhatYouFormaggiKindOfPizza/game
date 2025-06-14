@@ -58,7 +58,7 @@ func load_posts_from_json() -> void:
 		print("Loaded posts from JSON: " + str(json_as_dict))
 
 	for post_data in json_as_dict:
-		var post = Post.new(post_data)
+		var post = Post.new(post_data, self)
 		posts.append(post)
 
 		if show_logs:
@@ -66,9 +66,26 @@ func load_posts_from_json() -> void:
 
 
 	pass
-
+	
+func get_player() -> King:
+	var player = null
+	
+	for king in kings:
+		if (king.is_player):
+			player = king
+			
+	assert(player, "Brak gracza!")
+	
+	return player
+	
+func get_entity_group(entity_group_name: String) -> EntityGroup:
+	for entity_group in entity_groups:
+		if (entity_group.group_name == entity_group_name):
+			return entity_group
+	
+	print('Warning: no entity group for name: ' + entity_group_name)
+	return null
 # logs
-
 func log_ready() -> void:
 	print("GameManager is ready with " + str(entity_groups.size()) + " entity groups and " + str(kings.size()) + " kings.")
 	for e in entity_groups:

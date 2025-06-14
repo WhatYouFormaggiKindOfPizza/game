@@ -11,12 +11,5 @@ static var next_id: int = 0
 var id: int
 
 func _init() -> void:
-    id = next_id
-    next_id += 1
-
-
-
-
-
-
-
+	id = next_id
+	next_id += 1

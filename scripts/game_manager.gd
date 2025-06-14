@@ -1,5 +1,8 @@
 class_name GameManager extends Node
 
+@export var show_logs: bool = true
+@export var posts_json_path: String = "res://data/posts.json"
+
 @onready var kings_parent: Node = %Pretenders
 @onready var entity_groups_parent: Node = %EntityGroups
 
@@ -20,8 +23,13 @@ func init_entity_groups() -> void:
 
 		
 func _ready() -> void:
-	print(entity_groups_parent.name)
+	load_kings_and_entities()
+	init_entity_groups()
+	if show_logs: 
+		log_ready()
 
+
+func load_kings_and_entities() -> void:
 	for child in entity_groups_parent.get_children():
 		if child is EntityGroup:
 			entity_groups.append(child)
@@ -34,9 +42,24 @@ func _ready() -> void:
 		else:
 			push_error("Unknown child type: " + str(child))
 
-	init_entity_groups()
 
+func load_posts_from_json() -> void:
+	var json_as_text = FileAccess.get_file_as_string(posts_json_path)
+	var json_as_dict = JSON.parse_string(json_as_text)
 
+	if show_logs:
+		print("Loaded posts from JSON: " + str(json_as_dict))
+		if json_as_dict.error != OK:
+			push_error("Error parsing JSON: " + str(json_as_dict.error))
+			return
+		else:
+			print("Posts JSON loaded successfully.")
+			print("Posts JSON content: " + str(json_as_dict.result))
+	pass
+
+# logs
+
+func log_ready() -> void:
 	print("GameManager is ready with " + str(entity_groups.size()) + " entity groups and " + str(kings.size()) + " kings.")
 	for e in entity_groups:
 		print("EntityGroup: " + e.group_name + " with ID: " + str(e.id))

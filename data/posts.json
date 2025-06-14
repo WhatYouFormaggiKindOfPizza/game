@@ -1,0 +1,134 @@
+[
+  {
+    "id": 0,
+    "lobbyist": "Dwarfs",
+    "title": "Nowa ustawa o technologii",
+    "content": "Projekt zakłada zwiększenie finansowania na magiczne kilofy.",
+    "author": "Junner Kowulsski",
+    "date": "2025-06-14",
+    "likes": 42,
+    "comments": [
+      {
+        "author": "Anna Nowak",
+        "content": "Świetny pomysł! Wreszcie coś dla młodych kopalni.",
+        "date": "2025-06-14"
+      },
+      {
+        "author": "Marek Zieliński",
+        "content": "Mam nadzieję, że nie skończy się tylko na obietnicach.",
+        "date": "2025-06-14"
+      }
+    ],
+    "effects": [
+      {
+        "type": "CHANGE_RELATIONSHIP",
+        "target": "Dwarfs",
+        "value": 10
+      },
+      {
+        "type": "CHANGE_RELATIONSHIP",
+        "target": "Elfs",
+        "value": -10
+      },
+      {
+        "type": "EVENT",
+        "event_name": "TechFundingBoost"
+      }
+    ]
+  },
+  {
+    "id": 1,
+    "lobbyist": "Elfs",
+    "title": "Ustawa o ochronie lasów",
+    "content": "Zakaz wycinania starożytnych drzew w rejonach świętych gajów.",
+    "author": "Lyriana Sylwind",
+    "date": "2025-06-13",
+    "likes": 85,
+    "comments": [
+      {
+        "author": "Thalion",
+        "content": "W końcu ktoś się zajął tym problemem!",
+        "date": "2025-06-13"
+      }
+    ],
+    "effects": [
+      {
+        "type": "CHANGE_RELATIONSHIP",
+        "target": "Elfs",
+        "value": 15
+      },
+      {
+        "type": "CHANGE_RELATIONSHIP",
+        "target": "Dwarfs",
+        "value": -5
+      },
+      {
+        "type": "EVENT",
+        "event_name": "ForestProtectionLaw"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "lobbyist": "Alties",
+    "title": "Dekret o neutralnych terenach",
+    "content": "Powstaje strefa bez wpływu frakcji, otwarta dla handlu i dyplomacji.",
+    "author": "Arelon Vance",
+    "date": "2025-06-12",
+    "likes": 30,
+    "comments": [],
+    "effects": [
+      {
+        "type": "CHANGE_RELATIONSHIP",
+        "target": "Elfs",
+        "value": 5
+      },
+      {
+        "type": "CHANGE_RELATIONSHIP",
+        "target": "Dwarfs",
+        "value": 5
+      },
+      {
+        "type": "CHANGE_RELATIONSHIP",
+        "target": "Alties",
+        "value": 10
+      },
+      {
+        "type": "EVENT",
+        "event_name": "NeutralZoneCreated"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "lobbyist": "Dwarfs",
+    "title": "Podatek od magii",
+    "content": "Nowy podatek uderza w użytkowników magii – szczególnie elfów.",
+    "author": "Borgun Rudnefist",
+    "date": "2025-06-11",
+    "likes": 18,
+    "comments": [
+      {
+        "author": "Elrien",
+        "content": "To jawna prowokacja! Magia to nie luksus!",
+        "date": "2025-06-11"
+      }
+    ],
+    "effects": [
+      {
+        "type": "CHANGE_RELATIONSHIP",
+        "target": "Elfs",
+        "value": -15
+      },
+      {
+        "type": "CHANGE_RELATIONSHIP",
+        "target": "Dwarfs",
+        "value": 5
+      },
+      {
+        "type": "EVENT",
+        "event_name": "MagicTaxLaw"
+      }
+    ]
+  }
+]

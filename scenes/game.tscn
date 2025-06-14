@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://cmiqiuj17qh2n"]
+[gd_scene load_steps=6 format=3 uid="uid://cmiqiuj17qh2n"]
 
 [ext_resource type="Script" uid="uid://b1ysc02d5wrap" path="res://scripts/game_manager.gd" id="1_uwrxv"]
 [ext_resource type="Script" path="res://scripts/vote_simulator.gd" id="2_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://kispiyeqssep" path="res://scenes/entity_group.tscn" id="2_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://dondqjjubrg3g" path="res://scenes/king.tscn" id="3_lbhrr"]
+[ext_resource type="PackedScene" uid="uid://b5qlpe8xpnqn" path="res://scenes/post.tscn" id="4_lbhrr"]
 
 [node name="Game" type="Node2D"]
 
@@ -44,7 +45,15 @@ group_name = "Alties"
 
 [node name="PostsContainer" type="HBoxContainer" parent="."]
 unique_name_in_owner = true
-offset_left = 100.0
-offset_top = 347.0
-offset_right = 949.0
-offset_bottom = 608.0
+
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ExamplePost2" parent="PostsContainer" instance=ExtResource("4_lbhrr")]
+position = Vector2(438, 435)
+
+[node name="ExamplePost3" parent="PostsContainer" instance=ExtResource("4_lbhrr")]
+position = Vector2(136, 430)
+
+[node name="ExamplePost1" parent="PostsContainer" instance=ExtResource("4_lbhrr")]
+position = Vector2(734, 438)

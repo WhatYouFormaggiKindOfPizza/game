@@ -1,5 +1,7 @@
 class_name GameManager extends Node
 
+@export var max_resolutions_per_week: int = 2
+@export var max_turns: int = 16 #TODO: use in turn_end()
 @export var show_logs: bool = true
 @export var posts_json_path: String = "res://data/posts.json"
 
@@ -11,6 +13,8 @@ class_name GameManager extends Node
 var entity_groups: Array[EntityGroup]
 var kings: Array[King]
 var posts: Array[Post] = []
+
+var week_data: WeekData = WeekData.new()
 
 var day: int = 0
 
@@ -120,3 +124,29 @@ func next_turn() -> void:
 		posts_container.add_child(post)
 
 	# TODO: send player messages from lobbyists
+
+func end_round() -> void:
+	if show_logs:
+		print("Round ended. Week: " + str(day / 7))
+
+
+	# Get some random event resolutions
+	var number_of_resolutions = RandomNumberGenerator.new().randi_range(1, max_resolutions_per_week)
+	var event_resolutions = []
+	for i in range(number_of_resolutions):
+		var idx = RandomNumberGenerator.new().randi() % week_data.event_resolutions.size()
+		var er = week_data.event_resolutions.pop_at(idx)
+		event_resolutions.append(er)
+		
+
+	# TODO: Apply effects of the event resolution
+	for er in event_resolutions:
+		if show_logs:
+			print("Event Resolution: " + str(er))
+		#HERE
+
+
+	# TODO: show event resolutions
+	# TODO: show week summary (relationships changes of all pretenders)
+	
+	week_data.clear()  # Clear week data for the next round

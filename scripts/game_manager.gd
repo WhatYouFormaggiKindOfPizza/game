@@ -76,3 +76,6 @@ func log_ready() -> void:
 	for k in kings:
 		print("King: " + k.king_name + " with ID: " + str(k.id) + " and is_player: " + str(k.is_player))
 	pass
+
+
+

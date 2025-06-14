@@ -26,7 +26,12 @@ enum EffectType {
 }
 
 
-func _init(post_data: Dictionary) -> void:
+
+func _init(post_data: Dictionary = {}) -> void:
+	if post_data.is_empty():
+		push_error("Post data is empty, cannot initialize Post.")
+		return
+
 	id = next_id
 	next_id += 1
 
@@ -49,3 +54,13 @@ func _init(post_data: Dictionary) -> void:
 			"event_name": effect.get("event_name", "")
 		}
 		effects.append(effect_dict)
+
+
+func _on_button_mouse_entered() -> void:
+	position.y -= 10  # Example of moving the post down when hovered
+	pass # Replace with function body.
+
+
+func _on_button_mouse_exited() -> void:
+	position.y += 10  # Example of moving the post back up when hover ends
+	pass # Replace with function body.

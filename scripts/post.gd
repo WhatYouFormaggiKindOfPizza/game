@@ -1,4 +1,4 @@
-class_name Post extends Node2D
+class_name Post extends Control
 
 @onready var title_label: Label = $Title
 @onready var content_label: Label = $Content

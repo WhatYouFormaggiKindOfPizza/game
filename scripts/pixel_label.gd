@@ -15,4 +15,4 @@ func update_font_size():
 		if font and font is Font:
 			var target_size := font_scale * 8
 			add_theme_font_size_override("font_size", target_size)
-			print("Updating font size to: ", font_scale * 8)
+			

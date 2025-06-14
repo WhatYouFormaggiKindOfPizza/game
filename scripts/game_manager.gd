@@ -5,6 +5,7 @@ class_name GameManager extends Node
 
 @onready var kings_parent: Node = %Pretenders
 @onready var entity_groups_parent: Node = %EntityGroups
+@onready var vote_simulator: VoteSimulator = $VoteSimulator
 
 
 var entity_groups: Array[EntityGroup]
@@ -29,6 +30,7 @@ func _ready() -> void:
 	load_posts_from_json()
 	if show_logs: 
 		log_ready()
+	vote_simulator.init(entity_groups)
 
 
 func load_kings_and_entities() -> void:

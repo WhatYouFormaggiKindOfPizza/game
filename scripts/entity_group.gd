@@ -29,7 +29,7 @@ func init(kings: Array[King]) -> void:
 
 
 func change_relationship_value(value: int, king: King) -> void:
-	for relationship in relationships:
+  for relationship in relationships:
 		if relationship.get('king') == king:
 			relationship["relationship"] += value
 			

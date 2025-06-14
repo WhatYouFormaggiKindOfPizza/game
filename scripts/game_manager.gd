@@ -13,12 +13,6 @@ var kings: Array[King]
 var posts: Array[Post] = []
 
 
-func _init() -> void:
-	
-	pass
-
-
-
 func init_entity_groups() -> void:
 	for e in entity_groups:
 		e.init(kings)
@@ -56,11 +50,30 @@ func load_posts_from_json() -> void:
 		return
 
 	for post_data in json_as_dict:
-		var post = Post.new(post_data)
+		var post = Post.new(post_data, self)
 		posts.append(post)
 
+	
+func get_player() -> King:
+	var player = null
+	
+	for king in kings:
+		if (king.is_player):
+			player = king
+			
+	assert(player, "Brak gracza!")
+	
+	return player
+	
+func get_entity_group(entity_group_name: String) -> EntityGroup:
+	for entity_group in entity_groups:
+		if (entity_group.group_name == entity_group_name):
+			return entity_group
+	
+	print('Warning: no entity group for name: ' + entity_group_name)
+	return null
+	
 # logs
-
 func log_ready() -> void:
 	print("GameManager is ready")
 	

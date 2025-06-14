@@ -7,6 +7,8 @@ var content_label: Label = $Content
 var id: int
 static var next_id: int = 0
 
+@onready var game_manager: GameManager
+
 # base data
 var lobbyist: String # TODO: typ jeszcze do zmiany probably
 var title: String
@@ -34,6 +36,7 @@ enum EffectType {
 func _init(post_data: Dictionary = {}) -> void:
 	id = next_id
 	next_id += 1
+	game_manager = gm
 
 	if post_data.is_empty():
 		push_error("Post data is empty, cannot initialize Post.")
@@ -63,6 +66,7 @@ func map_post_data(post_data: Dictionary) -> void:
 		}
 		effects.append(effect_dict)
 
+
 func assign_labels() -> void:
 	if title_label:
 		title_label.text = title
@@ -77,3 +81,13 @@ func _on_button_mouse_entered() -> void:
 func _on_button_mouse_exited() -> void:
 	position.y += 10 
 
+		
+func populate_effects() -> void:
+	var player = game_manager.get_player()
+	
+	for effect in effects:
+		var target_name = effect.get('target')
+		var target = game_manager.get_entity_group(target_name)
+		if (target != null):
+			target.change_relationship_value(effect.get("value"), player)
+				

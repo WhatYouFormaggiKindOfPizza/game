@@ -9,6 +9,7 @@ class_name GameManager extends Node
 
 var entity_groups: Array[EntityGroup]
 var kings: Array[King]
+var posts: Array[Post] = []
 
 
 func _init() -> void:
@@ -25,6 +26,7 @@ func init_entity_groups() -> void:
 func _ready() -> void:
 	load_kings_and_entities()
 	init_entity_groups()
+	load_posts_from_json()
 	if show_logs: 
 		log_ready()
 
@@ -47,14 +49,22 @@ func load_posts_from_json() -> void:
 	var json_as_text = FileAccess.get_file_as_string(posts_json_path)
 	var json_as_dict = JSON.parse_string(json_as_text)
 
+	if !json_as_dict:
+		push_error("Error parsing JSON: ", posts_json_path)
+		return
+
+
 	if show_logs:
 		print("Loaded posts from JSON: " + str(json_as_dict))
-		if json_as_dict.error != OK:
-			push_error("Error parsing JSON: " + str(json_as_dict.error))
-			return
-		else:
-			print("Posts JSON loaded successfully.")
-			print("Posts JSON content: " + str(json_as_dict.result))
+
+	for post_data in json_as_dict:
+		var post = Post.new(post_data)
+		posts.append(post)
+
+		if show_logs:
+			print("Loaded Post: " + str(post))
+
+
 	pass
 
 # logs

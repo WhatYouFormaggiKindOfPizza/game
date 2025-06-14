@@ -6,12 +6,13 @@ class_name GameManager extends Node
 @onready var kings_parent: Node = %Pretenders
 @onready var entity_groups_parent: Node = %EntityGroups
 @onready var vote_simulator: VoteSimulator = $VoteSimulator
-
+@onready var posts_container: HBoxContainer = %PostsContainer
 
 var entity_groups: Array[EntityGroup]
 var kings: Array[King]
 var posts: Array[Post] = []
 
+var day: int = 0
 
 func init_entity_groups() -> void:
 	for e in entity_groups:
@@ -25,6 +26,7 @@ func _ready() -> void:
 	if show_logs: 
 		log_ready()
 	vote_simulator.init(entity_groups)
+	start_game()
 
 
 func load_kings_and_entities() -> void:
@@ -90,3 +92,31 @@ func log_ready() -> void:
 	for k in kings:
 		print("King: " + k.king_name + " with ID: " + str(k.id) + " and is_player: " + str(k.is_player))
 	pass
+
+
+func start_game() -> void:
+	if show_logs:
+		print("Game started")
+	next_turn()
+		
+
+func next_turn() -> void:
+	day += 1
+
+	if show_logs:
+		print("Next turn started. Day: " + str(day))
+	
+	#TODO: get random event
+
+	#TODO: from event get posts
+
+	# Mocked posts for now 
+	var current_posts: Array[Post] = posts.slice(0, 3)
+
+	for c in posts_container.get_children():
+		c.queue_free()  # Clear previous posts
+
+	for post in current_posts:
+		posts_container.add_child(post)
+
+	# TODO: send player messages from lobbyists

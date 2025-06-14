@@ -29,10 +29,8 @@ func init(kings: Array[King]) -> void:
 
 
 func change_relationship_value(value: int, king: King) -> void:
-	var r_idx = relationships.find(
-		func(r):
-			return r["king"].id == king.id
-	)
-
-	relationships[r_idx]["relationship"] += value
-	pass
+  for relationship in relationships:
+		if relationship.get('king') == king:
+			relationship["relationship"] += value
+			
+	print (relationships)

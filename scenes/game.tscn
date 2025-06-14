@@ -1,13 +1,13 @@
 [gd_scene load_steps=5 format=3 uid="uid://cmiqiuj17qh2n"]
 
 [ext_resource type="Script" uid="uid://b1ysc02d5wrap" path="res://scripts/game_manager.gd" id="1_uwrxv"]
-[ext_resource type="Script" uid="uid://bhwsjj21cl1uf" path="res://scenes/vote_simulator.gd" id="2_lbhrr"]
-[ext_resource type="PackedScene" uid="uid://cmls1u4lo4hfb" path="res://scenes/entity_group.tscn" id="2_lnu2h"]
-[ext_resource type="PackedScene" uid="uid://b1nthy2jq0imn" path="res://scenes/king.tscn" id="3_lbhrr"]
+[ext_resource type="PackedScene" path="res://scenes/entity_group.tscn" id="2_lnu2h"]
+[ext_resource type="PackedScene" uid="uid://dondqjjubrg3g" path="res://scenes/king.tscn" id="3_lbhrr"]
 
 [node name="Game" type="Node2D"]
 
 [node name="GameManager" type="Node" parent="."]
+unique_name_in_owner = true
 script = ExtResource("1_uwrxv")
 
 [node name="VoteSimulator" type="Node2D" parent="GameManager"]
@@ -31,7 +31,6 @@ unique_name_in_owner = true
 [node name="Elfs" parent="EntityGroups" instance=ExtResource("2_lnu2h")]
 position = Vector2(317, 251)
 group_name = "Elfs"
-color = Color(6.01634e-07, 0.434201, 0.0942841, 1)
 
 [node name="Dwarfs" parent="EntityGroups" instance=ExtResource("2_lnu2h")]
 position = Vector2(317, 251)

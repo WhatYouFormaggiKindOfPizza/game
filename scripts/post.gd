@@ -3,6 +3,8 @@ class_name Post extends Node2D
 var id: int
 static var next_id: int = 0
 
+@onready var game_manager: GameManager
+
 # base data
 var lobbyist: String # TODO: typ jeszcze do zmiany probably
 var title: String
@@ -26,10 +28,12 @@ enum EffectType {
 }
 
 
-func _init(post_data: Dictionary) -> void:
+func _init(post_data: Dictionary, gm: GameManager) -> void:
 	id = next_id
 	next_id += 1
-
+	
+	game_manager = gm
+	
 	lobbyist = post_data.get("lobbyist", "")
 	title = post_data.get("title", "")
 	content = post_data.get("content", "")
@@ -49,3 +53,15 @@ func _init(post_data: Dictionary) -> void:
 			"event_name": effect.get("event_name", "")
 		}
 		effects.append(effect_dict)
+		
+	populate_effects()
+
+func populate_effects() -> void:
+	var player = game_manager.get_player()
+	
+	for effect in effects:
+		var target_name = effect.get('target')
+		var target = game_manager.get_entity_group(target_name)
+		if (target != null):
+			target.change_relationship_value(effect.get("value"), player)
+				

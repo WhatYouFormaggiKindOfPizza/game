@@ -63,21 +63,14 @@ func load_posts_from_json() -> void:
 		var post = Post.new(post_data)
 		posts.append(post)
 
-		if show_logs:
-			print("Loaded Post: " + str(post))
-
-
-	pass
-
 # logs
 
 func log_ready() -> void:
 	print("GameManager is ready with " + str(entity_groups.size()) + " entity groups and " + str(kings.size()) + " kings.")
+	print("Loaded " + str(posts.size()) + " posts from JSON.")
 	for e in entity_groups:
 		print("EntityGroup: " + e.group_name + " with ID: " + str(e.id))
 	for k in kings:
 		print("King: " + k.king_name + " with ID: " + str(k.id) + " and is_player: " + str(k.is_player))
-	pass
-
-
-
+	for p in posts:
+		print("Post: " + p.title + " with ID: " + str(p.id))

@@ -2,10 +2,10 @@ class_name VoteSimulator
 extends Node
 
 var groups: Array[EntityGroup]
-var voters = [] # Jacy są głosujący
-var num_voters = 10 # Ile jest głosujących łącznie
-var num_entity = [] # Ile jest głosujących w każdej grupie
-var percent_relationship = [] # Jakie jest poparcie w każdej grupie
+var voters: Array[String] = [] # Jacy są głosujący
+var num_voters: int = 10 # Ile jest głosujących łącznie
+var num_entity: Array[int] = [] # Ile jest głosujących w każdej grupie
+var percent_relationship: Array[float] = [] # Jakie jest poparcie w każdej grupie
 
 func init(entity_groups: Array[EntityGroup]):
 	groups = entity_groups

@@ -13,12 +13,6 @@ var kings: Array[King]
 var posts: Array[Post] = []
 
 
-func _init() -> void:
-	
-	pass
-
-
-
 func init_entity_groups() -> void:
 	for e in entity_groups:
 		e.init(kings)
@@ -87,6 +81,7 @@ func get_entity_group(entity_group_name: String) -> EntityGroup:
 	
 	print('Warning: no entity group for name: ' + entity_group_name)
 	return null
+	
 # logs
 func log_ready() -> void:
 	print("GameManager is ready with " + str(entity_groups.size()) + " entity groups and " + str(kings.size()) + " kings.")

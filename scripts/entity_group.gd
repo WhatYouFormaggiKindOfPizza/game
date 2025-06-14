@@ -10,7 +10,6 @@ var id: int
 var relationships: Array[Dictionary]
 
 
-
 func _init() -> void:
 	id = next_id
 	next_id += 1
@@ -32,5 +31,3 @@ func change_relationship_value(value: int, king: King) -> void:
 	for relationship in relationships:
 		if relationship.get('king') == king:
 			relationship["relationship"] += value
-			
-	print (relationships)

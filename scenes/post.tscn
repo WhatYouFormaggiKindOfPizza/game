@@ -38,9 +38,11 @@ offset_bottom = 146.0
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Post Title"
+font_scale = 4
 
 [node name="Content" parent="Button/VBoxContainer" instance=ExtResource("2_ax5sd")]
 layout_mode = 2
+theme_override_font_sizes/font_size = 16
 text = "Some post contnent
 Some post contnent
 Some post contnent

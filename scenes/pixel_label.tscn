@@ -1,11 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://b67nlmqnro53y"]
+[gd_scene load_steps=3 format=3 uid="uid://b67nlmqnro53y"]
 
 [ext_resource type="FontFile" uid="uid://bsesa25xiqgof" path="res://assets/pixelart_Peaberry-Font-v2.0/Peaberry Font Family/Peaberry Base/PeaberryBase.ttf" id="1_m5x2d"]
+[ext_resource type="Script" uid="uid://b51nat80j8ogs" path="res://scripts/pixel_label.gd" id="2_f33nr"]
 
 [node name="Label" type="Label"]
 texture_filter = 1
 offset_right = 40.0
 offset_bottom = 23.0
 theme_override_fonts/font = ExtResource("1_m5x2d")
-theme_override_font_sizes/font_size = 16
-text = "asdfasdfasdf"
+text = "template text"
+script = ExtResource("2_f33nr")

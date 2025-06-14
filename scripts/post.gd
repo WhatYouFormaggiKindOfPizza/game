@@ -1,8 +1,5 @@
 class_name Post extends Node2D
 
-var title_label: Label = $Title
-var content_label: Label = $Content
-
 
 var id: int
 static var next_id: int = 0
@@ -33,7 +30,7 @@ enum EffectType {
 
 
 
-func _init(post_data: Dictionary = {}) -> void:
+func _init(post_data: Dictionary = {}, gm: GameManager = null) -> void:
 	id = next_id
 	next_id += 1
 	game_manager = gm
@@ -43,7 +40,7 @@ func _init(post_data: Dictionary = {}) -> void:
 		return
 
 	map_post_data(post_data)
-	assign_labels()
+
 
 
 
@@ -67,13 +64,6 @@ func map_post_data(post_data: Dictionary) -> void:
 		effects.append(effect_dict)
 
 
-func assign_labels() -> void:
-	if title_label:
-		title_label.text = title
-	if content_label:
-		content_label.text = content
-
-
 func _on_button_mouse_entered() -> void:
 	position.y -= 10  
 
@@ -82,12 +72,17 @@ func _on_button_mouse_exited() -> void:
 	position.y += 10 
 
 		
-func populate_effects() -> void:
-	var player = game_manager.get_player()
-	
+func populate_effects(king: King) -> void:
 	for effect in effects:
 		var target_name = effect.get('target')
 		var target = game_manager.get_entity_group(target_name)
 		if (target != null):
-			target.change_relationship_value(effect.get("value"), player)
+			target.change_relationship_value(effect.get("value"), king)
 				
+
+
+func _on_button_pressed() -> void:
+	var player = game_manager.get_player()
+	populate_effects(player)
+	game_manager.end_turn()
+

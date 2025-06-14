@@ -91,3 +91,8 @@ func log_ready() -> void:
 	print("Loaded " + str(posts.size()) + " posts from JSON.")
 	for p in posts:
 		print("Post: " + p.title + " with ID: " + str(p.id))
+
+
+func end_turn() -> void:
+	print("Ending turn...")  # Placeholder for ending the turn logic
+	pass

@@ -1,5 +1,8 @@
 class_name Post extends Node2D
 
+@onready var title_label: Label = $Title
+@onready var content_label: Label = $Content
+
 
 var id: int
 static var next_id: int = 0
@@ -40,7 +43,7 @@ func _init(post_data: Dictionary = {}, gm: GameManager = null) -> void:
 		return
 
 	map_post_data(post_data)
-
+	assign_labels()
 
 
 
@@ -62,6 +65,13 @@ func map_post_data(post_data: Dictionary) -> void:
 			"event_name": effect.get("event_name", "") # TODO: change to event_resolution_name (or just move to event json)
 		}
 		effects.append(effect_dict)
+
+
+func assign_labels() -> void:
+	if title_label:
+		title_label.text = title
+	if content_label:
+		content_label.text = content
 
 
 func _on_button_mouse_entered() -> void:

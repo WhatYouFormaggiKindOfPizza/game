@@ -9,31 +9,23 @@
 [node name="GameManager" type="Node" parent="."]
 script = ExtResource("1_uwrxv")
 
-[node name="Pretenders" type="Node" parent="."]
-unique_name_in_owner = true
-
-[node name="Player" parent="Pretenders" instance=ExtResource("3_lbhrr")]
-position = Vector2(357, 247)
-king_name = "YourName"
-is_player = true
-
-[node name="Opponent" parent="Pretenders" instance=ExtResource("3_lbhrr")]
-position = Vector2(357, 247)
-king_name = "Grurum"
-
 [node name="EntityGroups" type="Node" parent="."]
 unique_name_in_owner = true
 
 [node name="Elfs" parent="EntityGroups" instance=ExtResource("2_lnu2h")]
 position = Vector2(317, 251)
-group_name = "Elfs"
-color = Color(6.01634e-07, 0.434201, 0.0942841, 1)
 
 [node name="Dwarfs" parent="EntityGroups" instance=ExtResource("2_lnu2h")]
 position = Vector2(317, 251)
-group_name = "Dwarfs"
-color = Color(0.555277, 0.303395, 0.123633, 1)
 
 [node name="Alties" parent="EntityGroups" instance=ExtResource("2_lnu2h")]
 position = Vector2(317, 251)
-group_name = "Alties"
+
+[node name="Preteneders" type="Node" parent="."]
+unique_name_in_owner = true
+
+[node name="Player" parent="Preteneders" instance=ExtResource("3_lbhrr")]
+position = Vector2(357, 247)
+
+[node name="Opponent" parent="Preteneders" instance=ExtResource("3_lbhrr")]
+position = Vector2(357, 247)

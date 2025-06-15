@@ -5,6 +5,7 @@ var game_manager: GameManager
 @onready var game_screen: GameScreen = %GameScreen
 @onready var start_screen: StartScreen = %StartScreen
 @onready var week_end_screen: WeekEndScreen = %WeekEndScreen
+@onready var how_to_play_pop_up: HowToPlayPopUp = %HowToPlayPopUp
 
 func init(gm: GameManager) -> void:
 	game_manager = gm
@@ -19,6 +20,7 @@ func hide_all_scenes() -> void:
 	game_screen.hide()
 	start_screen.hide()
 	week_end_screen.hide()
+	how_to_play_pop_up.hide()
 
 
 func show_screen(screen: Node) -> void:

@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://dxj1bp7ujexp8"]
 
-[ext_resource type="Script" path="res://scripts/tooltip.gd" id="1_7dicn"]
-[ext_resource type="PackedScene" uid="uid://bibasatxhl56l" path="res://scenes/pixel_label.tscn" id="2_75wrl"]
+[ext_resource type="Script" uid="uid://xpvq7pqj5a0d" path="res://scripts/tooltip.gd" id="1_7dicn"]
+[ext_resource type="PackedScene" uid="uid://cn2e7bnjx0moa" path="res://scenes/tooltip/relation_change.tscn" id="2_75wrl"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pvr4a"]
 bg_color = Color(0.858824, 0.858824, 0.858824, 0)
@@ -17,6 +17,7 @@ offset_bottom = 0.207993
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_pvr4a")
 script = ExtResource("1_7dicn")
+relation_change_scene = ExtResource("2_75wrl")
 metadata/_edit_use_anchors_ = true
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -31,7 +32,8 @@ offset_right = 7.0
 offset_bottom = -0.00500488
 color = Color(0, 0, 0, 0.282353)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect"]
+[node name="InfoContainer" type="VBoxContainer" parent="ColorRect"]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.103989
@@ -45,30 +47,5 @@ offset_bottom = 39.917
 theme_override_constants/separation = 10
 metadata/_edit_use_anchors_ = true
 
-[node name="RelationChange" type="HBoxContainer" parent="ColorRect/VBoxContainer"]
+[node name="RelationChange" parent="ColorRect/InfoContainer" instance=ExtResource("2_75wrl")]
 layout_mode = 2
-
-[node name="Name" parent="ColorRect/VBoxContainer/RelationChange" instance=ExtResource("2_75wrl")]
-layout_mode = 2
-text = "Dwarfs"
-color = null
-
-[node name="value" parent="ColorRect/VBoxContainer/RelationChange" instance=ExtResource("2_75wrl")]
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0.381366, 0.17521, 1)
-text = "+10"
-color = Color(0, 0.381366, 0.17521, 1)
-
-[node name="RelationChange2" type="HBoxContainer" parent="ColorRect/VBoxContainer"]
-layout_mode = 2
-
-[node name="Name" parent="ColorRect/VBoxContainer/RelationChange2" instance=ExtResource("2_75wrl")]
-layout_mode = 2
-text = "Elfs"
-color = null
-
-[node name="value" parent="ColorRect/VBoxContainer/RelationChange2" instance=ExtResource("2_75wrl")]
-layout_mode = 2
-theme_override_colors/font_color = Color(1, 0, 0, 1)
-text = "-10"
-color = Color(1, 0, 0, 1)

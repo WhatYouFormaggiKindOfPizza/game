@@ -75,8 +75,9 @@ func setup_scene() -> void:
 	
 	title_label = get_node("Button/VBoxContainer/PostTitle")
 	content_label = get_node("Button/VBoxContainer/PostContent")
-	tooltip = get_node("%PostTooltip")
+	tooltip = get_node("PostTooltip")
 	assign_labels()
+	tooltip.setup_data(effects)
 
 
 func assign_labels() -> void:

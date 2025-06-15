@@ -1,16 +1,17 @@
 [gd_scene load_steps=6 format=3 uid="uid://cmiqiuj17qh2n"]
 
 [ext_resource type="Script" uid="uid://b1ysc02d5wrap" path="res://scripts/game_manager.gd" id="1_uwrxv"]
+[ext_resource type="PackedScene" uid="uid://b5qlpe8xpnqn" path="res://scenes/post.tscn" id="2_iywne"]
 [ext_resource type="Script" uid="uid://bhwsjj21cl1uf" path="res://scripts/vote_simulator.gd" id="2_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://kispiyeqssep" path="res://scenes/entity_group.tscn" id="2_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://dondqjjubrg3g" path="res://scenes/king.tscn" id="3_lbhrr"]
-[ext_resource type="PackedScene" uid="uid://b5qlpe8xpnqn" path="res://scenes/post.tscn" id="4_lbhrr"]
 
 [node name="Game" type="Node2D"]
 
 [node name="GameManager" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("1_uwrxv")
+post_scene = ExtResource("2_iywne")
 
 [node name="VoteSimulator" type="Node2D" parent="GameManager"]
 script = ExtResource("2_lbhrr")
@@ -19,28 +20,23 @@ script = ExtResource("2_lbhrr")
 unique_name_in_owner = true
 
 [node name="Player" parent="Pretenders" instance=ExtResource("3_lbhrr")]
-position = Vector2(357, 247)
 king_name = "YourName"
 is_player = true
 
 [node name="Opponent" parent="Pretenders" instance=ExtResource("3_lbhrr")]
-position = Vector2(357, 247)
 king_name = "Grurum"
 
 [node name="EntityGroups" type="Node" parent="."]
 unique_name_in_owner = true
 
 [node name="Elfs" parent="EntityGroups" instance=ExtResource("2_lnu2h")]
-position = Vector2(317, 251)
 group_name = "Elfs"
 
 [node name="Dwarfs" parent="EntityGroups" instance=ExtResource("2_lnu2h")]
-position = Vector2(317, 251)
 group_name = "Dwarfs"
 color = Color(0.555277, 0.303395, 0.123633, 1)
 
 [node name="Alties" parent="EntityGroups" instance=ExtResource("2_lnu2h")]
-position = Vector2(317, 251)
 group_name = "Alties"
 
 [node name="PostsContainer" type="HBoxContainer" parent="."]
@@ -56,12 +52,3 @@ offset_bottom = 599.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 64
-
-[node name="ExamplePost4" parent="PostsContainer" instance=ExtResource("4_lbhrr")]
-layout_mode = 2
-
-[node name="ExamplePost3" parent="PostsContainer" instance=ExtResource("4_lbhrr")]
-layout_mode = 2
-
-[node name="ExamplePost1" parent="PostsContainer" instance=ExtResource("4_lbhrr")]
-layout_mode = 2

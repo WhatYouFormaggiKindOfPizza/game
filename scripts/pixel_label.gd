@@ -1,5 +1,5 @@
 @tool
-extends Label
+class_name PixelLabel extends Label
 
 @export_range(1, 10, 1) var font_scale: int = 2:
 	set(value):

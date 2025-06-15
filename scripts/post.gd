@@ -1,13 +1,14 @@
 class_name Post extends Control
 
-@onready var title_label: Label = $Title
-@onready var content_label: Label = $Content
-
-
 var id: int
 static var next_id: int = 0
 
 @onready var game_manager: GameManager
+@onready var title_label: PixelLabel
+@onready var content_label: PixelLabel
+
+@export var post_scene: PackedScene = load("res://scenes/post.tscn")
+
 
 # base data
 var lobbyist: String # TODO: typ jeszcze do zmiany probably
@@ -32,8 +33,7 @@ enum EffectType {
 }
 
 
-
-func _init(post_data: Dictionary = {}, gm: GameManager = null) -> void:
+func with_data(post_data: Dictionary = {}, gm: GameManager = null) -> Post:
 	id = next_id
 	next_id += 1
 	game_manager = gm
@@ -43,7 +43,7 @@ func _init(post_data: Dictionary = {}, gm: GameManager = null) -> void:
 		return
 
 	map_post_data(post_data)
-	assign_labels()
+	return self
 
 
 
@@ -65,6 +65,16 @@ func map_post_data(post_data: Dictionary) -> void:
 			"event_name": effect.get("event_name", "") # TODO: change to event_resolution_name (or just move to event json)
 		}
 		effects.append(effect_dict)
+
+
+func setup_scene() -> void:
+	if not is_inside_tree():
+		push_error("Post UI update called before Post is added to the scene tree.")
+		return
+	
+	title_label = get_node("Button/VBoxContainer/PostTitle")
+	content_label = get_node("Button/VBoxContainer/PostContent")
+	assign_labels()
 
 
 func assign_labels() -> void:

@@ -5,6 +5,9 @@ class_name GameManager extends Node
 @export var show_logs: bool = true
 @export var posts_json_path: String = "res://data/posts.json"
 
+@export var post_scene: PackedScene = load("res://scenes/post.tscn")
+
+
 @onready var kings_parent: Node = %Pretenders
 @onready var entity_groups_parent: Node = %EntityGroups
 @onready var vote_simulator: VoteSimulator = $VoteSimulator
@@ -56,7 +59,8 @@ func load_posts_from_json() -> void:
 		return
 
 	for post_data in json_as_dict:
-		var post = Post.new(post_data, self)
+		var post = post_scene.instantiate().with_data(post_data, self)
+		print(post)
 		posts.append(post)
 
 	
@@ -123,6 +127,7 @@ func next_turn() -> void:
 
 	for post in current_posts:
 		posts_container.add_child(post)
+		post.setup_scene() 
 
 	# TODO: send player messages from lobbyists
 
@@ -134,7 +139,7 @@ func end_turn() -> void:
 
 func end_round() -> void:
 	if show_logs:
-		print("Round ended. Week: " + str(day / 7))
+		print("Round ended. Week: " + str(int(day / 7.0)))
 
 
 	# Get some random event resolutions

@@ -14,6 +14,8 @@ func _init() -> void:
 	id = next_id
 	next_id += 1
 
+static func reset_id() -> void:
+	next_id = 0
 
 func init(kings: Array[King]) -> void:
 	# potencjalnie różny typ króla (np elf) może mieć różne relacje startowe

@@ -232,5 +232,5 @@ func run_support_simulation() -> void:
 func handle_opponents_actions() -> void:
 	for king in kings:
 		if !king.is_player:
-			var opponent_post = current_event.posts[randi_range(0, posts.size() - 1)]
+			var opponent_post = current_event.posts[randi_range(0, current_event.posts.size() - 1)]
 			opponent_post.populate_effects(king)

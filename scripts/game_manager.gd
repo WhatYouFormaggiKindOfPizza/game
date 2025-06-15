@@ -13,6 +13,7 @@ class_name GameManager extends Node
 @onready var entity_groups_parent: Node = %EntityGroups
 @onready var vote_simulator: VoteSimulator = $VoteSimulator
 @onready var scene_manager: SceneManager = %SceneManager
+@onready var phone: Phone = %Phone
 
 var entity_groups: Array[EntityGroup]
 var kings: Array[King]
@@ -162,6 +163,7 @@ func next_turn() -> void:
 	
 	#get random event
 	current_event = events[randi_range(0, events.size() - 1)]
+	phone.load_and_display_event(current_event.id)
 
 	#check if event has 3 required posts
 	assert(current_event.posts.size() == 3, "Event with id: " + str(current_event.id) + ", needs 3 posts assigned, found: " + str(current_event.posts.size()))

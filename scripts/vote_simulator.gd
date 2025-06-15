@@ -6,8 +6,9 @@ var voters: Array[String] = [] # Jacy są głosujący
 var num_voters: int = 10 # Ile jest głosujących łącznie
 var num_entity: Array[int] = [] # Ile jest głosujących w każdej grupie
 var percent_relationship: Array[float] = [] # Jakie jest poparcie w każdej grupie
+var support_history = [] # Tab zawierająca łączną liczbę wyborców [King][w turze]
 
-func init(entity_groups: Array[EntityGroup]):
+func init(entity_groups: Array[EntityGroup], kings: Array[King]) -> void:
 	groups = entity_groups
 	for i in groups.size():
 		num_entity.append(0)
@@ -17,8 +18,11 @@ func init(entity_groups: Array[EntityGroup]):
 		var random_group = groups[random_index].group_name
 		voters.append(random_group)
 		num_entity[random_index] += 1
+	for king in kings:
+		support_history.append([])
 
-func count_percent(king: King):
+#oblicza ile procent poparcia ma dany kandydat
+func count_percent(king: King) -> void:
 	for group in groups:
 		var total_group_rel = 0
 		var king_rel = 0
@@ -32,7 +36,8 @@ func count_percent(king: King):
 		var index = groups.find(group)
 		percent_relationship[index] = percent
 
-func compute_support(king: King):
+#Oblicza ile realnie wyborców ma dany kandydat
+func compute_support(king: King) -> int:
 	count_percent(king)
 	var total_voters = 0
 
@@ -42,3 +47,18 @@ func compute_support(king: King):
 		total_voters += int(round(group_voters * group_percent))
 
 	return total_voters
+
+#zapisuje w tablicy support_history[[]] ile realnie wyborców miał [krol][w turze]
+func update_support_history(kings: Array[King]) -> void:
+	for i in kings.size():
+		var support = compute_support(kings[i])
+		support_history[i].append(support)
+
+#zwraca jakie poparcie mial krol king w turze turn
+func show_support_history(king: King, turn: int) -> int:
+	return support_history[king.id][turn]
+
+#zwraca roznice poparcia krola king w rundzie week
+func show_week_supp_difrence(king: King, week: int) -> int:
+	var supp_dif: int = support_history[king.id][week*7] - support_history[king.id][(week-1)*7]
+	return supp_dif

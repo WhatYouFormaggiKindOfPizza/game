@@ -29,8 +29,14 @@ func init(kings: Array[King]) -> void:
 
 func change_relationship_value(value: int, king: King) -> void:
     for relationship in relationships:
-        if relationship.get('king') == king:
-            relationship["relationship"] += value
+		if relationship.get('king') == king:
+			relationship["relationship"] += value
+			
+			#check and adjust for relationships value limits
+			if (relationship["relationship"] > 100):
+				relationship["relationship"] = 100
+			elif (relationship["relationship"] < 0):
+				relationship["relationship"] = 0
 
 func get_player_relationship_value() -> int:
     var relationship_value : int;

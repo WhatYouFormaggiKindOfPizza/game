@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cmiqiuj17qh2n"]
+[gd_scene load_steps=13 format=3 uid="uid://cmiqiuj17qh2n"]
 
 [ext_resource type="Script" uid="uid://b1ysc02d5wrap" path="res://scripts/game_manager.gd" id="1_uwrxv"]
 [ext_resource type="Script" uid="uid://bhwsjj21cl1uf" path="res://scripts/vote_simulator.gd" id="2_lbhrr"]
@@ -10,6 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://cvkh1np46j6hr" path="res://scenes/phone.tscn" id="6_p57ef"]
 [ext_resource type="Texture2D" uid="uid://cyfnjq4qfnjj8" path="res://assets/Entity 4.png" id="7_dinhu"]
 [ext_resource type="PackedScene" uid="uid://fhowmhn132o0" path="res://scenes/rel_bar_container.tscn" id="7_u5sy4"]
+[ext_resource type="PackedScene" uid="uid://d2ikom615rg55" path="res://scenes/days_until.tscn" id="7_u5sy4"]
+[ext_resource type="PackedScene" uid="uid://dlbpqwf70tpg4" path="res://scenes/start_screen.tscn" id="8_gee14"]
 
 [node name="Game" type="Node2D"]
 
@@ -55,6 +57,11 @@ icon = ExtResource("7_dinhu")
 [node name="GamplayScreen" type="Node2D" parent="."]
 
 [node name="PostsContainer" type="HBoxContainer" parent="GamplayScreen"]
+[node name="Background" type="ColorRect" parent="."]
+offset_right = 1367.0
+offset_bottom = 769.0
+color = Color(0.415686, 0.509804, 0.529412, 1)
+
 unique_name_in_owner = true
 anchors_preset = 10
 anchor_right = 1.0
@@ -91,3 +98,22 @@ offset_bottom = 90.0
 size_flags_horizontal = 0
 entity_groups_node = NodePath("../../EntityGroups")
 title = "Political standing with races"
+[node name="DaysUntil" parent="." instance=ExtResource("7_u5sy4")]
+unique_name_in_owner = true
+offset_left = 313.0
+offset_top = -7.0
+offset_right = 1037.0
+offset_bottom = 56.0
+grow_horizontal = 2
+
+[node name="StartScreen" parent="." instance=ExtResource("8_gee14")]
+unique_name_in_owner = true
+visible = false
+z_index = 4096
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_right = 1366.0
+offset_bottom = 768.0
+grow_horizontal = 1
+grow_vertical = 1

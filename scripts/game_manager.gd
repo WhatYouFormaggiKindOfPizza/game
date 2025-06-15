@@ -14,6 +14,8 @@ class_name GameManager extends Node
 @onready var vote_simulator: VoteSimulator = $VoteSimulator
 @onready var posts_container: HBoxContainer = %PostsContainer
 @onready var relationship_bar_container: RelBarContainer = %RelBarContainer
+@onready var days_until: DaysUntil = %DaysUntil
+@onready var start_screen: StartScreen = %StartScreen
 
 var entity_groups: Array[EntityGroup]
 var kings: Array[King]
@@ -33,15 +35,14 @@ func init_entity_groups() -> void:
 
         
 func _ready() -> void:
-    load_kings_and_entities()
-    init_entity_groups()
-    load_posts_from_json()
-    load_events_from_json()
-    
-    if show_logs: 
-        log_ready()
-    vote_simulator.init(entity_groups)
-    start_game()
+	load_kings_and_entities()
+	init_entity_groups()
+	load_posts_from_json()
+	load_events_from_json()
+	
+	if show_logs: 
+		log_ready()
+	vote_simulator.init(entity_groups, kings)
 
 
 func load_kings_and_entities() -> void:
@@ -141,13 +142,15 @@ func log_ready() -> void:
 
 
 func start_game() -> void:
-    if show_logs:
-        print("Game started")
-    next_turn()
-        
+	start_screen.hide()
+	if show_logs:
+		print("Game started")
+	next_turn()
+		
 
 func next_turn() -> void:
-    day += 1
+	days_until.set_days(day, max_turns)
+	day += 1
 
     if show_logs:
         print("Next turn started. Day: " + str(day))
@@ -207,9 +210,13 @@ func end_round() -> void:
         #HERE
 
 
-    # TODO: show event resolutions
-    # TODO: show week summary (relationships changes of all pretenders)
-    
+	# TODO: show event resolutions
+	
+	#show week summary (relationships changes of all pretenders)
+	var actual_week_supp_difrence = []
+	for king in kings:
+		actual_week_supp_difrence.append(vote_simulator.show_week_supp_difrence(king, int(day / 7.0)))
+	print(actual_week_supp_difrence)
 
     #TODO: on "next" button click, reset posts and start next turn
     week_data.clear()

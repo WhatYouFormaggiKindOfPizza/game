@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cmiqiuj17qh2n"]
+[gd_scene load_steps=15 format=3 uid="uid://cmiqiuj17qh2n"]
 
 [ext_resource type="PackedScene" uid="uid://dlbpqwf70tpg4" path="res://scenes/screens/start_screen.tscn" id="1_u5sy4"]
 [ext_resource type="Script" uid="uid://b1ysc02d5wrap" path="res://scripts/game_manager.gd" id="1_uwrxv"]
@@ -12,6 +12,8 @@
 [ext_resource type="Texture2D" uid="uid://cyfnjq4qfnjj8" path="res://assets/Entity 4.png" id="7_trtic"]
 [ext_resource type="PackedScene" uid="uid://bj0a4yagnp3yd" path="res://scenes/screens/week_end_screen.tscn" id="11_kvpfn"]
 [ext_resource type="PackedScene" uid="uid://dgpfkwd6a7vew" path="res://scenes/screens/how_to_play_pop_up.tscn" id="12_dinhu"]
+[ext_resource type="PackedScene" uid="uid://cgvh6br7q6txe" path="res://scenes/screens/win_screen.tscn" id="13_kvuet"]
+[ext_resource type="PackedScene" uid="uid://btv8yl3etccs6" path="res://scenes/screens/lose_screen.tscn" id="14_trtic"]
 
 [node name="Game" type="Node2D"]
 
@@ -79,3 +81,12 @@ grow_vertical = 1
 
 [node name="HowToPlayPopUp" parent="." instance=ExtResource("12_dinhu")]
 unique_name_in_owner = true
+visible = false
+
+[node name="WinScreen" parent="." instance=ExtResource("13_kvuet")]
+unique_name_in_owner = true
+visible = false
+
+[node name="LoseScreen" parent="." instance=ExtResource("14_trtic")]
+unique_name_in_owner = true
+visible = false

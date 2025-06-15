@@ -11,7 +11,6 @@ class_name PixelLabel extends Label
 		color = value
 		inspector_update_font_color()
 
-
 func _ready():
 	inspector_update_font_size()
 

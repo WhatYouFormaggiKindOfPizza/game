@@ -69,6 +69,9 @@ entity_groups_node = NodePath("../EntityGroups")
 unique_name_in_owner = true
 visible = false
 
+[node name="HowToPlayPopUp" parent="." instance=ExtResource("12_dinhu")]
+unique_name_in_owner = true
+
 [node name="StartScreen" parent="." instance=ExtResource("1_u5sy4")]
 unique_name_in_owner = true
 z_index = 4000
@@ -79,6 +82,7 @@ offset_right = 1366.0
 offset_bottom = 768.0
 grow_horizontal = 1
 grow_vertical = 1
+
 
 [node name="HowToPlayPopUp" parent="." instance=ExtResource("12_dinhu")]
 unique_name_in_owner = true
@@ -91,3 +95,4 @@ visible = false
 [node name="LoseScreen" parent="." instance=ExtResource("14_trtic")]
 unique_name_in_owner = true
 visible = false
+

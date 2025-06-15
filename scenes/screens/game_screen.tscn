@@ -68,6 +68,13 @@ offset_bottom = 61.0
 unique_name_in_owner = true
 position = Vector2(678, 297)
 
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = 16.0
+offset_top = 85.0
+offset_right = 404.0
+offset_bottom = 480.0
+color = Color(0.876819, 0.552756, 0.211321, 0.564706)
+
 [node name="RelBarContainer" parent="." instance=ExtResource("5_rxmqw")]
 unique_name_in_owner = true
 offset_left = 53.0

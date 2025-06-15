@@ -6,6 +6,8 @@ var game_manager: GameManager
 @onready var start_screen: StartScreen = %StartScreen
 @onready var week_end_screen: WeekEndScreen = %WeekEndScreen
 @onready var how_to_play_pop_up: HowToPlayPopUp = %HowToPlayPopUp
+@onready var win_screen: WinScreen = %WinScreen
+@onready var lose_sceen: LoseScreen = %LoseScreen
 
 func init(gm: GameManager) -> void:
 	game_manager = gm

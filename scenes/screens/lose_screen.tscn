@@ -1,0 +1,53 @@
+[gd_scene load_steps=4 format=3 uid="uid://btv8yl3etccs6"]
+
+[ext_resource type="Script" uid="uid://c2dr1x5c1ltf8" path="res://scripts/lose_screen.gd" id="1_e0kik"]
+[ext_resource type="Texture2D" uid="uid://cumlu0bnt24u0" path="res://assets/Ekran przegranej.png" id="2_e0kik"]
+[ext_resource type="PackedScene" uid="uid://bibasatxhl56l" path="res://scenes/pixel_label.tscn" id="3_02b3w"]
+
+[node name="LoseScreen" type="Node2D"]
+script = ExtResource("1_e0kik")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(683, 384)
+texture = ExtResource("2_e0kik")
+
+[node name="PixelLabel" parent="." instance=ExtResource("3_02b3w")]
+offset_left = 347.0
+offset_top = 460.0
+offset_right = 962.0
+offset_bottom = 540.0
+theme_override_font_sizes/font_size = 80
+text = "you have lost!"
+uppercase = true
+font_scale = 10
+
+[node name="Exit" type="Button" parent="."]
+anchors_preset = -1
+anchor_left = 0.310962
+anchor_top = 0.780831
+anchor_right = 0.448962
+anchor_bottom = 0.869831
+offset_left = 396.0
+offset_top = 556.0
+offset_right = 936.0
+offset_bottom = 636.0
+mouse_default_cursor_shape = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="PixelLabel" parent="Exit" instance=ExtResource("3_02b3w")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 7.0
+offset_top = 8.0
+offset_right = 477.0
+offset_bottom = 80.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 80
+text = "play again!"
+uppercase = true
+font_scale = 10
+
+[connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]

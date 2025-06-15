@@ -1,410 +1,1597 @@
 [
   {
-	"id": 0,
-	"event_id": 0,
-	"lobbyist": "Dwarfs",
-	"title": "Nowa ustawa o technologii",
-	"content": "Projekt zakłada zwiększenie finansowania na magiczne kilofy.",
-	"author": "Junner Kowulsski",
-	"date": "2025-06-14",
-	"likes": 42,
-	"comments": [
-	  {
-		"author": "Anna Nowak",
-		"content": "Świetny pomysł! Wreszcie coś dla młodych kopalni.",
-		"date": "2025-06-14"
-	  },
-	  {
-		"author": "Marek Zieliński",
-		"content": "Mam nadzieję, że nie skończy się tylko na obietnicach.",
-		"date": "2025-06-14"
-	  }
-	],
-	"effects": [
-	  {
-		"type": 0,
-		"target": "Dwarfs",
-		"value": 10
-	  },
-	  {
-		"type": 0,
-		"target": "Elfs",
-		"value": -10
-	  },
-	  {
-		"type": 1,
-		"event_name": "TechFundingBoost"
-	  }
-	]
+    "id": 0,
+    "event_id": 0,
+    "lobbyist": "Dwarfs",
+    "title": "Nature First",
+    "content": "We must protect our ancient lands. I pledge to investigate the Sacred Grove fire personally. #NatureFirst",
+    "likes": 33,
+    "effects": [
+      {
+        "type": 0,
+        "target": "Humans",
+        "value": -5
+      },
+      {
+        "type": 0,
+        "target": "Dwarfs",
+        "value": 10
+      },
+      {
+        "type": 0,
+        "target": "Orcs",
+        "value": -3
+      }
+    ]
   },
   {
-	"id": 1,
-	"event_id": 0,
-	"lobbyist": "Elfs",
-	"title": "Ustawa o ochronie lasów",
-	"content": "Zakaz wycinania starożytnych drzew w rejonach świętych gajów.",
-	"author": "Lyriana Sylwind",
-	"date": "2025-06-13",
-	"likes": 85,
-	"comments": [
-	  {
-		"author": "Thalion",
-		"content": "W końcu ktoś się zajął tym problemem!",
-		"date": "2025-06-13"
-	  }
-	],
-	"effects": [
-	  {
-		"type": 0,
-		"target": "Elfs",
-		"value": 15
-	  },
-	  {
-		"type": 0,
-		"target": "Dwarfs",
-		"value": -5
-	  },
-	  {
-		"type": 1,
-		"event_name": "ForestProtectionLaw"
-	  }
-	]
+    "id": 1,
+    "event_id": 0,
+    "lobbyist": "Orcs",
+    "title": "Justice For The Grove",
+    "content": "This is no accident. I demand an inquiry into dwarven mining practices. #JusticeForTheGrove",
+    "likes": 85,
+    "effects": [
+      {
+        "type": 0,
+        "target": "Humans",
+        "value": -5
+      },
+      {
+        "type": 0,
+        "target": "Elfs",
+        "value": -3
+      },
+      {
+        "type": 0,
+        "target": "Dwarfs",
+        "value": -3
+      },
+      {
+        "type": 0,
+        "target": "Orcs",
+        "value": 9
+      }
+    ]
   },
   {
-	"id": 2,
-	"event_id": 0,
-	"lobbyist": "Alties",
-	"title": "Dekret o neutralnych terenach",
-	"content": "Powstaje strefa bez wpływu frakcji, otwarta dla handlu i dyplomacji.",
-	"author": "Arelon Vance",
-	"date": "2025-06-12",
-	"likes": 30,
-	"comments": [],
-	"effects": [
-	  {
-		"type": 0,
-		"target": "Elfs",
-		"value": 5
-	  },
-	  {
-		"type": 0,
-		"target": "Dwarfs",
-		"value": 5
-	  },
-	  {
-		"type": 0,
-		"target": "Alties",
-		"value": 10
-	  },
-	  {
-		"type": 1,
-		"event_name": "NeutralZoneCreated"
-	  }
-	]
+    "id": 2,
+    "event_id": 0,
+    "lobbyist": "Orcs",
+    "title": "Elves And Allies",
+    "content": "Tragedy must not divide us. Let this be a moment of unity, not blame. #ElvesAndAllies",
+    "likes": 26,
+    "effects": [
+      {
+        "type": 0,
+        "target": "Humans",
+        "value": 2
+      },
+      {
+        "type": 0,
+        "target": "Elfs",
+        "value": 2
+      },
+      {
+        "type": 0,
+        "target": "Dwarfs",
+        "value": 2
+      },
+      {
+        "type": 0,
+        "target": "Orcs",
+        "value": 10
+      }
+    ]
   },
   {
-	"id": 3,
-	"event_id": 1,
-	"lobbyist": "Dwarfs",
-	"title": "Podatek od magii",
-	"content": "Nowy podatek uderza w użytkowników magii – szczególnie elfów.",
-	"author": "Borgun Rudnefist",
-	"date": "2025-06-11",
-	"likes": 18,
-	"comments": [
-	  {
-		"author": "Elrien",
-		"content": "To jawna prowokacja! Magia to nie luksus!",
-		"date": "2025-06-11"
-	  }
-	],
-	"effects": [
-	  {
-		"type": 0,
-		"target": "Elfs",
-		"value": -15
-	  },
-	  {
-		"type": 0,
-		"target": "Dwarfs",
-		"value": 5
-	  },
-	  {
-		"type": 1,
-		"event_name": "MagicTaxLaw"
-	  }
-	]
-  },
-	{
-	"id": 4,
-	"event_id": 1,
-	"lobbyist": "Dwarfs",
-	"title": "Nowa ustawa o technologii",
-	"content": "Projekt zakłada zwiększenie finansowania na magiczne kilofy.",
-	"author": "Junner Kowulsski",
-	"date": "2025-06-14",
-	"likes": 42,
-	"comments": [
-	  {
-		"author": "Anna Nowak",
-		"content": "Świetny pomysł! Wreszcie coś dla młodych kopalni.",
-		"date": "2025-06-14"
-	  },
-	  {
-		"author": "Marek Zieliński",
-		"content": "Mam nadzieję, że nie skończy się tylko na obietnicach.",
-		"date": "2025-06-14"
-	  }
-	],
-	"effects": [
-	  {
-		"type": 0,
-		"target": "Dwarfs",
-		"value": 10
-	  },
-	  {
-		"type": 0,
-		"target": "Elfs",
-		"value": -10
-	  },
-	  {
-		"type": 1,
-		"event_name": "TechFundingBoost"
-	  }
-	]
+    "id": 3,
+    "event_id": 1,
+    "lobbyist": "Dwarfs",
+    "title": "No More Spying",
+    "content": "Transparency isn't optional\u2014it's sacred. Those who betrayed trust must be held accountable. #NoMoreSpying",
+    "likes": 30,
+    "effects": [
+      {
+        "type": 0,
+        "target": "Humans",
+        "value": -3
+      },
+      {
+        "type": 0,
+        "target": "Elfs",
+        "value": 3
+      },
+      {
+        "type": 0,
+        "target": "Dwarfs",
+        "value": 7
+      },
+      {
+        "type": 0,
+        "target": "Orcs",
+        "value": -5
+      }
+    ]
   },
   {
-	"id": 5,
-	"event_id": 1,
-	"lobbyist": "Elfs",
-	"title": "Ustawa o ochronie lasów",
-	"content": "Zakaz wycinania starożytnych drzew w rejonach świętych gajów.",
-	"author": "Lyriana Sylwind",
-	"date": "2025-06-13",
-	"likes": 85,
-	"comments": [
-	  {
-		"author": "Thalion",
-		"content": "W końcu ktoś się zajął tym problemem!",
-		"date": "2025-06-13"
-	  }
-	],
-	"effects": [
-	  {
-		"type": 0,
-		"target": "Elfs",
-		"value": 15
-	  },
-	  {
-		"type": 0,
-		"target": "Dwarfs",
-		"value": -5
-	  },
-	  {
-		"type": 1,
-		"event_name": "ForestProtectionLaw"
-	  }
-	]
+    "id": 4,
+    "event_id": 1,
+    "lobbyist": "Elfs",
+    "title": "Clean Magic Now",
+    "content": "I\u2019ve always said: power without oversight leads to corruption. Let\u2019s change that. #CleanMagicNow",
+    "likes": 29,
+    "effects": [
+      {
+        "type": 0,
+        "target": "Humans",
+        "value": -5
+      },
+      {
+        "type": 0,
+        "target": "Elfs",
+        "value": 8
+      },
+      {
+        "type": 0,
+        "target": "Dwarfs",
+        "value": 3
+      },
+      {
+        "type": 0,
+        "target": "Orcs",
+        "value": -3
+      }
+    ]
   },
   {
-	"id": 6,
-	"event_id": 2,
-	"lobbyist": "Alties",
-	"title": "Dekret o neutralnych terenach",
-	"content": "Powstaje strefa bez wpływu frakcji, otwarta dla handlu i dyplomacji.",
-	"author": "Arelon Vance",
-	"date": "2025-06-12",
-	"likes": 30,
-	"comments": [],
-	"effects": [
-	  {
-		"type": 0,
-		"target": "Elfs",
-		"value": 5
-	  },
-	  {
-		"type": 0,
-		"target": "Dwarfs",
-		"value": 5
-	  },
-	  {
-		"type": 0,
-		"target": "Alties",
-		"value": 10
-	  },
-	  {
-		"type": 1,
-		"event_name": "NeutralZoneCreated"
-	  }
-	]
+    "id": 5,
+    "event_id": 1,
+    "lobbyist": "Humans",
+    "title": "Time For Change",
+    "content": "Surprised? I\u2019m not. I warned you about the Altian elite. Now it\u2019s time to vote them out. #TimeForChange",
+    "likes": 74,
+    "effects": [
+      {
+        "type": 0,
+        "target": "Humans",
+        "value": 11
+      },
+      {
+        "type": 0,
+        "target": "Elfs",
+        "value": 2
+      },
+      {
+        "type": 0,
+        "target": "Dwarfs",
+        "value": -5
+      },
+      {
+        "type": 0,
+        "target": "Orcs",
+        "value": 2
+      }
+    ]
   },
   {
-	"id": 7,
-	"event_id": 2,
-	"lobbyist": "Dwarfs",
-	"title": "Podatek od magii",
-	"content": "Nowy podatek uderza w użytkowników magii – szczególnie elfów.",
-	"author": "Borgun Rudnefist",
-	"date": "2025-06-11",
-	"likes": 18,
-	"comments": [
-	  {
-		"author": "Elrien",
-		"content": "To jawna prowokacja! Magia to nie luksus!",
-		"date": "2025-06-11"
-	  }
-	],
-	"effects": [
-	  {
-		"type": 0,
-		"target": "Elfs",
-		"value": -15
-	  },
-	  {
-		"type": 0,
-		"target": "Dwarfs",
-		"value": 5
-	  },
-	  {
-		"type": 1,
-		"event_name": "MagicTaxLaw"
-	  }
-	]
-  },
-	  {
-	"id": 8,
-	"event_id": 2,
-	"lobbyist": "Dwarfs",
-	"title": "Nowa ustawa o technologii",
-	"content": "Projekt zakłada zwiększenie finansowania na magiczne kilofy.",
-	"author": "Junner Kowulsski",
-	"date": "2025-06-14",
-	"likes": 42,
-	"comments": [
-	  {
-		"author": "Anna Nowak",
-		"content": "Świetny pomysł! Wreszcie coś dla młodych kopalni.",
-		"date": "2025-06-14"
-	  },
-	  {
-		"author": "Marek Zieliński",
-		"content": "Mam nadzieję, że nie skończy się tylko na obietnicach.",
-		"date": "2025-06-14"
-	  }
-	],
-	"effects": [
-	  {
-		"type": 0,
-		"target": "Dwarfs",
-		"value": 10
-	  },
-	  {
-		"type": 0,
-		"target": "Elfs",
-		"value": -10
-	  },
-	  {
-		"type": 1,
-		"event_name": "TechFundingBoost"
-	  }
-	]
+    "id": 6,
+    "event_id": 2,
+    "lobbyist": "Elfs",
+    "title": "Future Magic",
+    "content": "Love to see our youth embracing change. Education reform is long overdue. #FutureMagic",
+    "likes": 78,
+    "effects": [
+      {
+        "type": 0,
+        "target": "Humans",
+        "value": 2
+      },
+      {
+        "type": 0,
+        "target": "Elfs",
+        "value": 10
+      },
+      {
+        "type": 0,
+        "target": "Dwarfs",
+        "value": -5
+      },
+      {
+        "type": 0,
+        "target": "Orcs",
+        "value": 3
+      }
+    ]
   },
   {
-	"id": 9,
-	"event_id": 3,
-	"lobbyist": "Elfs",
-	"title": "Ustawa o ochronie lasów",
-	"content": "Zakaz wycinania starożytnych drzew w rejonach świętych gajów.",
-	"author": "Lyriana Sylwind",
-	"date": "2025-06-13",
-	"likes": 85,
-	"comments": [
-	  {
-		"author": "Thalion",
-		"content": "W końcu ktoś się zajął tym problemem!",
-		"date": "2025-06-13"
-	  }
-	],
-	"effects": [
-	  {
-		"type": 0,
-		"target": "Elfs",
-		"value": 15
-	  },
-	  {
-		"type": 0,
-		"target": "Dwarfs",
-		"value": -5
-	  },
-	  {
-		"type": 1,
-		"event_name": "ForestProtectionLaw"
-	  }
-	]
+    "id": 7,
+    "event_id": 2,
+    "lobbyist": "Humans",
+    "title": "Reform Now",
+    "content": "If royalty supports reform, what\u2019s stopping our leaders? I\u2019ll get it done. #ReformNow",
+    "likes": 48,
+    "effects": [
+      {
+        "type": 0,
+        "target": "Humans",
+        "value": 8
+      },
+      {
+        "type": 0,
+        "target": "Elfs",
+        "value": 2
+      },
+      {
+        "type": 0,
+        "target": "Dwarfs",
+        "value": -5
+      },
+      {
+        "type": 0,
+        "target": "Orcs",
+        "value": -5
+      }
+    ]
   },
   {
-	"id": 10,
-	"event_id": 3,
-	"lobbyist": "Alties",
-	"title": "Dekret o neutralnych terenach",
-	"content": "Powstaje strefa bez wpływu frakcji, otwarta dla handlu i dyplomacji.",
-	"author": "Arelon Vance",
-	"date": "2025-06-12",
-	"likes": 30,
-	"comments": [],
-	"effects": [
-	  {
-		"type": 0,
-		"target": "Elfs",
-		"value": 5
-	  },
-	  {
-		"type": 0,
-		"target": "Dwarfs",
-		"value": 5
-	  },
-	  {
-		"type": 0,
-		"target": "Alties",
-		"value": 10
-	  },
-	  {
-		"type": 1,
-		"event_name": "NeutralZoneCreated"
-	  }
-	]
+    "id": 8,
+    "event_id": 2,
+    "lobbyist": "Dwarfs",
+    "title": "Magic For All",
+    "content": "A royal TikTrelf star? Times are changing fast. Let\u2019s make sure policy keeps up. #MagicForAll",
+    "likes": 85,
+    "effects": [
+      {
+        "type": 0,
+        "target": "Humans",
+        "value": -3
+      },
+      {
+        "type": 0,
+        "target": "Dwarfs",
+        "value": 11
+      },
+      {
+        "type": 0,
+        "target": "Orcs",
+        "value": -5
+      }
+    ]
   },
   {
-	"id": 11,
-	"event_id": 3,
-	"lobbyist": "Dwarfs",
-	"title": "Podatek od magii",
-	"content": "Nowy podatek uderza w użytkowników magii – szczególnie elfów.",
-	"author": "Borgun Rudnefist",
-	"date": "2025-06-11",
-	"likes": 18,
-	"comments": [
-	  {
-		"author": "Elrien",
-		"content": "To jawna prowokacja! Magia to nie luksus!",
-		"date": "2025-06-11"
-	  }
-	],
-	"effects": [
-	  {
-		"type": 0,
-		"target": "Elfs",
-		"value": -15
-	  },
-	  {
-		"type": 0,
-		"target": "Dwarfs",
-		"value": 5
-	  },
-	  {
-		"type": 1,
-		"event_name": "MagicTaxLaw"
-	  }
-	]
+    "id": 9,
+    "event_id": 3,
+    "lobbyist": "Orcs",
+    "title": "Respect The Craft",
+    "content": "Tradition matters. We must find a way to preserve culture without endangering safety. #RespectTheCraft",
+    "likes": 54,
+    "effects": [
+      {
+        "type": 0,
+        "target": "Humans",
+        "value": -5
+      },
+      {
+        "type": 0,
+        "target": "Elfs",
+        "value": 2
+      },
+      {
+        "type": 0,
+        "target": "Orcs",
+        "value": 9
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "event_id": 3,
+    "lobbyist": "Dwarfs",
+    "title": "No Ban On Ale",
+    "content": "Let the dwarves brew and cast! This ban is ridiculous. I\u2019ll fight it. #NoBanOnAle",
+    "likes": 58,
+    "effects": [
+      {
+        "type": 0,
+        "target": "Elfs",
+        "value": 3
+      },
+      {
+        "type": 0,
+        "target": "Dwarfs",
+        "value": 12
+      },
+      {
+        "type": 0,
+        "target": "Orcs",
+        "value": 2
+      }
+    ]
+  },
+  {
+    "id": 11,
+    "event_id": 3,
+    "lobbyist": "Elfs",
+    "title": "Dwarven Rights",
+    "content": "Magic has many forms. It\u2019s time we embraced all of them\u2014yes, even beer-based. #DwarvenRights",
+    "likes": 68,
+    "effects": [
+      {
+        "type": 0,
+        "target": "Humans",
+        "value": 2
+      },
+      {
+        "type": 0,
+        "target": "Elfs",
+        "value": 7
+      },
+      {
+        "type": 0,
+        "target": "Dwarfs",
+        "value": 2
+      },
+      {
+        "type": 0,
+        "target": "Orcs",
+        "value": 2
+      }
+    ]
+  },
+  {
+    "id": 12,
+    "event_id": 4,
+    "lobbyist": "Elfs",
+    "title": "Orcs And Humans",
+    "content": "A historic moment! I\u2019ll ensure these talks are more than just words. #OrcsAndHumans",
+    "likes": 42,
+    "effects": [
+      {
+        "type": 0,
+        "target": "Humans",
+        "value": -3
+      },
+      {
+        "type": 0,
+        "target": "Elfs",
+        "value": 11
+      },
+      {
+        "type": 0,
+        "target": "Dwarfs",
+        "value": 3
+      },
+      {
+        "type": 0,
+        "target": "Orcs",
+        "value": 3
+      }
+    ]
+  },
+  {
+    "id": 13,
+    "event_id": 4,
+    "lobbyist": "Humans",
+    "title": "United Realms",
+    "content": "Peace takes courage. I welcome the Warchief\u2019s words and extend my own. #UnitedRealms",
+    "likes": 76,
+    "effects": [
+      {
+        "type": 0,
+        "target": "Humans",
+        "value": 7
+      },
+      {
+        "type": 0,
+        "target": "Elfs",
+        "value": 2
+      },
+      {
+        "type": 0,
+        "target": "Dwarfs",
+        "value": -3
+      },
+      {
+        "type": 0,
+        "target": "Orcs",
+        "value": -5
+      }
+    ]
+  },
+  {
+    "id": 14,
+    "event_id": 4,
+    "lobbyist": "Orcs",
+    "title": "Treaty Time",
+    "content": "Cynics scoff, but I believe peace is possible. Let\u2019s prove them wrong. #TreatyTime",
+    "likes": 67,
+    "effects": [
+      {
+        "type": 0,
+        "target": "Humans",
+        "value": -5
+      },
+      {
+        "type": 0,
+        "target": "Dwarfs",
+        "value": -3
+      },
+      {
+        "type": 0,
+        "target": "Orcs",
+        "value": 11
+      }
+    ]
+  },
+  {
+    "id": 15,
+    "event_id": 5,
+    "lobbyist": "Humans",
+    "title": "Heal Frostmere",
+    "content": "We need immediate aid to Frostmere. Lives are on the line. #HealFrostmere",
+    "likes": 33,
+    "effects": [
+      {
+        "type": 0,
+        "target": "Humans",
+        "value": 8
+      },
+      {
+        "type": 0,
+        "target": "Elfs",
+        "value": -3
+      },
+      {
+        "type": 0,
+        "target": "Orcs",
+        "value": -5
+      }
+    ]
+  },
+  {
+    "id": 16,
+    "event_id": 5,
+    "lobbyist": "Humans",
+    "title": "Magic Responsibly",
+    "content": "Unchecked magic has consequences. I will push for better arcane regulation. #MagicResponsibly",
+    "likes": 74,
+    "effects": [
+      {
+        "type": 0,
+        "target": "Humans",
+        "value": 8
+      },
+      {
+        "type": 0,
+        "target": "Elfs",
+        "value": 2
+      },
+      {
+        "type": 0,
+        "target": "Dwarfs",
+        "value": 3
+      },
+      {
+        "type": 0,
+        "target": "Orcs",
+        "value": -5
+      }
+    ]
+  },
+  {
+    "id": 17,
+    "event_id": 5,
+    "lobbyist": "Humans",
+    "title": "Stop The Plague",
+    "content": "Our people are suffering. Enough bureaucracy\u2014send the mages in. #StopThePlague",
+    "likes": 67,
+    "effects": [
+      {
+        "type": 0,
+        "target": "Humans",
+        "value": 12
+      },
+      {
+        "type": 0,
+        "target": "Elfs",
+        "value": -3
+      },
+      {
+        "type": 0,
+        "target": "Orcs",
+        "value": 3
+      }
+    ]
+  },
+  {
+    "id": 18,
+    "event_id": 6,
+    "lobbyist": "Elfs",
+    "title": "Ribbit Prophecy",
+    "content": "Sky frogs again? That\u2019s the third time this year. Maybe it *is* a sign. #RibbitProphecy",
+    "likes": 80,
+    "effects": [
+      {
+        "type": 0,
+        "target": "Humans",
+        "value": 2
+      },
+      {
+        "type": 0,
+        "target": "Elfs",
+        "value": 8
+      },
+      {
+        "type": 0,
+        "target": "Dwarfs",
+        "value": -3
+      },
+      {
+        "type": 0,
+        "target": "Orcs",
+        "value": 3
+      }
+    ]
+  },
+  {
+    "id": 19,
+    "event_id": 6,
+    "lobbyist": "Dwarfs",
+    "title": "No More Frogs",
+    "content": "Monks say it\u2019s a blessing\u2014I say it\u2019s an infrastructure problem. Let\u2019s fix it. #NoMoreFrogs",
+    "likes": 43,
+    "effects": [
+      {
+        "type": 0,
+        "target": "Humans",
+        "value": 2
+      },
+      {
+        "type": 0,
+        "target": "Elfs",
+        "value": -5
+      },
+      {
+        "type": 0,
+        "target": "Dwarfs",
+        "value": 9
+      },
+      {
+        "type": 0,
+        "target": "Orcs",
+        "value": 3
+      }
+    ]
+  },
+  {
+    "id": 20,
+    "event_id": 6,
+    "lobbyist": "Orcs",
+    "title": "Frog Fall",
+    "content": "Whether omen or accident, the people of Drakmire deserve answers. #FrogFall",
+    "likes": 56,
+    "effects": [
+      {
+        "type": 0,
+        "target": "Elfs",
+        "value": 2
+      },
+      {
+        "type": 0,
+        "target": "Orcs",
+        "value": 10
+      }
+    ]
+  },
+  {
+    "id": 21,
+    "event_id": 7,
+    "lobbyist": "Elfs",
+    "title": "Unicorn Hope",
+    "content": "The land is healing. Let\u2019s honor this gift with real environmental action. #UnicornHope",
+    "likes": 43,
+    "effects": [
+      {
+        "type": 0,
+        "target": "Humans",
+        "value": 3
+      },
+      {
+        "type": 0,
+        "target": "Elfs",
+        "value": 12
+      },
+      {
+        "type": 0,
+        "target": "Orcs",
+        "value": 3
+      }
+    ]
+  },
+  {
+    "id": 22,
+    "event_id": 7,
+    "lobbyist": "Humans",
+    "title": "Magical Wildlife",
+    "content": "I\u2019ll protect the Silvergrove so future generations can witness such wonder. #MagicalWildlife",
+    "likes": 63,
+    "effects": [
+      {
+        "type": 0,
+        "target": "Humans",
+        "value": 11
+      },
+      {
+        "type": 0,
+        "target": "Elfs",
+        "value": -5
+      },
+      {
+        "type": 0,
+        "target": "Dwarfs",
+        "value": 3
+      },
+      {
+        "type": 0,
+        "target": "Orcs",
+        "value": 2
+      }
+    ]
+  },
+  {
+    "id": 23,
+    "event_id": 7,
+    "lobbyist": "Elfs",
+    "title": "Nature Matters",
+    "content": "Signs of beauty remind us what we fight for. Let\u2019s not forget it. #NatureMatters",
+    "likes": 62,
+    "effects": [
+      {
+        "type": 0,
+        "target": "Humans",
+        "value": 3
+      },
+      {
+        "type": 0,
+        "target": "Elfs",
+        "value": 12
+      },
+      {
+        "type": 0,
+        "target": "Orcs",
+        "value": 3
+      }
+    ]
+  },
+  {
+    "id": 24,
+    "event_id": 8,
+    "lobbyist": "Elfs",
+    "title": "Ironhall Crisis",
+    "content": "Technology without safety is a threat. Time for better golem oversight. #IronhallCrisis",
+    "likes": 72,
+    "effects": [
+      {
+        "type": 0,
+        "target": "Humans",
+        "value": 2
+      },
+      {
+        "type": 0,
+        "target": "Elfs",
+        "value": 10
+      }
+    ]
+  },
+  {
+    "id": 25,
+    "event_id": 8,
+    "lobbyist": "Humans",
+    "title": "Solidarity",
+    "content": "I stand with the people of Ironhall. Support and repairs are on the way. #Solidarity",
+    "likes": 32,
+    "effects": [
+      {
+        "type": 0,
+        "target": "Humans",
+        "value": 10
+      },
+      {
+        "type": 0,
+        "target": "Elfs",
+        "value": -3
+      },
+      {
+        "type": 0,
+        "target": "Dwarfs",
+        "value": 3
+      },
+      {
+        "type": 0,
+        "target": "Orcs",
+        "value": 3
+      }
+    ]
+  },
+  {
+    "id": 26,
+    "event_id": 8,
+    "lobbyist": "Dwarfs",
+    "title": "Responsible Innovation",
+    "content": "Progress must not come at the cost of lives. Reform the Guilds now. #ResponsibleInnovation",
+    "likes": 65,
+    "effects": [
+      {
+        "type": 0,
+        "target": "Humans",
+        "value": 3
+      },
+      {
+        "type": 0,
+        "target": "Elfs",
+        "value": -3
+      },
+      {
+        "type": 0,
+        "target": "Dwarfs",
+        "value": 10
+      },
+      {
+        "type": 0,
+        "target": "Orcs",
+        "value": 2
+      }
+    ]
+  },
+  {
+    "id": 27,
+    "event_id": 9,
+    "lobbyist": "Dwarfs",
+    "title": "Free Healing",
+    "content": "Taxing healing? Absurd. I will abolish the potion tax on day one. #FreeHealing",
+    "likes": 83,
+    "effects": [
+      {
+        "type": 0,
+        "target": "Humans",
+        "value": -3
+      },
+      {
+        "type": 0,
+        "target": "Elfs",
+        "value": 2
+      },
+      {
+        "type": 0,
+        "target": "Dwarfs",
+        "value": 12
+      }
+    ]
+  },
+  {
+    "id": 28,
+    "event_id": 9,
+    "lobbyist": "Dwarfs",
+    "title": "Heal Don\u2019T Tax",
+    "content": "The Church has gone too far. The sick should not pay for survival. #HealDon\u2019tTax",
+    "likes": 77,
+    "effects": [
+      {
+        "type": 0,
+        "target": "Humans",
+        "value": -3
+      },
+      {
+        "type": 0,
+        "target": "Dwarfs",
+        "value": 8
+      }
+    ]
+  },
+  {
+    "id": 29,
+    "event_id": 9,
+    "lobbyist": "Orcs",
+    "title": "Potion Justice",
+    "content": "Healing is a right, not a privilege. Stand with me against this greed. #PotionJustice",
+    "likes": 76,
+    "effects": [
+      {
+        "type": 0,
+        "target": "Elfs",
+        "value": 3
+      },
+      {
+        "type": 0,
+        "target": "Dwarfs",
+        "value": 3
+      },
+      {
+        "type": 0,
+        "target": "Orcs",
+        "value": 8
+      }
+    ]
+  },
+  {
+    "id": 30,
+    "event_id": 10,
+    "lobbyist": "Elfs",
+    "title": "Chair Wizard",
+    "content": "Reminder: always read the spellbook *before* you cast. #ChairWizard",
+    "likes": 43,
+    "effects": [
+      {
+        "type": 0,
+        "target": "Humans",
+        "value": 2
+      },
+      {
+        "type": 0,
+        "target": "Elfs",
+        "value": 10
+      },
+      {
+        "type": 0,
+        "target": "Orcs",
+        "value": 2
+      }
+    ]
+  },
+  {
+    "id": 31,
+    "event_id": 10,
+    "lobbyist": "Elfs",
+    "title": "Vote For Comfort",
+    "content": "Even as a chair, he's got more spine than some nobles. #VoteForComfort",
+    "likes": 25,
+    "effects": [
+      {
+        "type": 0,
+        "target": "Elfs",
+        "value": 10
+      }
+    ]
+  },
+  {
+    "id": 32,
+    "event_id": 10,
+    "lobbyist": "Orcs",
+    "title": "Magic Mishaps",
+    "content": "I support increased funding for magical safety\u2014especially upholstery. #MagicMishaps",
+    "likes": 85,
+    "effects": [
+      {
+        "type": 0,
+        "target": "Humans",
+        "value": -3
+      },
+      {
+        "type": 0,
+        "target": "Elfs",
+        "value": -3
+      },
+      {
+        "type": 0,
+        "target": "Dwarfs",
+        "value": 2
+      },
+      {
+        "type": 0,
+        "target": "Orcs",
+        "value": 10
+      }
+    ]
+  },
+  {
+    "id": 33,
+    "event_id": 11,
+    "lobbyist": "Orcs",
+    "title": "Krogmaw Swag",
+    "content": "Style knows no race. Braided beards for all! #KrogmawSwag",
+    "likes": 46,
+    "effects": [
+      {
+        "type": 0,
+        "target": "Humans",
+        "value": 2
+      },
+      {
+        "type": 0,
+        "target": "Elfs",
+        "value": -3
+      },
+      {
+        "type": 0,
+        "target": "Dwarfs",
+        "value": 3
+      },
+      {
+        "type": 0,
+        "target": "Orcs",
+        "value": 8
+      }
+    ]
+  },
+  {
+    "id": 34,
+    "event_id": 11,
+    "lobbyist": "Orcs",
+    "title": "Unity In Hair",
+    "content": "I may not have a beard, but I support the trend. #UnityInHair",
+    "likes": 46,
+    "effects": [
+      {
+        "type": 0,
+        "target": "Humans",
+        "value": -5
+      },
+      {
+        "type": 0,
+        "target": "Elfs",
+        "value": -5
+      },
+      {
+        "type": 0,
+        "target": "Dwarfs",
+        "value": -5
+      },
+      {
+        "type": 0,
+        "target": "Orcs",
+        "value": 9
+      }
+    ]
+  },
+  {
+    "id": 35,
+    "event_id": 11,
+    "lobbyist": "Dwarfs",
+    "title": "Braid The Divide",
+    "content": "Fashion diplomacy? I\u2019m here for it. #BraidTheDivide",
+    "likes": 40,
+    "effects": [
+      {
+        "type": 0,
+        "target": "Humans",
+        "value": -3
+      },
+      {
+        "type": 0,
+        "target": "Elfs",
+        "value": 3
+      },
+      {
+        "type": 0,
+        "target": "Dwarfs",
+        "value": 11
+      },
+      {
+        "type": 0,
+        "target": "Orcs",
+        "value": 3
+      }
+    ]
+  },
+  {
+    "id": 36,
+    "event_id": 12,
+    "lobbyist": "Dwarfs",
+    "title": "Sleepy Scholar",
+    "content": "Let the dragon nap! Knowledge and naps go hand in hand. #SleepyScholar",
+    "likes": 84,
+    "effects": [
+      {
+        "type": 0,
+        "target": "Humans",
+        "value": 3
+      },
+      {
+        "type": 0,
+        "target": "Elfs",
+        "value": -5
+      },
+      {
+        "type": 0,
+        "target": "Dwarfs",
+        "value": 9
+      },
+      {
+        "type": 0,
+        "target": "Orcs",
+        "value": 3
+      }
+    ]
+  },
+  {
+    "id": 37,
+    "event_id": 12,
+    "lobbyist": "Orcs",
+    "title": "Dawnspire Problems",
+    "content": "Finally, a library with *real* fire safety issues. #DawnspireProblems",
+    "likes": 30,
+    "effects": [
+      {
+        "type": 0,
+        "target": "Humans",
+        "value": 2
+      },
+      {
+        "type": 0,
+        "target": "Elfs",
+        "value": 2
+      },
+      {
+        "type": 0,
+        "target": "Orcs",
+        "value": 9
+      }
+    ]
+  },
+  {
+    "id": 38,
+    "event_id": 12,
+    "lobbyist": "Elfs",
+    "title": "Efficient Dragon",
+    "content": "Free roof heating? We\u2019re saving on taxes already. #EfficientDragon",
+    "likes": 73,
+    "effects": [
+      {
+        "type": 0,
+        "target": "Humans",
+        "value": 3
+      },
+      {
+        "type": 0,
+        "target": "Elfs",
+        "value": 9
+      },
+      {
+        "type": 0,
+        "target": "Orcs",
+        "value": 3
+      }
+    ]
+  },
+  {
+    "id": 39,
+    "event_id": 13,
+    "lobbyist": "Humans",
+    "title": "Gnome Tech",
+    "content": "You\u2019ve got mail... and it\u2019s singing. Welcome to the future. #GnomeTech",
+    "likes": 62,
+    "effects": [
+      {
+        "type": 0,
+        "target": "Humans",
+        "value": 11
+      },
+      {
+        "type": 0,
+        "target": "Elfs",
+        "value": -3
+      },
+      {
+        "type": 0,
+        "target": "Orcs",
+        "value": -3
+      }
+    ]
+  },
+  {
+    "id": 40,
+    "event_id": 13,
+    "lobbyist": "Orcs",
+    "title": "Mailbox Melodies",
+    "content": "Support local inventors, even when they're off-key. #MailboxMelodies",
+    "likes": 46,
+    "effects": [
+      {
+        "type": 0,
+        "target": "Humans",
+        "value": 3
+      },
+      {
+        "type": 0,
+        "target": "Elfs",
+        "value": -5
+      },
+      {
+        "type": 0,
+        "target": "Orcs",
+        "value": 8
+      }
+    ]
+  },
+  {
+    "id": 41,
+    "event_id": 13,
+    "lobbyist": "Dwarfs",
+    "title": "Election Jams",
+    "content": "At least they don\u2019t sing political ads\u2026 yet. #ElectionJams",
+    "likes": 64,
+    "effects": [
+      {
+        "type": 0,
+        "target": "Humans",
+        "value": 2
+      },
+      {
+        "type": 0,
+        "target": "Elfs",
+        "value": 3
+      },
+      {
+        "type": 0,
+        "target": "Dwarfs",
+        "value": 12
+      }
+    ]
+  },
+  {
+    "id": 42,
+    "event_id": 14,
+    "lobbyist": "Orcs",
+    "title": "Ballad Battle",
+    "content": "Who needs steel when you have soul? #BalladBattle",
+    "likes": 52,
+    "effects": [
+      {
+        "type": 0,
+        "target": "Humans",
+        "value": -5
+      },
+      {
+        "type": 0,
+        "target": "Elfs",
+        "value": 2
+      },
+      {
+        "type": 0,
+        "target": "Dwarfs",
+        "value": 2
+      },
+      {
+        "type": 0,
+        "target": "Orcs",
+        "value": 11
+      }
+    ]
+  },
+  {
+    "id": 43,
+    "event_id": 14,
+    "lobbyist": "Elfs",
+    "title": "Mic Drop",
+    "content": "I duel with policies, not songs\u2014but I respect the art. #MicDrop",
+    "likes": 40,
+    "effects": [
+      {
+        "type": 0,
+        "target": "Elfs",
+        "value": 8
+      },
+      {
+        "type": 0,
+        "target": "Dwarfs",
+        "value": -5
+      },
+      {
+        "type": 0,
+        "target": "Orcs",
+        "value": -3
+      }
+    ]
+  },
+  {
+    "id": 44,
+    "event_id": 14,
+    "lobbyist": "Dwarfs",
+    "title": "Sing For Peace",
+    "content": "Support funding for the arts\u2014or else we duel. #SingForPeace",
+    "likes": 43,
+    "effects": [
+      {
+        "type": 0,
+        "target": "Elfs",
+        "value": -5
+      },
+      {
+        "type": 0,
+        "target": "Dwarfs",
+        "value": 9
+      }
+    ]
+  },
+  {
+    "id": 45,
+    "event_id": 15,
+    "lobbyist": "Elfs",
+    "title": "Goat For King",
+    "content": "Honestly, Sir Cheddar\u2019s policies are more consistent than some nobles'. #GoatForKing",
+    "likes": 51,
+    "effects": [
+      {
+        "type": 0,
+        "target": "Elfs",
+        "value": 7
+      },
+      {
+        "type": 0,
+        "target": "Orcs",
+        "value": 3
+      }
+    ]
+  },
+  {
+    "id": 46,
+    "event_id": 15,
+    "lobbyist": "Humans",
+    "title": "Your Move",
+    "content": "If a goat can lead Mudhollow, I can lead a kingdom. #YourMove",
+    "likes": 51,
+    "effects": [
+      {
+        "type": 0,
+        "target": "Humans",
+        "value": 12
+      },
+      {
+        "type": 0,
+        "target": "Elfs",
+        "value": -5
+      }
+    ]
+  },
+  {
+    "id": 47,
+    "event_id": 15,
+    "lobbyist": "Elfs",
+    "title": "Sir Cheddar2025",
+    "content": "Transparency, charisma, and great cheese. What more do you want? #SirCheddar2025",
+    "likes": 85,
+    "effects": [
+      {
+        "type": 0,
+        "target": "Humans",
+        "value": -5
+      },
+      {
+        "type": 0,
+        "target": "Elfs",
+        "value": 7
+      },
+      {
+        "type": 0,
+        "target": "Dwarfs",
+        "value": 3
+      },
+      {
+        "type": 0,
+        "target": "Orcs",
+        "value": 2
+      }
+    ]
+  },
+  {
+    "id": 48,
+    "event_id": 16,
+    "lobbyist": "Dwarfs",
+    "title": "Mirror Madness",
+    "content": "Privacy matters\u2014even in enchanted reflections. #MirrorMadness",
+    "likes": 56,
+    "effects": [
+      {
+        "type": 0,
+        "target": "Elfs",
+        "value": -3
+      },
+      {
+        "type": 0,
+        "target": "Dwarfs",
+        "value": 9
+      }
+    ]
+  },
+  {
+    "id": 49,
+    "event_id": 16,
+    "lobbyist": "Orcs",
+    "title": "Gossip Glass",
+    "content": "Let\u2019s not judge others by their reflections\u2014unless they voted last year. #GossipGlass",
+    "likes": 50,
+    "effects": [
+      {
+        "type": 0,
+        "target": "Humans",
+        "value": -3
+      },
+      {
+        "type": 0,
+        "target": "Dwarfs",
+        "value": 3
+      },
+      {
+        "type": 0,
+        "target": "Orcs",
+        "value": 9
+      }
+    ]
+  },
+  {
+    "id": 50,
+    "event_id": 16,
+    "lobbyist": "Orcs",
+    "title": "Scandalous",
+    "content": "My biggest secret? I care too much. Mirror confirmed. #Scandalous",
+    "likes": 50,
+    "effects": [
+      {
+        "type": 0,
+        "target": "Humans",
+        "value": -5
+      },
+      {
+        "type": 0,
+        "target": "Elfs",
+        "value": 2
+      },
+      {
+        "type": 0,
+        "target": "Dwarfs",
+        "value": -3
+      },
+      {
+        "type": 0,
+        "target": "Orcs",
+        "value": 8
+      }
+    ]
+  },
+  {
+    "id": 51,
+    "event_id": 17,
+    "lobbyist": "Elfs",
+    "title": "Invisible Gridlock",
+    "content": "Reminder: drink responsibly. And visibly. #InvisibleGridlock",
+    "likes": 43,
+    "effects": [
+      {
+        "type": 0,
+        "target": "Elfs",
+        "value": 7
+      },
+      {
+        "type": 0,
+        "target": "Dwarfs",
+        "value": 2
+      }
+    ]
+  },
+  {
+    "id": 52,
+    "event_id": 17,
+    "lobbyist": "Dwarfs",
+    "title": "See And Be Seen",
+    "content": "This is why we need magical traffic laws. #SeeAndBeSeen",
+    "likes": 72,
+    "effects": [
+      {
+        "type": 0,
+        "target": "Humans",
+        "value": 2
+      },
+      {
+        "type": 0,
+        "target": "Elfs",
+        "value": -5
+      },
+      {
+        "type": 0,
+        "target": "Dwarfs",
+        "value": 12
+      },
+      {
+        "type": 0,
+        "target": "Orcs",
+        "value": 2
+      }
+    ]
+  },
+  {
+    "id": 53,
+    "event_id": 17,
+    "lobbyist": "Orcs",
+    "title": "Clear The Streets",
+    "content": "I\u2019ll bring order\u2014even to invisible chaos. #ClearTheStreets",
+    "likes": 65,
+    "effects": [
+      {
+        "type": 0,
+        "target": "Humans",
+        "value": -5
+      },
+      {
+        "type": 0,
+        "target": "Elfs",
+        "value": -5
+      },
+      {
+        "type": 0,
+        "target": "Dwarfs",
+        "value": 3
+      },
+      {
+        "type": 0,
+        "target": "Orcs",
+        "value": 9
+      }
+    ]
+  },
+  {
+    "id": 54,
+    "event_id": 18,
+    "lobbyist": "Dwarfs",
+    "title": "Nut For Warden",
+    "content": "A bold move. I support non-human representation. #NutForWarden",
+    "likes": 74,
+    "effects": [
+      {
+        "type": 0,
+        "target": "Humans",
+        "value": -5
+      },
+      {
+        "type": 0,
+        "target": "Elfs",
+        "value": 3
+      },
+      {
+        "type": 0,
+        "target": "Dwarfs",
+        "value": 9
+      }
+    ]
+  },
+  {
+    "id": 55,
+    "event_id": 18,
+    "lobbyist": "Humans",
+    "title": "Squirrel Power",
+    "content": "Can\u2019t be worse than some humans we\u2019ve elected. #SquirrelPower",
+    "likes": 82,
+    "effects": [
+      {
+        "type": 0,
+        "target": "Humans",
+        "value": 9
+      },
+      {
+        "type": 0,
+        "target": "Elfs",
+        "value": 3
+      },
+      {
+        "type": 0,
+        "target": "Dwarfs",
+        "value": 3
+      },
+      {
+        "type": 0,
+        "target": "Orcs",
+        "value": -5
+      }
+    ]
+  },
+  {
+    "id": 56,
+    "event_id": 18,
+    "lobbyist": "Orcs",
+    "title": "Elaria Strong",
+    "content": "Finally, someone with foresight and tree skills. #ElariaStrong",
+    "likes": 53,
+    "effects": [
+      {
+        "type": 0,
+        "target": "Humans",
+        "value": 3
+      },
+      {
+        "type": 0,
+        "target": "Elfs",
+        "value": -3
+      },
+      {
+        "type": 0,
+        "target": "Dwarfs",
+        "value": 3
+      },
+      {
+        "type": 0,
+        "target": "Orcs",
+        "value": 7
+      }
+    ]
+  },
+  {
+    "id": 57,
+    "event_id": 19,
+    "lobbyist": "Elfs",
+    "title": "Polka Plague",
+    "content": "I will find that lute. And I will dance. #PolkaPlague",
+    "likes": 34,
+    "effects": [
+      {
+        "type": 0,
+        "target": "Humans",
+        "value": 3
+      },
+      {
+        "type": 0,
+        "target": "Elfs",
+        "value": 7
+      },
+      {
+        "type": 0,
+        "target": "Orcs",
+        "value": 2
+      }
+    ]
+  },
+  {
+    "id": 58,
+    "event_id": 19,
+    "lobbyist": "Elfs",
+    "title": "Stop The Polka",
+    "content": "Some curses aren\u2019t evil, just annoying. #StopThePolka",
+    "likes": 48,
+    "effects": [
+      {
+        "type": 0,
+        "target": "Humans",
+        "value": -3
+      },
+      {
+        "type": 0,
+        "target": "Elfs",
+        "value": 8
+      },
+      {
+        "type": 0,
+        "target": "Dwarfs",
+        "value": 3
+      }
+    ]
+  },
+  {
+    "id": 59,
+    "event_id": 19,
+    "lobbyist": "Orcs",
+    "title": "Relatable",
+    "content": "You think politics is noisy? Try cursed polka at 3AM. #Relatable",
+    "likes": 76,
+    "effects": [
+      {
+        "type": 0,
+        "target": "Humans",
+        "value": 3
+      },
+      {
+        "type": 0,
+        "target": "Elfs",
+        "value": 2
+      },
+      {
+        "type": 0,
+        "target": "Dwarfs",
+        "value": -3
+      },
+      {
+        "type": 0,
+        "target": "Orcs",
+        "value": 8
+      }
+    ]
   }
 ]

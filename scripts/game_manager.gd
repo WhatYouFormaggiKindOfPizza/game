@@ -13,6 +13,8 @@ class_name GameManager extends Node
 @onready var entity_groups_parent: Node = %EntityGroups
 @onready var vote_simulator: VoteSimulator = $VoteSimulator
 @onready var posts_container: HBoxContainer = %PostsContainer
+@onready var days_until: DaysUntil = %DaysUntil
+
 
 var entity_groups: Array[EntityGroup]
 var kings: Array[King]
@@ -146,6 +148,7 @@ func start_game() -> void:
 		
 
 func next_turn() -> void:
+	days_until.set_days(day, max_turns)
 	day += 1
 
 	if show_logs:

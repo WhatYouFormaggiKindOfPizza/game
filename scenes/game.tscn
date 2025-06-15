@@ -75,7 +75,8 @@ layout_mode = 2
 [node name="Phone" parent="UI" instance=ExtResource("6_p57ef")]
 position = Vector2(678, 297)
 
-[node name="PanelContainer" parent="." instance=ExtResource("7_u5sy4")]
+[node name="DaysUntil" parent="." instance=ExtResource("7_u5sy4")]
+unique_name_in_owner = true
 offset_left = 313.0
 offset_top = -7.0
 offset_right = 1037.0

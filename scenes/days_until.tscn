@@ -29,6 +29,7 @@ text = "Days until elections: "
 font_scale = 4
 
 [node name="Days" parent="DaysUntil" instance=ExtResource("1_3qv5o")]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5

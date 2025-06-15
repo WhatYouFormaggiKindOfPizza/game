@@ -13,7 +13,6 @@ class_name GameManager extends Node
 @onready var entity_groups_parent: Node = %EntityGroups
 @onready var vote_simulator: VoteSimulator = $VoteSimulator
 @onready var scene_manager: SceneManager = %SceneManager
-@onready var phone: Phone = %Phone
 
 var entity_groups: Array[EntityGroup]
 var kings: Array[King]
@@ -28,6 +27,7 @@ var week_data: WeekData = WeekData.new()
 var relationship_bar_container: RelBarContainer
 var posts_container: HBoxContainer
 var days_until: DaysUntil
+var phone: Phone
 
 var day: int = 0
 
@@ -148,6 +148,7 @@ func start_game() -> void:
 	days_until = scene_manager.game_screen.days_until
 	scene_manager.game_screen.game_manager = self
 	relationship_bar_container = scene_manager.game_screen.rel_bar_container
+	phone = scene_manager.game_screen.phone
 
 	if show_logs:
 		print("Game started")

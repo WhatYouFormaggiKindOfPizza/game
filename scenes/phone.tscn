@@ -12,9 +12,10 @@ script = ExtResource("1_eud1m")
 texture = ExtResource("1_ewalk")
 
 [node name="Label" parent="." instance=ExtResource("2_eud1m")]
-offset_left = -114.286
-offset_top = -217.143
-offset_right = 2.71429
-offset_bottom = -194.143
+offset_left = -129.0
+offset_top = -223.0
+offset_right = 125.0
+offset_bottom = 204.0
 theme_override_font_sizes/font_size = 24
+autowrap_mode = 3
 font_scale = 3

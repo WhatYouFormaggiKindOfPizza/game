@@ -115,9 +115,8 @@ func get_entity_group(entity_group_name: String) -> EntityGroup:
 	for entity_group in entity_groups:
 		if (entity_group.group_name == entity_group_name):
 			return entity_group
-		else:
-			push_error('Warning: no entity group for name: ' + entity_group_name)
 	
+	push_error('Warning: no entity group for name: ' + entity_group_name)
 	return null
 	
 
@@ -180,7 +179,9 @@ func end_turn() -> void:
 		
 	#handles opponents actions
 	handle_opponents_actions();
-	
+
+	vote_simulator.update_support_history(kings)
+
 	if day >= max_turns:
 		end_game()
 
@@ -190,15 +191,17 @@ func end_turn() -> void:
 		next_turn()
 
 func end_round() -> void:
+	var week_number = int(day / 7.0)
+
 	if show_logs:
-		print("Round ended. Week: " + str(int(day / 7.0)))
+		print("Round ended. Week: " + str(week_number))
 
 
 	# Get some random event resolutions
 	var number_of_resolutions = RandomNumberGenerator.new().randi_range(1, max_resolutions_per_week)
 	var event_resolutions = []
 	for i in range(number_of_resolutions):
-		var idx = RandomNumberGenerator.new().randi() % week_data.event_resolutions.size()
+		var idx = RandomNumberGenerator.new().randi() % week_data.posts.size()
 		var er = week_data.event_resolutions.pop_at(idx)
 		event_resolutions.append(er)
 		
@@ -215,8 +218,10 @@ func end_round() -> void:
 	#show week summary (relationships changes of all pretenders)
 	var actual_week_supp_difrence = []
 	for king in kings:
-		actual_week_supp_difrence.append(vote_simulator.show_week_supp_difrence(king, int(day / 7.0)))
-	print(actual_week_supp_difrence)
+		actual_week_supp_difrence.append(vote_simulator.show_week_supp_difrence(king, week_number))
+
+	if show_logs:
+		print("Week support differences: " + str(actual_week_supp_difrence))
 	
 
 	#TODO: on "next" button click, reset posts and start next turn

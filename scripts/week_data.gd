@@ -8,6 +8,9 @@ var events: Array = []
 func add_post(post: Post) -> void:
 	posts.append(post)
 
+	var ers = post.effects.filter(func(e): return e["type"] == Post.EffectType.EVENT)
+	event_resolutions.append_array(ers)
+
 
 func add_event_resolution(event_resolution: Dictionary) -> void:
 	event_resolutions.append(event_resolution)

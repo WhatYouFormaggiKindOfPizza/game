@@ -8,6 +8,7 @@ static var next_id: int = 0
 @export var is_player: bool
 
 
+var current_support: int = 0
 var id: int
 
 func _init() -> void:

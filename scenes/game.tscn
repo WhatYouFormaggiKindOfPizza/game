@@ -1,11 +1,15 @@
-[gd_scene load_steps=7 format=3 uid="uid://cmiqiuj17qh2n"]
+[gd_scene load_steps=11 format=3 uid="uid://cmiqiuj17qh2n"]
 
 [ext_resource type="Script" uid="uid://b1ysc02d5wrap" path="res://scripts/game_manager.gd" id="1_uwrxv"]
 [ext_resource type="Script" uid="uid://bhwsjj21cl1uf" path="res://scripts/vote_simulator.gd" id="2_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://kispiyeqssep" path="res://scenes/entity_group.tscn" id="2_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://dondqjjubrg3g" path="res://scenes/king.tscn" id="3_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://b5qlpe8xpnqn" path="res://scenes/post.tscn" id="4_lbhrr"]
+[ext_resource type="Texture2D" uid="uid://b6m550tdk1oyd" path="res://assets/Entity 2.png" id="5_vtaks"]
+[ext_resource type="Texture2D" uid="uid://cvucsxlwvamyp" path="res://assets/Entity 3.png" id="6_kvpfn"]
 [ext_resource type="PackedScene" uid="uid://cvkh1np46j6hr" path="res://scenes/phone.tscn" id="6_p57ef"]
+[ext_resource type="Texture2D" uid="uid://cyfnjq4qfnjj8" path="res://assets/Entity 4.png" id="7_dinhu"]
+[ext_resource type="PackedScene" uid="uid://fhowmhn132o0" path="res://scenes/rel_bar_container.tscn" id="7_u5sy4"]
 
 [node name="Game" type="Node2D"]
 
@@ -34,15 +38,19 @@ unique_name_in_owner = true
 [node name="Elfs" parent="EntityGroups" instance=ExtResource("2_lnu2h")]
 position = Vector2(317, 251)
 group_name = "Elfs"
+icon = ExtResource("5_vtaks")
+color = Color(0.846162, 0.798411, 0.894487, 1)
 
 [node name="Dwarfs" parent="EntityGroups" instance=ExtResource("2_lnu2h")]
 position = Vector2(317, 251)
 group_name = "Dwarfs"
-color = Color(0.555277, 0.303395, 0.123633, 1)
+icon = ExtResource("6_kvpfn")
+color = Color(0.479406, 0.31003, 0.466444, 1)
 
 [node name="Alties" parent="EntityGroups" instance=ExtResource("2_lnu2h")]
 position = Vector2(317, 251)
 group_name = "Alties"
+icon = ExtResource("7_dinhu")
 
 [node name="PostsContainer" type="HBoxContainer" parent="."]
 unique_name_in_owner = true
@@ -68,3 +76,14 @@ layout_mode = 2
 
 [node name="Phone" parent="UI" instance=ExtResource("6_p57ef")]
 position = Vector2(678, 297)
+
+[node name="RelBarContainer" parent="." node_paths=PackedStringArray("entity_groups_node") instance=ExtResource("7_u5sy4")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 42.0
+offset_top = 90.0
+offset_right = 42.0
+offset_bottom = 90.0
+size_flags_horizontal = 0
+entity_groups_node = NodePath("../EntityGroups")

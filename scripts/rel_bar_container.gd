@@ -1,0 +1,18 @@
+class_name RelBarContainer extends Control
+
+@export var entity_groups_node: Node #tutaj trzeba podać tego noda który trzyma wszystkie entityGroups
+
+@onready var box_container = $VBoxContainer
+const relationship_bar = preload("res://scenes/relationship_bar.tscn")
+var entity_groups: Array[Node]
+
+func _ready() -> void:
+    entity_groups = entity_groups_node.get_children()
+    for entity_group in entity_groups:
+        if(entity_group is EntityGroup):
+            print("Added entity_group " + entity_group.group_name + " to RelBarContainer")
+            box_container.add_child(relationship_bar.instantiate())
+            var relBar : RelationshipBar = box_container.get_children().back() as RelationshipBar
+            relBar.entity_group = entity_group
+            relBar.load_data_from_entity_group()
+        

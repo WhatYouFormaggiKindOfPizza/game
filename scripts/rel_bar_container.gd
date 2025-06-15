@@ -33,7 +33,6 @@ func refresh_relationship_bars() -> void:
 	for relBar in box_container.get_children():
 		if(relBar is RelationshipBar):
 			relBar.load_data_from_entity_group()
-			relBar.set_color(relBar.entity_group.color)
 			relBar.show_week_change(game_manager.week_data)
 			# if show_week_change:
 

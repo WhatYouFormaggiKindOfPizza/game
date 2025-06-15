@@ -93,4 +93,5 @@ offset_top = 303.0
 offset_right = 134.978
 offset_bottom = 703.0
 screen = NodePath("..")
+title = null
 show_week_change = true

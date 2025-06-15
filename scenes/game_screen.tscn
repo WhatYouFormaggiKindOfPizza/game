@@ -1,0 +1,71 @@
+[gd_scene load_steps=6 format=3 uid="uid://ba4q4t8ckjmi0"]
+
+[ext_resource type="PackedScene" uid="uid://b5qlpe8xpnqn" path="res://scenes/post.tscn" id="1_3uriw"]
+[ext_resource type="Script" uid="uid://bj2pn2m8lty8n" path="res://scripts/game_screen.gd" id="1_dv2sx"]
+[ext_resource type="PackedScene" uid="uid://d2ikom615rg55" path="res://scenes/days_until.tscn" id="2_dv2sx"]
+[ext_resource type="PackedScene" uid="uid://cvkh1np46j6hr" path="res://scenes/phone.tscn" id="3_rxmqw"]
+[ext_resource type="PackedScene" path="res://scenes/rel_bar_container.tscn" id="5_rxmqw"]
+
+[node name="GameScreen" type="Node2D"]
+script = ExtResource("1_dv2sx")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 33.1
+anchor_bottom = 18.15
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0.521166, 1, 0.999434, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="PostsContainer" type="HBoxContainer" parent="Control"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 34.162
+offset_left = 148.0
+offset_top = 514.0
+offset_right = -118.48
+offset_bottom = 714.0
+grow_horizontal = 2
+theme_override_constants/separation = 50
+
+[node name="ExamplePost2" parent="Control/PostsContainer" instance=ExtResource("1_3uriw")]
+layout_mode = 2
+
+[node name="ExamplePost3" parent="Control/PostsContainer" instance=ExtResource("1_3uriw")]
+layout_mode = 2
+
+[node name="ExamplePost1" parent="Control/PostsContainer" instance=ExtResource("1_3uriw")]
+layout_mode = 2
+
+[node name="DaysUntil" parent="Control" instance=ExtResource("2_dv2sx")]
+unique_name_in_owner = true
+layout_mode = 1
+anchor_left = 16.866
+anchor_top = 0.05
+anchor_right = 16.866
+anchor_bottom = 0.05
+offset_left = -350.64
+offset_top = 0.0
+offset_right = 350.628
+offset_bottom = 61.0
+
+[node name="Phone" parent="." instance=ExtResource("3_rxmqw")]
+position = Vector2(678, 297)
+
+[node name="RelBarContainer" parent="." node_paths=PackedStringArray("game_screen") instance=ExtResource("5_rxmqw")]
+unique_name_in_owner = true
+offset_left = 53.0
+offset_top = 114.0
+offset_right = 53.0
+offset_bottom = 114.0
+game_screen = NodePath("..")
+title = "Support by Race"

@@ -13,9 +13,9 @@ class_name GameManager extends Node
 @onready var entity_groups_parent: Node = %EntityGroups
 @onready var vote_simulator: VoteSimulator = $VoteSimulator
 @onready var posts_container: HBoxContainer = %PostsContainer
+@onready var relationship_bar_container: RelBarContainer = %RelBarContainer
 @onready var days_until: DaysUntil = %DaysUntil
 @onready var start_screen: StartScreen = %StartScreen
-
 
 var entity_groups: Array[EntityGroup]
 var kings: Array[King]
@@ -30,221 +30,218 @@ var week_data: WeekData = WeekData.new()
 var day: int = 0
 
 func init_entity_groups() -> void:
-	for e in entity_groups:
-		e.init(kings)
+    for e in entity_groups:
+        e.init(kings)
 
-		
+        
 func _ready() -> void:
-	load_kings_and_entities()
-	init_entity_groups()
-	load_posts_from_json()
-	load_events_from_json()
-	
-	if show_logs: 
-		log_ready()
-	vote_simulator.init(entity_groups, kings)
+    load_kings_and_entities()
+    init_entity_groups()
+    load_posts_from_json()
+    load_events_from_json()
+    
+    if show_logs: 
+        log_ready()
+    vote_simulator.init(entity_groups, kings)
 
 
 func load_kings_and_entities() -> void:
-	for child in entity_groups_parent.get_children():
-		if child is EntityGroup:
-			entity_groups.append(child)
-		else:
-			push_error("Unknown child type: " + str(child))
-	
-	for child in kings_parent.get_children():
-		if child is King:
-			kings.append(child)
-		else:
-			push_error("Unknown child type: " + str(child))
+    for child in entity_groups_parent.get_children():
+        if child is EntityGroup:
+            entity_groups.append(child)
+        else:
+            push_error("Unknown child type: " + str(child))
+    
+    for child in kings_parent.get_children():
+        if child is King:
+            kings.append(child)
+        else:
+            push_error("Unknown child type: " + str(child))
 
 
 func load_posts_from_json() -> void:
-	var json_as_text = FileAccess.get_file_as_string(posts_json_path)
-	var json_as_dict = JSON.parse_string(json_as_text)
+    var json_as_text = FileAccess.get_file_as_string(posts_json_path)
+    var json_as_dict = JSON.parse_string(json_as_text)
 
-	if !json_as_dict:
-		push_error("Error parsing JSON: ", posts_json_path)
-		return
+    if !json_as_dict:
+        push_error("Error parsing JSON: ", posts_json_path)
+        return
 
-	for post_data in json_as_dict:
-		var post = post_scene.instantiate().with_data(post_data, self)
-		print(post)
-		posts.append(post)
+    for post_data in json_as_dict:
+        var post = post_scene.instantiate().with_data(post_data, self)
+        print(post)
+        posts.append(post)
 
-	
+    
 func load_events_from_json() -> void:
-	var json_as_text = FileAccess.get_file_as_string(events_json_path)
-	var json_as_dict = JSON.parse_string(json_as_text)
+    var json_as_text = FileAccess.get_file_as_string(events_json_path)
+    var json_as_dict = JSON.parse_string(json_as_text)
 
-	if !json_as_dict:
-		push_error("Error parsing JSON: ", events_json_path)
-		return
+    if !json_as_dict:
+        push_error("Error parsing JSON: ", events_json_path)
+        return
 
 
-	if show_logs:
-		print("Loaded events from JSON: " + str(json_as_dict))
+    if show_logs:
+        print("Loaded events from JSON: " + str(json_as_dict))
 
-	for event_data in json_as_dict:
-		var event = Event.new(event_data)
-		events.append(event)
+    for event_data in json_as_dict:
+        var event = Event.new(event_data)
+        events.append(event)
 
-		if show_logs:
-			print("Loaded Events: " + str(event))
-	
-	assign_events_posts()
-	
+        if show_logs:
+            print("Loaded Events: " + str(event))
+    
+    assign_events_posts()
+    
 func assign_events_posts() -> void:
-	for event in events:
-		for post in posts:
-			if (event.id == post.event_id):
-				event.add_post(post)
-	
+    for event in events:
+        for post in posts:
+            if (event.id == post.event_id):
+                event.add_post(post)
+    
 func get_player() -> King:
-	var player = null
-	
-	for king in kings:
-		if (king.is_player):
-			player = king
-			
-	assert(player, "Brak gracza!")
-	
-	return player
-	
+    var player = null
+    
+    for king in kings:
+        if (king.is_player):
+            player = king
+            
+    assert(player, "Brak gracza!")
+    
+    return player
+    
 func get_entity_group(entity_group_name: String) -> EntityGroup:
-	for entity_group in entity_groups:
-		if (entity_group.group_name == entity_group_name):
-			return entity_group
-	
-	push_error('Warning: no entity group for name: ' + entity_group_name)
-	return null
-	
+    for entity_group in entity_groups:
+        if (entity_group.group_name == entity_group_name):
+            return entity_group
+    
+    push_error('Warning: no entity group for name: ' + entity_group_name)
+    return null
 
 # logs
 func log_ready() -> void:
-	print("GameManager is ready")
-	
-	print("--- Entity Groups ---")
-	print("Loaded " + str(entity_groups.size()) + " entity groups from scene.")
-	for e in entity_groups:
-		print("EntityGroup: " + e.group_name + " with ID: " + str(e.id))
+    print("GameManager is ready")
+    
+    print("--- Entity Groups ---")
+    print("Loaded " + str(entity_groups.size()) + " entity groups from scene.")
+    for e in entity_groups:
+        print("EntityGroup: " + e.group_name + " with ID: " + str(e.id))
 
-	print("--- Kings ---")
-	print("Loaded " + str(kings.size()) + " kings from scene.")
-	for k in kings:
-		print("King: " + k.king_name + " with ID: " + str(k.id) + " and is_player: " + str(k.is_player))
-		
-	print("--- Posts ---")
-	print("Loaded " + str(posts.size()) + " posts from JSON.")
-	for p in posts:
-		print("Post: " + p.title + " with ID: " + str(p.id))
+    print("--- Kings ---")
+    print("Loaded " + str(kings.size()) + " kings from scene.")
+    for k in kings:
+        print("King: " + k.king_name + " with ID: " + str(k.id) + " and is_player: " + str(k.is_player))
+        
+    print("--- Posts ---")
+    print("Loaded " + str(posts.size()) + " posts from JSON.")
+    for p in posts:
+        print("Post: " + p.title + " with ID: " + str(p.id))
 
 
 func start_game() -> void:
-	start_screen.hide()
-	if show_logs:
-		print("Game started")
-	next_turn()
-		
+    start_screen.hide()
+    if show_logs:
+        print("Game started")
+    next_turn()
+        
 
 func next_turn() -> void:
-	days_until.set_days(day, max_turns)
-	day += 1
+    days_until.set_days(day, max_turns)
+    day += 1
 
-	if show_logs:
-		print("Next turn started. Day: " + str(day))
-	
-	#get random event
-	current_event = events[randi_range(0, events.size() - 1)]
+    if show_logs:
+        print("Next turn started. Day: " + str(day))
+    
+    #get random event
+    current_event = events[randi_range(0, events.size() - 1)]
 
-	#check if event has 3 required posts
-	assert(current_event.posts.size() == 3, "Event with id: " + str(current_event.id) + ", needs 3 posts assigned, found: " + str(current_event.posts.size()))
+    #check if event has 3 required posts
+    assert(current_event.posts.size() == 3, "Event with id: " + str(current_event.id) + ", needs 3 posts assigned, found: " + str(current_event.posts.size()))
 
-	# Mocked posts for now | update noone is mocking my posts anymore
-	current_posts = current_event.posts
-	
-	for c in posts_container.get_children():
-		posts_container.remove_child(c)
+    # Mocked posts for now | update noone is mocking my posts anymore
+    current_posts = current_event.posts
+    
+    for c in posts_container.get_children():
+        posts_container.remove_child(c)
 
-	for post in current_posts:
-		posts_container.add_child(post)
-		post.setup_scene() 
+    for post in current_posts:
+        posts_container.add_child(post)
+        post.setup_scene() 
 
-	# TODO: send player messages from lobbyists
+    # TODO: send player messages from lobbyists
 
 
 func end_turn() -> void:
-	if show_logs:
-		print("Ending turn...")
-		
-	#handles opponents actions
-	handle_opponents_actions();
+    if show_logs:
+        print("Ending turn...")
+        
+    #handles opponents actions
+    handle_opponents_actions();
 
-	vote_simulator.update_support_history(kings)
+    vote_simulator.update_support_history(kings)
+    relationship_bar_container.refresh_relationship_bars()
+    if day >= max_turns:
+        end_game()
 
-	if day >= max_turns:
-		end_game()
-
-	elif day % 7 == 0:
-		end_round()
-	else:
-		next_turn()
+    elif day % 7 == 0:
+        end_round()
+    else:
+        next_turn()
 
 func end_round() -> void:
-	var week_number = int(day / 7.0)
+    var week_number = int(day / 7.0)
 
-	if show_logs:
-		print("Round ended. Week: " + str(week_number))
-
-
-	# Get some random event resolutions
-	var number_of_resolutions = RandomNumberGenerator.new().randi_range(1, max_resolutions_per_week)
-	var event_resolutions = []
-	for i in range(number_of_resolutions):
-		var idx = RandomNumberGenerator.new().randi() % week_data.event_resolutions.size()
-		var er = week_data.event_resolutions.pop_at(idx)
-		event_resolutions.append(er)
-		
-
-	# TODO: Apply effects of the event resolution
-	for er in event_resolutions:
-		if show_logs:
-			print("Event Resolution: " + str(er))
-		#HERE
+    if show_logs:
+        print("Round ended. Week: " + str(week_number))
 
 
-	# TODO: show event resolutions
-	
-	#show week summary (relationships changes of all pretenders)
-	var actual_week_supp_difrence = []
-	for king in kings:
-		actual_week_supp_difrence.append(vote_simulator.show_week_supp_difrence(king, week_number))
+    # Get some random event resolutions
+    var number_of_resolutions = RandomNumberGenerator.new().randi_range(1, max_resolutions_per_week)
+    var event_resolutions = []
+    for i in range(number_of_resolutions):
+        var idx = RandomNumberGenerator.new().randi() % week_data.event_resolutions.size()
+        var er = week_data.event_resolutions.pop_at(idx)
+        event_resolutions.append(er)
 
-	if show_logs:
-		print("Week support differences: " + str(actual_week_supp_difrence))
-	
+    # TODO: Apply effects of the event resolution
+    for er in event_resolutions:
+        if show_logs:
+            print("Event Resolution: " + str(er))
+        #HERE
 
-	#TODO: on "next" button click, reset posts and start next turn
-	week_data.clear()
-	next_turn()
+
+    # TODO: show event resolutions
+    
+    #show week summary (relationships changes of all pretenders)
+    var actual_week_supp_difrence = []
+    for king in kings:
+        actual_week_supp_difrence.append(vote_simulator.show_week_supp_difrence(king, week_number))
+
+    if show_logs:
+        print("Week support differences: " + str(actual_week_supp_difrence))
+
+    #TODO: on "next" button click, reset posts and start next turn
+    week_data.clear()
+    next_turn()
 
 
 func end_game() -> void:
-	if show_logs:
-		print("Game ended after " + str(day) + " days.")
+    if show_logs:
+        print("Game ended after " + str(day) + " days.")
 
-	# TODO: Show final scores and rankings
+    # TODO: Show final scores and rankings
 
 
 func run_support_simulation() -> void:
-	for king in kings:
-		var support = vote_simulator.compute_support(king)
-		king.current_support = support
-		if show_logs:
-			print("King: " + king.king_name + " has support: " + str(support))
+    for king in kings:
+        var support = vote_simulator.compute_support(king)
+        king.current_support = support
+        if show_logs:
+            print("King: " + king.king_name + " has support: " + str(support))
 
 func handle_opponents_actions() -> void:
-	for king in kings:
-		if !king.is_player:
-			var opponent_post = current_event.posts[randi_range(0, current_event.posts.size() - 1)]
-			opponent_post.populate_effects(king)
+    for king in kings:
+        if !king.is_player:
+            var opponent_post = current_event.posts[randi_range(0, current_event.posts.size() - 1)]
+            opponent_post.populate_effects(king)

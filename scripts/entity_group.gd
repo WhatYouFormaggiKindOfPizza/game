@@ -11,29 +11,36 @@ var relationships: Array[Dictionary]
 
 
 func _init() -> void:
-	id = next_id
-	next_id += 1
+    id = next_id
+    next_id += 1
 
 
 func init(kings: Array[King]) -> void:
-	# potencjalnie różny typ króla (np elf) może mieć różne relacje startowe
-	for k in kings:
-		var relationship = {
-			"king": k,
-			"relationship": 0
-		}
+    # potencjalnie różny typ króla (np elf) może mieć różne relacje startowe
+    for k in kings:
+        var relationship = {
+            "king": k,
+            "relationship": randi_range(0, 100)
+        }
 
-		relationships.append(relationship)
-	pass
+        relationships.append(relationship)
+    pass
 
 
 func change_relationship_value(value: int, king: King) -> void:
-	for relationship in relationships:
-		if relationship.get('king') == king:
-			relationship["relationship"] += value
-			
-			#check and adjust for relationships value limits
-			if (relationship["relationship"] > 100):
-				relationship["relationship"] = 100
-			elif (relationship["relationship"] < 0):
-				relationship["relationship"] = 0
+    for relationship in relationships:
+        if relationship.get('king') == king:
+            relationship["relationship"] += value
+            
+            #check and adjust for relationships value limits
+            if (relationship["relationship"] > 100):
+                relationship["relationship"] = 100
+            elif (relationship["relationship"] < 0):
+                relationship["relationship"] = 0
+
+func get_player_relationship_value() -> int:
+    var relationship_value : int;
+    for relationship in relationships:
+        if(relationship["king"].is_player == true):
+            relationship_value = relationship['relationship']
+    return relationship_value

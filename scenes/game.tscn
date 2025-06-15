@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cmiqiuj17qh2n"]
+[gd_scene load_steps=13 format=3 uid="uid://cmiqiuj17qh2n"]
 
 [ext_resource type="PackedScene" uid="uid://dlbpqwf70tpg4" path="res://scenes/start_screen.tscn" id="1_u5sy4"]
 [ext_resource type="Script" uid="uid://b1ysc02d5wrap" path="res://scripts/game_manager.gd" id="1_uwrxv"]
@@ -6,7 +6,11 @@
 [ext_resource type="PackedScene" uid="uid://kispiyeqssep" path="res://scenes/entity_group.tscn" id="2_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://dondqjjubrg3g" path="res://scenes/king.tscn" id="3_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://b5qlpe8xpnqn" path="res://scenes/post.tscn" id="4_lbhrr"]
+[ext_resource type="Texture2D" uid="uid://b6m550tdk1oyd" path="res://assets/Entity 2.png" id="5_dinhu"]
+[ext_resource type="Texture2D" uid="uid://cvucsxlwvamyp" path="res://assets/Entity 3.png" id="6_kvuet"]
 [ext_resource type="PackedScene" uid="uid://cvkh1np46j6hr" path="res://scenes/phone.tscn" id="6_p57ef"]
+[ext_resource type="Texture2D" uid="uid://cyfnjq4qfnjj8" path="res://assets/Entity 4.png" id="7_trtic"]
+[ext_resource type="PackedScene" uid="uid://fhowmhn132o0" path="res://scenes/rel_bar_container.tscn" id="8_0tnpc"]
 [ext_resource type="PackedScene" uid="uid://d2ikom615rg55" path="res://scenes/days_until.tscn" id="8_gee14"]
 
 [node name="Game" type="Node2D"]
@@ -36,15 +40,18 @@ unique_name_in_owner = true
 [node name="Elfs" parent="EntityGroups" instance=ExtResource("2_lnu2h")]
 position = Vector2(317, 251)
 group_name = "Elfs"
+icon = ExtResource("5_dinhu")
 
 [node name="Dwarfs" parent="EntityGroups" instance=ExtResource("2_lnu2h")]
 position = Vector2(317, 251)
 group_name = "Dwarfs"
+icon = ExtResource("6_kvuet")
 color = Color(0.555277, 0.303395, 0.123633, 1)
 
 [node name="Alties" parent="EntityGroups" instance=ExtResource("2_lnu2h")]
 position = Vector2(317, 251)
 group_name = "Alties"
+icon = ExtResource("7_trtic")
 
 [node name="UI" type="Node" parent="."]
 
@@ -89,8 +96,18 @@ offset_top = -6.0
 offset_right = 352.0
 offset_bottom = 55.0
 
+[node name="RelBarContainer" parent="UI" node_paths=PackedStringArray("entity_groups_node") instance=ExtResource("8_0tnpc")]
+unique_name_in_owner = true
+offset_left = 53.0
+offset_top = 114.0
+offset_right = 53.0
+offset_bottom = 114.0
+entity_groups_node = NodePath("../../EntityGroups")
+title = "Support by Race"
+
 [node name="StartScreen" parent="." instance=ExtResource("1_u5sy4")]
 unique_name_in_owner = true
+visible = false
 z_index = 4096
 anchors_preset = 0
 anchor_right = 0.0

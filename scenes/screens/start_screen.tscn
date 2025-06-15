@@ -35,7 +35,16 @@ theme_override_font_sizes/font_size = 80
 text = "Spellbook"
 font_scale = 10
 
+[node name="ColorRect" type="ColorRect" parent="ColorRect"]
+layout_mode = 0
+offset_left = 426.0
+offset_top = 599.0
+offset_right = 614.0
+offset_bottom = 667.0
+color = Color(0, 0.396064, 0.907897, 1)
+
 [node name="Button" type="Button" parent="ColorRect"]
+self_modulate = Color(1, 1, 1, 0.388235)
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.310962
@@ -63,6 +72,14 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 24
 text = "Sign in"
 font_scale = 3
+
+[node name="ColorRect2" type="ColorRect" parent="ColorRect"]
+layout_mode = 0
+offset_left = 752.0
+offset_top = 598.0
+offset_right = 940.0
+offset_bottom = 668.0
+color = Color(0, 0, 0, 0.607843)
 
 [node name="HowToPlay" type="Button" parent="ColorRect"]
 layout_mode = 1

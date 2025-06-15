@@ -3,15 +3,15 @@
 [ext_resource type="PackedScene" uid="uid://dlbpqwf70tpg4" path="res://scenes/screens/start_screen.tscn" id="1_u5sy4"]
 [ext_resource type="Script" uid="uid://b1ysc02d5wrap" path="res://scripts/game_manager.gd" id="1_uwrxv"]
 [ext_resource type="Script" uid="uid://bhwsjj21cl1uf" path="res://scripts/vote_simulator.gd" id="2_lbhrr"]
-[ext_resource type="PackedScene" uid="uid://cmls1u4lo4hfb" path="res://scenes/entity_group.tscn" id="2_lnu2h"]
-[ext_resource type="PackedScene" uid="uid://b1nthy2jq0imn" path="res://scenes/king.tscn" id="3_lbhrr"]
+[ext_resource type="PackedScene" uid="uid://kispiyeqssep" path="res://scenes/entity_group.tscn" id="2_lnu2h"]
+[ext_resource type="PackedScene" uid="uid://dondqjjubrg3g" path="res://scenes/king.tscn" id="3_lbhrr"]
 [ext_resource type="Script" uid="uid://b8irytrdokeni" path="res://scripts/scene_manager.gd" id="3_u5sy4"]
 [ext_resource type="Texture2D" uid="uid://b6m550tdk1oyd" path="res://assets/Entity 2.png" id="5_dinhu"]
 [ext_resource type="PackedScene" uid="uid://ba4q4t8ckjmi0" path="res://scenes/screens/game_screen.tscn" id="5_p57ef"]
 [ext_resource type="Texture2D" uid="uid://cvucsxlwvamyp" path="res://assets/Entity 3.png" id="6_kvuet"]
 [ext_resource type="Texture2D" uid="uid://cyfnjq4qfnjj8" path="res://assets/Entity 4.png" id="7_trtic"]
 [ext_resource type="PackedScene" uid="uid://bj0a4yagnp3yd" path="res://scenes/screens/week_end_screen.tscn" id="11_kvpfn"]
-[ext_resource type="PackedScene" uid="uid://dgpfkwd6a7vew" path="res://scenes/screens/how_to_play_pop_up.tscn" id="12_dinhu"]
+[ext_resource type="PackedScene" uid="uid://cun81plm88yy6" path="res://scenes/screens/how_to_play_pop_up.tscn" id="12_dinhu"]
 
 [node name="Game" type="Node2D"]
 
@@ -67,6 +67,9 @@ entity_groups_node = NodePath("../EntityGroups")
 unique_name_in_owner = true
 visible = false
 
+[node name="HowToPlayPopUp" parent="." instance=ExtResource("12_dinhu")]
+unique_name_in_owner = true
+
 [node name="StartScreen" parent="." instance=ExtResource("1_u5sy4")]
 unique_name_in_owner = true
 z_index = 4000
@@ -77,6 +80,3 @@ offset_right = 1366.0
 offset_bottom = 768.0
 grow_horizontal = 1
 grow_vertical = 1
-
-[node name="HowToPlayPopUp" parent="." instance=ExtResource("12_dinhu")]
-unique_name_in_owner = true

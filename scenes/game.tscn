@@ -13,7 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://cyfnjq4qfnjj8" path="res://assets/Entity 4.png" id="7_trtic"]
 [ext_resource type="PackedScene" uid="uid://bj0a4yagnp3yd" path="res://scenes/screens/week_end_screen.tscn" id="11_kvpfn"]
 [ext_resource type="PackedScene" uid="uid://cun81plm88yy6" path="res://scenes/screens/how_to_play_pop_up.tscn" id="12_dinhu"]
-[ext_resource type="PackedScene" path="res://scenes/screens/win_screen.tscn" id="13_kvuet"]
+[ext_resource type="PackedScene" uid="uid://cgvh6br7q6txe" path="res://scenes/screens/win_screen.tscn" id="13_kvuet"]
 [ext_resource type="PackedScene" uid="uid://btv8yl3etccs6" path="res://scenes/screens/lose_screen.tscn" id="14_trtic"]
 
 [node name="Game" type="Node2D"]

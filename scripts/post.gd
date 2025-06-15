@@ -6,6 +6,7 @@ static var next_id: int = 0
 @onready var game_manager: GameManager
 @onready var title_label: PixelLabel
 @onready var content_label: PixelLabel
+@onready var tooltip: Tooltip
 
 # base data
 var lobbyist: String # TODO: typ jeszcze do zmiany probably
@@ -71,6 +72,7 @@ func setup_scene() -> void:
 	
 	title_label = get_node("Button/VBoxContainer/PostTitle")
 	content_label = get_node("Button/VBoxContainer/PostContent")
+	tooltip = get_node("Tooltip")
 	assign_labels()
 
 
@@ -83,10 +85,12 @@ func assign_labels() -> void:
 
 func _on_button_mouse_entered() -> void:
 	position.y -= 10  
+	tooltip.toggle(true)
 
 
 func _on_button_mouse_exited() -> void:
 	position.y += 10 
+	tooltip.toggle(false)
 
 		
 func populate_effects(king: King) -> void:

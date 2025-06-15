@@ -1,18 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://flm1sdgwxlqu"]
+[gd_scene load_steps=3 format=3 uid="uid://i76r7qv1bu3m"]
 
 [ext_resource type="Script" uid="uid://xpvq7pqj5a0d" path="res://scripts/tooltip.gd" id="1_7dicn"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pvr4a"]
 bg_color = Color(0.860369, 0.860369, 0.860369, 1)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
 border_color = Color(0.863412, 0.709695, 0.0658761, 1)
 
 [node name="Tooltip" type="PanelContainer"]
-offset_right = 38.0
-offset_bottom = 50.0
+z_index = 4096
+offset_right = 89.0
+offset_bottom = 109.0
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_pvr4a")
 script = ExtResource("1_7dicn")

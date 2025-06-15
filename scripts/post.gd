@@ -8,6 +8,8 @@ static var next_id: int = 0
 @onready var content_label: PixelLabel
 @onready var tooltip: Tooltip
 
+var event_id: int
+
 # base data
 var lobbyist: String # TODO: typ jeszcze do zmiany probably
 var title: String
@@ -34,8 +36,9 @@ enum EffectType {
 func with_data(post_data: Dictionary = {}, gm: GameManager = null) -> Post:
 	id = next_id
 	next_id += 1
-	game_manager = gm
-
+	game_manager = gm	
+	event_id = post_data.get("event_id")
+	
 	if post_data.is_empty():
 		push_error("Post data is empty, cannot initialize Post.")
 		return
@@ -72,7 +75,7 @@ func setup_scene() -> void:
 	
 	title_label = get_node("Button/VBoxContainer/PostTitle")
 	content_label = get_node("Button/VBoxContainer/PostContent")
-	tooltip = get_node("Tooltip")
+	tooltip = get_node("%PostTooltip")
 	assign_labels()
 
 

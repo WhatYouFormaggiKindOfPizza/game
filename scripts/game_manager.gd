@@ -4,6 +4,7 @@ class_name GameManager extends Node
 @export var max_turns: int = 16 #TODO: use in turn_end()
 @export var show_logs: bool = true
 @export var posts_json_path: String = "res://data/posts.json"
+@export var events_json_path: String = "res://data/events.json"
 
 @export var post_scene: PackedScene = load("res://scenes/post.tscn")
 
@@ -16,6 +17,7 @@ class_name GameManager extends Node
 var entity_groups: Array[EntityGroup]
 var kings: Array[King]
 var posts: Array[Post] = []
+var events: Array[Event] = []
 
 var week_data: WeekData = WeekData.new()
 
@@ -30,6 +32,8 @@ func _ready() -> void:
 	load_kings_and_entities()
 	init_entity_groups()
 	load_posts_from_json()
+	load_events_from_json()
+	
 	if show_logs: 
 		log_ready()
 	vote_simulator.init(entity_groups)
@@ -63,6 +67,33 @@ func load_posts_from_json() -> void:
 		print(post)
 		posts.append(post)
 
+	
+func load_events_from_json() -> void:
+	var json_as_text = FileAccess.get_file_as_string(events_json_path)
+	var json_as_dict = JSON.parse_string(json_as_text)
+
+	if !json_as_dict:
+		push_error("Error parsing JSON: ", events_json_path)
+		return
+
+
+	if show_logs:
+		print("Loaded events from JSON: " + str(json_as_dict))
+
+	for event_data in json_as_dict:
+		var event = Event.new(event_data)
+		events.append(event)
+
+		if show_logs:
+			print("Loaded Events: " + str(event))
+	
+	assign_events_posts()
+	
+func assign_events_posts() -> void:
+	for event in events:
+		for post in posts:
+			if (event.id == post.event_id):
+				event.add_post(post)
 	
 func get_player() -> King:
 	var player = null

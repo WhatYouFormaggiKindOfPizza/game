@@ -19,6 +19,14 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_epv1v")
 
+[node name="PostTooltip" parent="." instance=ExtResource("2_88r67")]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 259.0
+offset_top = 105.0
+offset_right = 350.0
+offset_bottom = 239.0
+
 [node name="Button" type="Button" parent="."]
 z_index = 10
 layout_mode = 2
@@ -60,13 +68,6 @@ custom_minimum_size = Vector2(0.15, 0)
 layout_mode = 2
 text = "Projekt zakłada zwiększenie finansowania na magiczne kilofy."
 autowrap_mode = 3
-
-[node name="Tooltip" parent="." instance=ExtResource("2_88r67")]
-layout_mode = 0
-offset_left = 259.0
-offset_top = 105.0
-offset_right = 350.0
-offset_bottom = 239.0
 
 [connection signal="mouse_entered" from="Button" to="." method="_on_button_mouse_entered"]
 [connection signal="mouse_exited" from="Button" to="." method="_on_button_mouse_exited"]

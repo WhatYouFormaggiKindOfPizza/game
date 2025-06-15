@@ -99,6 +99,9 @@ func _on_button_mouse_exited() -> void:
 		
 func populate_effects(king: King) -> void:
 	for effect in effects:
+		if effect.get("type") != EffectType.CHANGE_RELATIONSHIP:
+			continue
+			
 		var target_name = effect.get('target')
 		var target = game_manager.get_entity_group(target_name)
 		if (target != null):

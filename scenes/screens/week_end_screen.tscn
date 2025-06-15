@@ -14,3 +14,19 @@ board = NodePath("Board")
 [node name="Board" parent="." instance=ExtResource("1_uwbnm")]
 unique_name_in_owner = true
 layout_mode = 1
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -300.0
+offset_top = -103.0
+offset_right = -95.0
+offset_bottom = -49.0
+mouse_default_cursor_shape = 2
+text = "Next round"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

@@ -89,7 +89,7 @@ font_scale = 8
 [node name="Relationships" parent="." node_paths=PackedStringArray("screen") instance=ExtResource("2_tx6nw")]
 layout_mode = 1
 offset_left = 216.0
-offset_top = 347.0
+offset_top = 303.0
 offset_right = 134.978
-offset_bottom = 747.0
+offset_bottom = 703.0
 screen = NodePath("..")

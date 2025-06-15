@@ -3,7 +3,12 @@ class_name WeekData extends Node
 var posts: Array[Post] = []
 var event_resolutions: Array = []
 var events: Array = []
+var start_week_entity_groups: Array[EntityGroup] = []
 
+
+func set_start_week_entity_groups(groups: Array[EntityGroup]) -> void:
+	var _clone = groups.duplicate(true)
+	start_week_entity_groups = _clone
 
 func add_post(post: Post) -> void:
 	posts.append(post)

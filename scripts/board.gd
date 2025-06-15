@@ -5,4 +5,4 @@ class_name Board extends Control
 
 func init(gm: GameManager) -> void:
     game_manager = gm
-    rel_bar_container.init(game_manager.entity_groups)
+    rel_bar_container.init(game_manager.entity_groups, gm)

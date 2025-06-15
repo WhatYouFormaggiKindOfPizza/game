@@ -15,3 +15,6 @@ var id: int
 func _init() -> void:
 	id = next_id
 	next_id += 1
+
+static func reset_id() -> void:
+	next_id = 0

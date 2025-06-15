@@ -50,8 +50,12 @@ func update_week_change(week_data: WeekData) -> void:
 
 		var change = current_value - start_value
 		set_change_value_label(change)
-	if(object is King):
-		pass #TODO
+	if(object is King && game_manager.day%7 == 0 && game_manager.day != 0):
+		var current_value: float = object.current_support_percent
+		var start_value: float = game_manager.vote_simulator.show_support_history_percetages(object, game_manager.day - 7)
+
+		var change = current_value - start_value
+		set_change_value_label(change)
 
 
 func set_change_value_label(value: int) -> void:

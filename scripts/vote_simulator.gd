@@ -58,6 +58,10 @@ func update_support_history(kings: Array[King]) -> void:
 func show_support_history(king: King, turn: int) -> int:
 	return support_history[king.id][turn]
 
+#zwraca jakie procentowe poparcie mial krol king w turze turn
+func show_support_history_percetages(king: King, turn: int) -> float:
+	return float(support_history[king.id][turn])/float(num_voters) * 100
+
 #zwraca roznice poparcia krola king w rundzie week
 func show_week_supp_difrence(king: King, week: int) -> int:
 	var supp_dif: int = support_history[king.id][week*7-1] - support_history[king.id][week*7 - 7]

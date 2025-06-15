@@ -7,7 +7,6 @@ var game_manager: GameManager
 @onready var week_end_screen: WeekEndScreen = %WeekEndScreen
 @onready var how_to_play_pop_up: HowToPlayPopUp = %HowToPlayPopUp
 
-
 func init(gm: GameManager) -> void:
 	game_manager = gm
 
@@ -32,7 +31,3 @@ func show_screen(screen: Node) -> void:
 	hide_all_scenes()
 	if screen:
 		screen.show()
-
-
-
-	

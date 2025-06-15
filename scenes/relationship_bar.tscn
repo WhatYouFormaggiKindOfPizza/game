@@ -7,7 +7,7 @@
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_psk0c"]
 bg_color = Color(0.84349, 0.502874, 0.271292, 1)
 
-[node name="RelationshipBar" type="Control"]
+[node name="RelationshipBar" type="Control" node_paths=PackedStringArray("change_value_label", "icon", "progress_bar", "race_name")]
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 3
 anchor_right = 0.176
@@ -16,6 +16,10 @@ offset_bottom = 80.0
 grow_horizontal = 2
 scale = Vector2(0.6, 0.6)
 script = ExtResource("1_3tvy7")
+change_value_label = NodePath("HBoxContainer/ChangeValueLabel")
+icon = NodePath("HBoxContainer/AspectRatioContainer/Icon")
+progress_bar = NodePath("HBoxContainer/VBoxContainer/ProgressBar")
+race_name = NodePath("HBoxContainer/VBoxContainer/Name")
 metadata/_edit_group_ = true
 metadata/_edit_use_anchors_ = true
 
@@ -68,3 +72,19 @@ offset_right = 0.0263062
 offset_bottom = 0.0399933
 theme_override_styles/fill = SubResource("StyleBoxFlat_psk0c")
 metadata/_edit_use_anchors_ = true
+
+[node name="ChangeValueLabel" parent="HBoxContainer" instance=ExtResource("5_em8jm")]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -41.6667
+offset_top = 13.3333
+offset_right = -3.66669
+offset_bottom = 36.3333
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 24
+text = "10"
+horizontal_alignment = 2
+font_scale = 3

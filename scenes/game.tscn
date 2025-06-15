@@ -18,6 +18,7 @@
 [node name="GameManager" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("1_uwrxv")
+show_logs = false
 
 [node name="VoteSimulator" type="Node2D" parent="GameManager"]
 script = ExtResource("2_lbhrr")

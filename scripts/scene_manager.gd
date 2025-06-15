@@ -6,7 +6,6 @@ var game_manager: GameManager
 @onready var start_screen: StartScreen = %StartScreen
 @onready var week_end_screen: WeekEndScreen = %WeekEndScreen
 
-
 func init(gm: GameManager) -> void:
 	game_manager = gm
 
@@ -30,7 +29,3 @@ func show_screen(screen: Node) -> void:
 	hide_all_scenes()
 	if screen:
 		screen.show()
-
-
-
-	

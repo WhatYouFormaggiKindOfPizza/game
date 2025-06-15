@@ -42,10 +42,10 @@ func clear() -> void:
 	posts.clear()
 	event_resolutions.clear()
 	events.clear()
+	start_week_entity_groups.clear()
 
 
 func get_prev_player_relationship_value(entity_group: EntityGroup) -> int:
-	print("get_prev_player_relationship_value for entity group: " + entity_group.group_name)
 	for group in start_week_entity_groups:
 		if group["id"] == entity_group.id:
 			return group["player_relationship_value"]

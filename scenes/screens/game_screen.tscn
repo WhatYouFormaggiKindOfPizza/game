@@ -62,11 +62,10 @@ offset_bottom = 61.0
 unique_name_in_owner = true
 position = Vector2(678, 297)
 
-[node name="RelBarContainer" parent="." node_paths=PackedStringArray("game_screen") instance=ExtResource("5_rxmqw")]
+[node name="RelBarContainer" parent="." instance=ExtResource("5_rxmqw")]
 unique_name_in_owner = true
 offset_left = 53.0
 offset_top = 114.0
 offset_right = 53.0
 offset_bottom = 114.0
-game_screen = NodePath("..")
 title = "Support by Race"

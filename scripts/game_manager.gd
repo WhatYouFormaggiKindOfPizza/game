@@ -24,15 +24,16 @@ var current_posts: Array[Post]
 
 var week_data: WeekData = WeekData.new()
 
-var relationship_bar_container: RelBarContainer
 var posts_container: HBoxContainer
 var days_until: DaysUntil
 var phone: Phone
 
 var day: int = 0
 
-signal next_round_signal(week_number: int)
-signal end_round_signal(week_number: int)
+signal next_round_signal(week_number: float)
+signal end_round_signal(week_number: float)
+signal next_turn_signal()
+signal end_turn_signal()
 
 func init_entity_groups() -> void:
 	for e in entity_groups:
@@ -150,7 +151,7 @@ func start_game() -> void:
 	scene_manager.show_screen(scene_manager.game_screen)
 	posts_container = scene_manager.game_screen.posts_container
 	days_until = scene_manager.game_screen.days_until
-	relationship_bar_container = scene_manager.game_screen.rel_bar_container
+	week_data.set_start_week_entity_groups(entity_groups)
 	phone = scene_manager.game_screen.phone
 	scene_manager.run_delayed_inits()
 
@@ -163,6 +164,7 @@ func start_game() -> void:
 func next_turn() -> void:
 	days_until.set_days(day, max_turns)
 	day += 1
+	next_turn_signal.emit()
 
 	if show_logs:
 		print("Next turn started. Day: " + str(day))
@@ -190,12 +192,13 @@ func next_turn() -> void:
 func end_turn() -> void:
 	if show_logs:
 		print("Ending turn...")
+	
+	end_turn_signal.emit()
 		
 	#handles opponents actions
 	handle_opponents_actions();
 
 	vote_simulator.update_support_history(kings)
-	relationship_bar_container.refresh_relationship_bars()
 	run_support_simulation()
 
 	if day >= max_turns:
@@ -207,7 +210,7 @@ func end_turn() -> void:
 		next_turn()
 
 func next_round() -> void:
-	next_round_signal.emit(int(day / 7.0) + 1)
+	next_round_signal.emit((day / 7.0) + 1)
 	run_support_simulation()
 	week_data.clear()
 	week_data.set_start_week_entity_groups(entity_groups)
@@ -216,7 +219,7 @@ func next_round() -> void:
 
 func end_round() -> void:
 	var week_number = int(day / 7.0)
-	end_round_signal.emit(int(day / 7.0) + 1)
+	end_round_signal.emit((day / 7.0) + 1)
 
 
 	if show_logs:

@@ -17,4 +17,7 @@ func load_data_from_entity_group() -> void:
 
 
 func show_week_change(week_data: WeekData) -> void:
-	week_data.posts
+	var current_value: int = entity_group.get_player_relationship_value()
+	var start_value: int = week_data.get_prev_player_relationship_value(entity_group)
+
+	print(race_name.text + " current: " + str(current_value) + " start: " + str(start_value))

@@ -27,18 +27,17 @@ func init_entities() -> void:
 		var relBar : RelationshipBar = box_container.get_children().back() as RelationshipBar
 		relBar.entity_group = entity_group
 		relBar.load_data_from_entity_group()
-		configure_bar(relBar)
-
-func configure_bar(rb: RelationshipBar) -> void:
-	if show_week_change:
-		rb.show_week_change(game_manager.week_data)
-
 
 
 func refresh_relationship_bars() -> void:
 	for relBar in box_container.get_children():
 		if(relBar is RelationshipBar):
 			relBar.load_data_from_entity_group()
+			relBar.set_color(relBar.entity_group.color)
+			relBar.show_week_change(game_manager.week_data)
+			# if show_week_change:
+
+	
 
 func clear_container() -> void:
 	for child in box_container.get_children():

@@ -123,7 +123,7 @@ func next_turn() -> void:
 	var current_posts: Array[Post] = posts.slice(0, 3)
 
 	for c in posts_container.get_children():
-		c.queue_free()  # Clear previous posts
+		posts_container.remove_child(c)
 
 	for post in current_posts:
 		posts_container.add_child(post)
@@ -133,9 +133,16 @@ func next_turn() -> void:
 
 
 func end_turn() -> void:
-	print("Ending turn...")  # Placeholder for ending the turn logic
-	pass
+	if show_logs:
+		print("Ending turn...")
+	
+	if day >= max_turns:
+		end_game()
 
+	elif day % 7 == 0:
+		end_round()
+	else:
+		next_turn()
 
 func end_round() -> void:
 	if show_logs:
@@ -161,4 +168,14 @@ func end_round() -> void:
 	# TODO: show event resolutions
 	# TODO: show week summary (relationships changes of all pretenders)
 	
-	week_data.clear()  # Clear week data for the next round
+
+	#TODO: on "next" button click, reset posts and start next turn
+	week_data.clear()
+	next_turn()
+
+
+func end_game() -> void:
+	if show_logs:
+		print("Game ended after " + str(day) + " days.")
+
+	# TODO: Show final scores and rankings

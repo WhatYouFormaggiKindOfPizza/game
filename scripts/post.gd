@@ -101,4 +101,5 @@ func populate_effects(king: King) -> void:
 func _on_button_pressed() -> void:
 	var player = game_manager.get_player()
 	populate_effects(player)
+	game_manager.run_support_simulation()
 	game_manager.end_turn()

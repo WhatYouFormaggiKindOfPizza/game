@@ -179,3 +179,11 @@ func end_game() -> void:
 		print("Game ended after " + str(day) + " days.")
 
 	# TODO: Show final scores and rankings
+
+
+func run_support_simulation() -> void:
+	for king in kings:
+		var support = vote_simulator.compute_support(king)
+		king.current_support = support
+		if show_logs:
+			print("King: " + king.king_name + " has support: " + str(support))

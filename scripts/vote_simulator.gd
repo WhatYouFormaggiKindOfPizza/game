@@ -32,7 +32,7 @@ func count_percent(king: King):
 		var index = groups.find(group)
 		percent_relationship[index] = percent
 
-func count_support(king: King):
+func compute_support(king: King):
 	count_percent(king)
 	var total_voters = 0
 

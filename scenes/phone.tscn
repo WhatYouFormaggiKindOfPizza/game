@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://cvkh1np46j6hr"]
+
+[ext_resource type="Texture2D" uid="uid://cxn5lrxti5oo6" path="res://assets/PhoneCase.png" id="1_ewalk"]
+[ext_resource type="PackedScene" uid="uid://bibasatxhl56l" path="res://scenes/pixel_label.tscn" id="2_eud1m"]
+
+[node name="Phone" type="Node2D"]
+scale = Vector2(0.7, 0.7)
+
+[node name="Case" type="Sprite2D" parent="."]
+texture = ExtResource("1_ewalk")
+
+[node name="Label" parent="." instance=ExtResource("2_eud1m")]
+offset_left = -114.286
+offset_top = -217.143
+offset_right = 2.71429
+offset_bottom = -194.143
+theme_override_font_sizes/font_size = 24
+font_scale = 3

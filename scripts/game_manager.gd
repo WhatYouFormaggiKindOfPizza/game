@@ -249,6 +249,7 @@ func end_game() -> void:
 func run_support_simulation() -> void:
 	for king in kings:
 		var support = vote_simulator.compute_support(king)
+		king.current_support_percent = float(support) / vote_simulator.num_voters * 100.0
 		king.current_support = support
 		if show_logs:
 			print("King: " + king.king_name + " has support: " + str(support))

@@ -55,9 +55,10 @@ position = Vector2(317, 251)
 group_name = "Alties"
 icon = ExtResource("7_trtic")
 
-[node name="GameScreen" parent="." node_paths=PackedStringArray("entity_groups_node") instance=ExtResource("5_p57ef")]
+[node name="GameScreen" parent="." node_paths=PackedStringArray("entity_groups_node", "kings_node") instance=ExtResource("5_p57ef")]
 unique_name_in_owner = true
 entity_groups_node = NodePath("../EntityGroups")
+kings_node = NodePath("../Pretenders")
 
 [node name="StartScreen" parent="." instance=ExtResource("1_u5sy4")]
 unique_name_in_owner = true

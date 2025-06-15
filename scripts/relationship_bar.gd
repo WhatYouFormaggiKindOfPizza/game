@@ -1,16 +1,19 @@
 class_name RelationshipBar extends Control
 
-var entity_group: EntityGroup
+var object #entity_group albo king
 
 @onready var icon = $HBoxContainer/AspectRatioContainer/Icon
 @onready var progress_bar = $HBoxContainer/VBoxContainer/ProgressBar
-@onready var race_name = $HBoxContainer/VBoxContainer/Name
+@onready var label = $HBoxContainer/VBoxContainer/Name
 
-func load_data_from_entity_group() -> void:
-    icon.texture = entity_group.icon
-    progress_bar.value = entity_group.get_player_relationship_value()
-    #var style_box :StyleBox = progress_bar.get_theme_stylebox("fill");
-    #style_box.bg_color
-    #progress_bar.add_theme_stylebox_override("fill",style_box.bg_color)
-    progress_bar.get_theme_stylebox("fill").set_bg_color(entity_group.color)
-    race_name.text = entity_group.group_name
+func load_data() -> void:
+    icon.texture = object.icon
+    progress_bar.get_theme_stylebox("fill").set_bg_color(object.color)
+    if(object is EntityGroup):
+        progress_bar.value = object.get_player_relationship_value()
+        label.text = object.group_name
+    if(object is King):
+        progress_bar.value = object.current_support_percent
+        label.text = object.king_name
+    
+    

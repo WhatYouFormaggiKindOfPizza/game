@@ -70,3 +70,13 @@ offset_right = 53.0
 offset_bottom = 114.0
 game_screen = NodePath("..")
 title = "Support by Race"
+
+[node name="CurrentSupportContainer" parent="." node_paths=PackedStringArray("game_screen") instance=ExtResource("5_rxmqw")]
+unique_name_in_owner = true
+offset_left = 973.0
+offset_top = 114.0
+offset_right = 973.0
+offset_bottom = 114.0
+game_screen = NodePath("..")
+title = "Current support for Kings"
+is_entity_group_container = false

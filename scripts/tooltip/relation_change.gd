@@ -28,12 +28,18 @@ func with_data(effect_data: Dictionary) -> RelationChange:
 		return self
 
 	target_label.text = target
-	value_label.text = str(value)
+	# value_label.text = str(value)
 
 	if value > 0:
 		value_label.change_color(good_color)
-		value_label.text = "+" + value_label.text
+		value_label.text = "+"
+		if value > 10:
+			value_label.text += "+"
 	else:
+		value_label.text = "-"
 		value_label.change_color(bad_color)
+		if value < -10:
+			value_label.text += "-"
+
 
 	return self

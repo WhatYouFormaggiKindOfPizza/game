@@ -99,7 +99,7 @@ func _on_button_mouse_exited() -> void:
 		
 func populate_effects(king: King) -> void:
 	for effect in effects:
-		if effect.get("type") != EffectType.CHANGE_RELATIONSHIP:
+		if int(effect.get("type", EffectType.NONE)) != EffectType.CHANGE_RELATIONSHIP:
 			continue
 			
 		var target_name = effect.get('target')

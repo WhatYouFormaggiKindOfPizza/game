@@ -51,7 +51,7 @@ func setup_data(effects: Array[Dictionary]) -> void:
 		info_container.remove_child(c)
 
 	for effect in effects:
-		if effect["type"] != "CHANGE_RELATIONSHIP":
+		if effect["type"] != Post.EffectType.CHANGE_RELATIONSHIP:
 			continue
 
 		var effect_instance = relation_change_scene.instantiate().with_data(effect)

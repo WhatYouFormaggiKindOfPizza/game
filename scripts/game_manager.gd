@@ -13,7 +13,7 @@ class_name GameManager extends Node
 @onready var entity_groups_parent: Node = %EntityGroups
 @onready var vote_simulator: VoteSimulator = $VoteSimulator
 @onready var posts_container: HBoxContainer = %PostsContainer
-@onready var relationship_bar_container: RelBarContainer = %RelBarContainer
+@onready var phone: Phone = %Phone
 @onready var days_until: DaysUntil = %DaysUntil
 @onready var start_screen: StartScreen = %StartScreen
 
@@ -150,11 +150,12 @@ func next_turn() -> void:
     days_until.set_days(day, max_turns)
     day += 1
 
-    if show_logs:
-        print("Next turn started. Day: " + str(day))
-    
-    #get random event
-    current_event = events[randi_range(0, events.size() - 1)]
+	if show_logs:
+		print("Next turn started. Day: " + str(day))
+	
+	#get random event
+	current_event = events[randi_range(0, events.size() - 1)]
+	phone.load_and_display_event(current_event.id)
 
     #check if event has 3 required posts
     assert(current_event.posts.size() == 3, "Event with id: " + str(current_event.id) + ", needs 3 posts assigned, found: " + str(current_event.posts.size()))

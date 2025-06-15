@@ -19,6 +19,9 @@ var kings: Array[King]
 var posts: Array[Post] = []
 var events: Array[Event] = []
 
+var current_event: Event
+var current_posts: Array[Post]
+
 var week_data: WeekData = WeekData.new()
 
 var day: int = 0
@@ -147,13 +150,15 @@ func next_turn() -> void:
 	if show_logs:
 		print("Next turn started. Day: " + str(day))
 	
-	#TODO: get random event
+	#get random event
+	current_event = events[randi_range(0, events.size() - 1)]
 
-	#TODO: from event get posts
+	#check if event has 3 required posts
+	assert(current_event.posts.size() == 3, "Event with id: " + str(current_event.id) + " need 3 posts assigned, found: " + str(current_event.posts.size()))
 
-	# Mocked posts for now 
-	var current_posts: Array[Post] = posts.slice(0, 3)
-
+	# Mocked posts for now | update noone is mocking my posts anymore
+	current_posts = current_event.posts
+	
 	for c in posts_container.get_children():
 		posts_container.remove_child(c)
 
@@ -167,6 +172,9 @@ func next_turn() -> void:
 func end_turn() -> void:
 	if show_logs:
 		print("Ending turn...")
+		
+	#handles opponents actions
+	handle_opponents_actions();
 	
 	if day >= max_turns:
 		end_game()
@@ -219,3 +227,9 @@ func run_support_simulation() -> void:
 		king.current_support = support
 		if show_logs:
 			print("King: " + king.king_name + " has support: " + str(support))
+
+func handle_opponents_actions() -> void:
+	for king in kings:
+		if !king.is_player:
+			var opponent_post = current_event.posts[randi_range(0, posts.size() - 1)]
+			opponent_post.populate_effects(king)

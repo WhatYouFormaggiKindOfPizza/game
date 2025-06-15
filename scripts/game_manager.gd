@@ -15,6 +15,7 @@ class_name GameManager extends Node
 @onready var posts_container: HBoxContainer = %PostsContainer
 @onready var days_until: DaysUntil = %DaysUntil
 @onready var start_screen: StartScreen = %StartScreen
+@onready var end_screen: EndScreen = %EndScreen
 
 
 var entity_groups: Array[EntityGroup]
@@ -230,11 +231,21 @@ func end_round() -> void:
 
 
 func end_game() -> void:
+	var has_player_won = false
 	if show_logs:
 		print("Game ended after " + str(day) + " days.")
 
 	# TODO: Show final scores and rankings
-
+	var final_score = []
+	for king in kings:
+		final_score.append(vote_simulator.compute_support(king))
+	var max_score = final_score.max()
+	var max_index = final_score.find(max_score)
+	if kings[max_index].is_player:
+		has_player_won = true # Defaulty false
+	end_screen.show()
+	end_screen.show_scores(has_player_won)
+	# TODO gamaplayscreen.hide()
 
 func run_support_simulation() -> void:
 	for king in kings:

@@ -1,15 +1,74 @@
-[gd_scene load_steps=3 format=3 uid="uid://i76r7qv1bu3m"]
+[gd_scene load_steps=4 format=3 uid="uid://dxj1bp7ujexp8"]
 
-[ext_resource type="Script" uid="uid://xpvq7pqj5a0d" path="res://scripts/tooltip.gd" id="1_7dicn"]
+[ext_resource type="Script" path="res://scripts/tooltip.gd" id="1_7dicn"]
+[ext_resource type="PackedScene" uid="uid://bibasatxhl56l" path="res://scenes/pixel_label.tscn" id="2_75wrl"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pvr4a"]
-bg_color = Color(0.860369, 0.860369, 0.860369, 1)
+bg_color = Color(0.858824, 0.858824, 0.858824, 0)
 border_color = Color(0.863412, 0.709695, 0.0658761, 1)
 
 [node name="Tooltip" type="PanelContainer"]
 z_index = 4096
-offset_right = 89.0
-offset_bottom = 109.0
+anchors_preset = -1
+anchor_right = 0.132996
+anchor_bottom = 0.219781
+offset_right = 0.327988
+offset_bottom = 0.207993
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_pvr4a")
 script = ExtResource("1_7dicn")
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 2
+color = Color(0.321569, 0.607843, 0.717647, 0.937255)
+
+[node name="ColorRect" type="ColorRect" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_bottom = 1.00005
+offset_right = 7.0
+offset_bottom = -0.00500488
+color = Color(0, 0, 0, 0.282353)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.103989
+anchor_top = 0.0892485
+anchor_right = 0.103989
+anchor_bottom = 0.101083
+offset_left = 0.0739994
+offset_top = -0.0830021
+offset_right = 60.074
+offset_bottom = 39.917
+theme_override_constants/separation = 10
+metadata/_edit_use_anchors_ = true
+
+[node name="RelationChange" type="HBoxContainer" parent="ColorRect/VBoxContainer"]
+layout_mode = 2
+
+[node name="Name" parent="ColorRect/VBoxContainer/RelationChange" instance=ExtResource("2_75wrl")]
+layout_mode = 2
+text = "Dwarfs"
+color = null
+
+[node name="value" parent="ColorRect/VBoxContainer/RelationChange" instance=ExtResource("2_75wrl")]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.381366, 0.17521, 1)
+text = "+10"
+color = Color(0, 0.381366, 0.17521, 1)
+
+[node name="RelationChange2" type="HBoxContainer" parent="ColorRect/VBoxContainer"]
+layout_mode = 2
+
+[node name="Name" parent="ColorRect/VBoxContainer/RelationChange2" instance=ExtResource("2_75wrl")]
+layout_mode = 2
+text = "Elfs"
+color = null
+
+[node name="value" parent="ColorRect/VBoxContainer/RelationChange2" instance=ExtResource("2_75wrl")]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+text = "-10"
+color = Color(1, 0, 0, 1)

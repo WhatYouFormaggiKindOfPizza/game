@@ -287,4 +287,6 @@ func handle_opponents_actions() -> void:
 
 # TODO
 func restart_game() -> void:
-	pass
+	King.reset_id()
+	EntityGroup.reset_id()
+	get_tree().reload_current_scene()

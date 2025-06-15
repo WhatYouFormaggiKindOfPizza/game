@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://bj2pn2m8lty8n" path="res://scripts/game_screen.gd" id="1_dv2sx"]
 [ext_resource type="PackedScene" uid="uid://d2ikom615rg55" path="res://scenes/days_until.tscn" id="2_dv2sx"]
 [ext_resource type="PackedScene" uid="uid://cvkh1np46j6hr" path="res://scenes/phone.tscn" id="3_rxmqw"]
-[ext_resource type="PackedScene" path="res://scenes/rel_bar_container.tscn" id="5_rxmqw"]
+[ext_resource type="PackedScene" uid="uid://fhowmhn132o0" path="res://scenes/rel_bar_container.tscn" id="5_rxmqw"]
 
 [node name="GameScreen" type="Node2D"]
 script = ExtResource("1_dv2sx")
@@ -59,6 +59,7 @@ offset_right = 350.628
 offset_bottom = 61.0
 
 [node name="Phone" parent="." instance=ExtResource("3_rxmqw")]
+unique_name_in_owner = true
 position = Vector2(678, 297)
 
 [node name="RelBarContainer" parent="." node_paths=PackedStringArray("game_screen") instance=ExtResource("5_rxmqw")]

@@ -7,5 +7,4 @@ class_name GameScreen extends Node2D
 @onready var rel_bar_container: RelBarContainer = %RelBarContainer
 @onready var posts_container: HBoxContainer = %PostsContainer
 @onready var days_until: DaysUntil = %DaysUntil
-
-
+@onready var phone: Phone = %Phone

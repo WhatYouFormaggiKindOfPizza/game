@@ -113,8 +113,9 @@ func get_entity_group(entity_group_name: String) -> EntityGroup:
 	for entity_group in entity_groups:
 		if (entity_group.group_name == entity_group_name):
 			return entity_group
+		else:
+			push_error('Warning: no entity group for name: ' + entity_group_name)
 	
-	print('Warning: no entity group for name: ' + entity_group_name)
 	return null
 	
 
@@ -236,5 +237,5 @@ func run_support_simulation() -> void:
 func handle_opponents_actions() -> void:
 	for king in kings:
 		if !king.is_player:
-			var opponent_post = current_event.posts[randi_range(0, posts.size() - 1)]
+			var opponent_post = current_event.posts[randi_range(0, current_event.posts.size() - 1)]
 			opponent_post.populate_effects(king)

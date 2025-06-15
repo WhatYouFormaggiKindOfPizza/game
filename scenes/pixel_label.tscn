@@ -7,7 +7,9 @@
 texture_filter = 1
 offset_right = 40.0
 offset_bottom = 23.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("1_m5x2d")
 theme_override_font_sizes/font_size = 16
 text = "template text"
 script = ExtResource("2_f33nr")
+color = Color(1, 1, 1, 1)

@@ -8,7 +8,7 @@ bg_color = Color(0.858824, 0.858824, 0.858824, 0)
 border_color = Color(0.863412, 0.709695, 0.0658761, 1)
 
 [node name="Tooltip" type="PanelContainer"]
-z_index = 4096
+z_index = 2000
 anchors_preset = -1
 anchor_right = 0.132996
 anchor_bottom = 0.219781

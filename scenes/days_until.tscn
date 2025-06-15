@@ -1,0 +1,44 @@
+[gd_scene load_steps=3 format=3 uid="uid://d2ikom615rg55"]
+
+[ext_resource type="Script" path="res://scripts/days_until.gd" id="1_2cmoc"]
+[ext_resource type="PackedScene" uid="uid://bibasatxhl56l" path="res://scenes/pixel_label.tscn" id="1_3qv5o"]
+
+[node name="DaysUntil" type="PanelContainer"]
+anchors_preset = -1
+anchor_right = 0.515
+offset_top = 1.0
+offset_right = 0.509949
+offset_bottom = 62.0
+script = ExtResource("1_2cmoc")
+
+[node name="DaysUntil" type="ColorRect" parent="."]
+layout_mode = 2
+color = Color(0.34901, 0.757147, 1, 0.513726)
+
+[node name="Label" parent="DaysUntil" instance=ExtResource("1_3qv5o")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -248.0
+offset_top = 16.0
+offset_right = 124.0
+offset_bottom = 48.0
+theme_override_font_sizes/font_size = 32
+text = "Days until elections: "
+font_scale = 4
+
+[node name="Days" parent="DaysUntil" instance=ExtResource("1_3qv5o")]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 150.0
+offset_top = 18.0
+offset_right = 196.0
+offset_bottom = 50.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 32
+text = "10"
+font_scale = 4

@@ -1,0 +1,66 @@
+[gd_scene load_steps=3 format=3 uid="uid://dlbpqwf70tpg4"]
+
+[ext_resource type="Script" uid="uid://ha4hyb2hftw4" path="res://scripts/start_screen.gd" id="1_o7i0r"]
+[ext_resource type="PackedScene" uid="uid://bibasatxhl56l" path="res://scenes/pixel_label.tscn" id="1_tx5wa"]
+
+[node name="StartScreen" type="Control"]
+custom_minimum_size = Vector2(1366, 768)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+mouse_default_cursor_shape = 2
+script = ExtResource("1_o7i0r")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.002
+anchor_bottom = 1.0
+offset_right = 0.267822
+offset_bottom = -1.0
+color = Color(0.29191, 0.472719, 0.999999, 1)
+
+[node name="PixelLabel" parent="ColorRect" instance=ExtResource("1_tx5wa")]
+layout_mode = 0
+offset_left = 471.0
+offset_top = 209.0
+offset_right = 896.0
+offset_bottom = 289.0
+theme_override_font_sizes/font_size = 80
+text = "Spellbook"
+font_scale = 10
+
+[node name="Button" type="Button" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.424914
+anchor_top = 0.443151
+anchor_right = 0.562914
+anchor_bottom = 0.532151
+offset_left = 0.292969
+offset_top = 0.102966
+offset_right = -0.629028
+offset_bottom = -0.160004
+mouse_default_cursor_shape = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="PixelLabel" parent="ColorRect/Button" instance=ExtResource("1_tx5wa")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 62.0
+offset_top = 24.0
+offset_right = -65.0
+offset_bottom = -21.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 24
+text = "Sign in"
+font_scale = 3
+
+[connection signal="pressed" from="ColorRect/Button" to="." method="_on_button_pressed"]

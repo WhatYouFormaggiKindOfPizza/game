@@ -31,6 +31,9 @@ var phone: Phone
 
 var day: int = 0
 
+signal next_round_signal(week_number: int)
+signal end_round_signal(week_number: int)
+
 func init_entity_groups() -> void:
 	for e in entity_groups:
 		e.init(kings)
@@ -204,6 +207,7 @@ func end_turn() -> void:
 		next_turn()
 
 func next_round() -> void:
+	next_round_signal.emit(int(day / 7.0) + 1)
 	run_support_simulation()
 	week_data.clear()
 	week_data.set_start_week_entity_groups(entity_groups)
@@ -212,6 +216,8 @@ func next_round() -> void:
 
 func end_round() -> void:
 	var week_number = int(day / 7.0)
+	end_round_signal.emit(int(day / 7.0) + 1)
+
 
 	if show_logs:
 		print("Round ended. Week: " + str(week_number))

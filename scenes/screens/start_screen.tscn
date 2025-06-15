@@ -99,4 +99,4 @@ position = Vector2(683, 384)
 texture = ExtResource("3_qw0xr")
 
 [connection signal="pressed" from="ColorRect/Button" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="ColorRect/HowToPlay" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="ColorRect/HowToPlay" to="." method="_on_how_to_play_pressed"]

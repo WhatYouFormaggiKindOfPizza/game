@@ -5,6 +5,8 @@ static var next_id: int = 0
 
 @onready var game_manager: GameManager
 
+var event_id: int
+
 # base data
 var lobbyist: String # TODO: typ jeszcze do zmiany probably
 var title: String
@@ -33,6 +35,8 @@ func _init(post_data: Dictionary, gm: GameManager) -> void:
 	next_id += 1
 	
 	game_manager = gm
+	
+	event_id = post_data.get("event_id")
 	
 	lobbyist = post_data.get("lobbyist", "")
 	title = post_data.get("title", "")

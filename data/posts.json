@@ -1,6 +1,7 @@
 [
   {
 	"id": 0,
+	"event_id": 0,
 	"lobbyist": "Dwarfs",
 	"title": "Nowa ustawa o technologii",
 	"content": "Projekt zakłada zwiększenie finansowania na magiczne kilofy.",
@@ -38,6 +39,7 @@
   },
   {
 	"id": 1,
+	"event_id": 0,
 	"lobbyist": "Elfs",
 	"title": "Ustawa o ochronie lasów",
 	"content": "Zakaz wycinania starożytnych drzew w rejonach świętych gajów.",
@@ -70,6 +72,7 @@
   },
   {
 	"id": 2,
+	"event_id": 0,
 	"lobbyist": "Alties",
 	"title": "Dekret o neutralnych terenach",
 	"content": "Powstaje strefa bez wpływu frakcji, otwarta dla handlu i dyplomacji.",
@@ -101,6 +104,7 @@
   },
   {
 	"id": 3,
+	"event_id": 1,
 	"lobbyist": "Dwarfs",
 	"title": "Podatek od magii",
 	"content": "Nowy podatek uderza w użytkowników magii – szczególnie elfów.",

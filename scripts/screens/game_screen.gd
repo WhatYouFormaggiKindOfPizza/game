@@ -8,3 +8,7 @@ class_name GameScreen extends Node2D
 @onready var posts_container: HBoxContainer = %PostsContainer
 @onready var days_until: DaysUntil = %DaysUntil
 @onready var phone: Phone = %Phone
+
+func init(_game_manager: GameManager) -> void:
+	self.game_manager = _game_manager
+	rel_bar_container.init(_game_manager.entity_groups)

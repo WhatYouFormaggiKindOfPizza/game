@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://diln7mjhvad7g" path="res://scripts/board.gd" id="1_nglv8"]
 [ext_resource type="PackedScene" uid="uid://fhowmhn132o0" path="res://scenes/rel_bar_container.tscn" id="2_tx6nw"]
 
-[node name="Board" type="Control"]
+[node name="Board" type="Control" node_paths=PackedStringArray("rel_bar_container")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -12,6 +12,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_nglv8")
+rel_bar_container = NodePath("Relationships")
 
 [node name="Summary" parent="." instance=ExtResource("1_bw3vb")]
 layout_mode = 1

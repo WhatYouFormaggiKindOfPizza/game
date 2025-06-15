@@ -143,12 +143,13 @@ func log_ready() -> void:
 
 
 func start_game() -> void:
+	scene_manager.init(self)
 	scene_manager.show_screen(scene_manager.game_screen)
 	posts_container = scene_manager.game_screen.posts_container
 	days_until = scene_manager.game_screen.days_until
-	scene_manager.game_screen.game_manager = self
 	relationship_bar_container = scene_manager.game_screen.rel_bar_container
 	phone = scene_manager.game_screen.phone
+	scene_manager.run_delayed_inits()
 
 	if show_logs:
 		print("Game started")

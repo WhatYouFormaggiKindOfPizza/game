@@ -234,22 +234,20 @@ func end_round() -> void:
 	scene_manager.show_screen(scene_manager.week_end_screen)
 
 
-	# Get some random event resolutions
-	var number_of_resolutions = RandomNumberGenerator.new().randi_range(1, max_resolutions_per_week)
-	var event_resolutions = []
-	for i in range(number_of_resolutions):
-		var idx = RandomNumberGenerator.new().randi() % week_data.event_resolutions.size()
-		var er = week_data.event_resolutions.pop_at(idx)
-		event_resolutions.append(er)
+	# # Get some random event resolutions
+	# var number_of_resolutions = RandomNumberGenerator.new().randi_range(1, max_resolutions_per_week)
+	# var event_resolutions = []
+	# for i in range(number_of_resolutions):
+	# 	var idx = RandomNumberGenerator.new().randi() % week_data.event_resolutions.size()
+	# 	var er = week_data.event_resolutions.pop_at(idx)
+	# 	event_resolutions.append(er)
 
-	# TODO: Apply effects of the event resolution
-	for er in event_resolutions:
-		if show_logs:
-			print("Event Resolution: " + str(er))
-		#HERE
+	# # TODO: Apply effects of the event resolution
+	# for er in event_resolutions:
+	# 	if show_logs:
+	# 		print("Event Resolution: " + str(er))
+	# 	#HERE
 
-
-	# TODO: show event resolutions
 	
 	#show week summary (relationships changes of all pretenders)
 	var actual_week_supp_difrence = []
@@ -266,8 +264,6 @@ func end_game() -> void:
 		
 	var has_player_won = false
 
-	# TODO: Show final scores and rankings
-
 	var final_score = []
 	for king in kings:
 		final_score.append(vote_simulator.compute_support(king))
@@ -279,8 +275,6 @@ func end_game() -> void:
 		scene_manager.show_screen(scene_manager.win_screen)
 	else:
 		scene_manager.show_screen(scene_manager.lose_sceen)
-
-	# TODO: Show final scores and rankings
 
 
 func run_support_simulation() -> void:
@@ -299,4 +293,6 @@ func handle_opponents_actions() -> void:
 
 # TODO
 func restart_game() -> void:
-	pass
+	King.reset_id()
+	EntityGroup.reset_id()
+	get_tree().reload_current_scene()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cmiqiuj17qh2n"]
+[gd_scene load_steps=16 format=3 uid="uid://cmiqiuj17qh2n"]
 
 [ext_resource type="PackedScene" uid="uid://dlbpqwf70tpg4" path="res://scenes/screens/start_screen.tscn" id="1_u5sy4"]
 [ext_resource type="Script" uid="uid://b1ysc02d5wrap" path="res://scripts/game_manager.gd" id="1_uwrxv"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://b6m550tdk1oyd" path="res://assets/Entity 2.png" id="5_dinhu"]
 [ext_resource type="PackedScene" uid="uid://ba4q4t8ckjmi0" path="res://scenes/screens/game_screen.tscn" id="5_p57ef"]
 [ext_resource type="Texture2D" uid="uid://cvucsxlwvamyp" path="res://assets/Entity 3.png" id="6_kvuet"]
+[ext_resource type="Texture2D" uid="uid://chng8mt1mexc6" path="res://assets/Entity 1.png" id="7_ir15t"]
 [ext_resource type="Texture2D" uid="uid://cyfnjq4qfnjj8" path="res://assets/Entity 4.png" id="7_trtic"]
 [ext_resource type="PackedScene" uid="uid://bj0a4yagnp3yd" path="res://scenes/screens/week_end_screen.tscn" id="11_kvpfn"]
 [ext_resource type="PackedScene" uid="uid://cun81plm88yy6" path="res://scenes/screens/how_to_play_pop_up.tscn" id="12_dinhu"]
@@ -49,15 +50,20 @@ position = Vector2(317, 251)
 group_name = "Elfs"
 icon = ExtResource("5_dinhu")
 
+[node name="Humans" parent="EntityGroups" instance=ExtResource("2_lnu2h")]
+position = Vector2(317, 251)
+group_name = "Humans"
+icon = ExtResource("7_ir15t")
+
 [node name="Dwarfs" parent="EntityGroups" instance=ExtResource("2_lnu2h")]
 position = Vector2(317, 251)
 group_name = "Dwarfs"
 icon = ExtResource("6_kvuet")
 color = Color(0.555277, 0.303395, 0.123633, 1)
 
-[node name="Alties" parent="EntityGroups" instance=ExtResource("2_lnu2h")]
+[node name="Orcs" parent="EntityGroups" instance=ExtResource("2_lnu2h")]
 position = Vector2(317, 251)
-group_name = "Alties"
+group_name = "Orcs"
 icon = ExtResource("7_trtic")
 
 [node name="GameScreen" parent="." node_paths=PackedStringArray("entity_groups_node") instance=ExtResource("5_p57ef")]

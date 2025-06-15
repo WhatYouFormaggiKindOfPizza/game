@@ -1,0 +1,22 @@
+[
+  {
+	"id": 0,
+	"title": "Pożar w Świętym Gaju",
+	"description": "W nocy wybuchł pożar w jednym z najstarszych elfickich lasów. Nieznane są przyczyny, ale w sieci pojawiają się oskarżenia wobec krasnoludzkich górników."
+  },
+  {
+	"id": 1,
+	"title": "Skandal z magicznym podsłuchem",
+	"description": "Wyciekły informacje, że Altiańska Rada korzystała z magicznych zaklęć podsłuchujących na spotkaniach innych frakcji. Społeczeństwo żąda wyjaśnień."
+  },
+  {
+	"id": 2,
+	"title": "Elficka księżniczka dołącza do TikTrelfa",
+	"description": "Młoda księżniczka elfów zakłada konto na TikTrelfie i w pierwszym filmie wyraża poparcie dla reformy edukacji magicznej. Wideo zdobywa viral."
+  },
+  {
+	"id": 3,
+	"title": "Protesty krasnoludów przeciwko zakazowi piwnej magii",
+	"description": "Nowe prawo zakazujące użycia alkoholu jako składnika zaklęć wywołuje masowe protesty wśród krasnoludów. Uważają to za atak na ich tradycje."
+  }
+]

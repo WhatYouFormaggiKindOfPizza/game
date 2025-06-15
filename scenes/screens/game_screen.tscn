@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://ba4q4t8ckjmi0"]
+[gd_scene load_steps=7 format=3 uid="uid://ba4q4t8ckjmi0"]
 
 [ext_resource type="PackedScene" uid="uid://b5qlpe8xpnqn" path="res://scenes/post.tscn" id="1_3uriw"]
 [ext_resource type="Script" uid="uid://bj2pn2m8lty8n" path="res://scripts/screens/game_screen.gd" id="1_dv2sx"]
 [ext_resource type="PackedScene" uid="uid://d2ikom615rg55" path="res://scenes/days_until.tscn" id="2_dv2sx"]
+[ext_resource type="Texture2D" uid="uid://10alsdvxmo46" path="res://assets/Ekran powitalny.png" id="2_riit4"]
 [ext_resource type="PackedScene" uid="uid://cvkh1np46j6hr" path="res://scenes/phone.tscn" id="3_rxmqw"]
 [ext_resource type="PackedScene" uid="uid://fhowmhn132o0" path="res://scenes/rel_bar_container.tscn" id="5_rxmqw"]
 
@@ -22,8 +23,13 @@ anchor_right = 33.1
 anchor_bottom = 18.15
 offset_right = 40.0
 offset_bottom = 40.0
-color = Color(0.521166, 1, 0.999434, 1)
+color = Color(0.521569, 1, 1, 0)
 metadata/_edit_use_anchors_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Control/ColorRect"]
+z_index = -1
+position = Vector2(683, 384)
+texture = ExtResource("2_riit4")
 
 [node name="PostsContainer" type="HBoxContainer" parent="Control"]
 unique_name_in_owner = true
@@ -62,11 +68,10 @@ offset_bottom = 61.0
 unique_name_in_owner = true
 position = Vector2(678, 297)
 
-[node name="RelBarContainer" parent="." node_paths=PackedStringArray("game_screen") instance=ExtResource("5_rxmqw")]
+[node name="RelBarContainer" parent="." instance=ExtResource("5_rxmqw")]
 unique_name_in_owner = true
 offset_left = 53.0
 offset_top = 114.0
 offset_right = 53.0
 offset_bottom = 114.0
-game_screen = NodePath("..")
 title = "Support by Race"

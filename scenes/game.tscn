@@ -48,3 +48,12 @@ offset_right = 1152.0
 offset_bottom = 604.0
 theme_override_constants/separation = 64
 alignment = 1
+
+[node name="ExamplePost" parent="PostsContainer" instance=ExtResource("2_iywne")]
+layout_mode = 2
+
+[node name="ExamplePost2" parent="PostsContainer" instance=ExtResource("2_iywne")]
+layout_mode = 2
+
+[node name="ExamplePost3" parent="PostsContainer" instance=ExtResource("2_iywne")]
+layout_mode = 2

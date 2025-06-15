@@ -7,9 +7,6 @@ static var next_id: int = 0
 @onready var title_label: PixelLabel
 @onready var content_label: PixelLabel
 
-@export var post_scene: PackedScene = load("res://scenes/post.tscn")
-
-
 # base data
 var lobbyist: String # TODO: typ jeszcze do zmiany probably
 var title: String

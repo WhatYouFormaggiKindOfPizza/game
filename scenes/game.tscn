@@ -45,10 +45,11 @@ position = Vector2(317, 251)
 group_name = "Alties"
 
 [node name="PostsContainer" type="HBoxContainer" parent="."]
-offset_left = 156.0
-offset_top = 452.0
-offset_right = 934.0
-offset_bottom = 614.0
+unique_name_in_owner = true
+offset_left = 148.0
+offset_top = 516.0
+offset_right = 1208.0
+offset_bottom = 716.0
 theme_override_constants/separation = 50
 
 [node name="ExamplePost2" parent="PostsContainer" instance=ExtResource("4_lbhrr")]
@@ -63,4 +64,4 @@ layout_mode = 2
 [node name="UI" type="Node" parent="."]
 
 [node name="Phone" parent="UI" instance=ExtResource("6_p57ef")]
-position = Vector2(540, 260)
+position = Vector2(678, 297)

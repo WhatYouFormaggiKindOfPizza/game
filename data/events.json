@@ -1,22 +1,102 @@
 [
   {
-	"id": 0,
-	"title": "Pożar w Świętym Gaju",
-	"description": "W nocy wybuchł pożar w jednym z najstarszych elfickich lasów. Nieznane są przyczyny, ale w sieci pojawiają się oskarżenia wobec krasnoludzkich górników."
+    "id": 0,
+    "title": "Fire in the Sacred Grove",
+    "description": "A fire broke out last night in one of the oldest elven forests. The cause is unknown, but online accusations point toward dwarven miners.",
   },
   {
-	"id": 1,
-	"title": "Skandal z magicznym podsłuchem",
-	"description": "Wyciekły informacje, że Altiańska Rada korzystała z magicznych zaklęć podsłuchujących na spotkaniach innych frakcji. Społeczeństwo żąda wyjaśnień."
+    "id": 1,
+    "title": "Magical Eavesdropping Scandal",
+    "description": "Leaked reports reveal the Altian Council used magical surveillance during meetings with other factions. The public demands answers.",
   },
   {
-	"id": 2,
-	"title": "Elficka księżniczka dołącza do TikTrelfa",
-	"description": "Młoda księżniczka elfów zakłada konto na TikTrelfie i w pierwszym filmie wyraża poparcie dla reformy edukacji magicznej. Wideo zdobywa viral."
+    "id": 2,
+    "title": "Elven Princess Joins TikTrelf",
+    "description": "The young elven princess launches her TikTrelf account and goes viral supporting magical education reform.",
   },
   {
-	"id": 3,
-	"title": "Protesty krasnoludów przeciwko zakazowi piwnej magii",
-	"description": "Nowe prawo zakazujące użycia alkoholu jako składnika zaklęć wywołuje masowe protesty wśród krasnoludów. Uważają to za atak na ich tradycje."
+    "id": 3,
+    "title": "Dwarves Protest Beer-Magic Ban",
+    "description": "A new law banning alcohol as a spell component has triggered mass protests among dwarves, calling it an attack on tradition.",
+  },
+  {
+    "id": 4,
+    "title": "Orc Warchief Supports Peace Treaty",
+    "description": "In a surprise statement, the Warchief of the Southern Horde announces support for peace talks with the human kingdoms.",
+  },
+  {
+    "id": 5,
+    "title": "Magical Plague in Frostmere",
+    "description": "A strange illness spreads through Frostmere, reportedly caused by unstable spell residue. Local healers are overwhelmed.",
+  },
+  {
+    "id": 6,
+    "title": "Sky Rains Frogs Over Drakmire",
+    "description": "Residents of Drakmire report frogs falling from the sky. Monks claim it’s a divine omen. Others aren’t so sure.",
+  },
+  {
+    "id": 7,
+    "title": "Unicorn Spotted in Silvergrove",
+    "description": "A unicorn was seen grazing near Silvergrove. The event has sparked hope and pilgrimage across the land.",
+  },
+  {
+    "id": 8,
+    "title": "Golem Rampage in Ironhall",
+    "description": "A rogue golem malfunctioned and caused massive damage in Ironhall. Dwarven engineers are investigating.",
+  },
+  {
+    "id": 9,
+    "title": "Human Clerics Launch Potion Tax",
+    "description": "The High Church has introduced a tax on healing potions, sparking outrage among commoners and adventurers alike.",
+  },
+  {
+    "id": 10,
+    "title": "Wizard Accidentally Turns Himself Into a Chair",
+    "description": "A senior wizard from Arcana Collegium miscast a polymorph spell and is now stuck as a very comfortable armchair.",
+  },
+  {
+    "id": 11,
+    "title": "Orc Influencer Starts Beard-Braiding Trend",
+    "description": "Krogmaw the Bold, orc warrior and influencer, sparks a fashion frenzy with his elaborate beard braids. Even elves are copying it.",
+  },
+  {
+    "id": 12,
+    "title": "Royal Dragon Sleeps on Public Library Roof",
+    "description": "A retired dragon has taken to napping on the roof of the Grand Library in Dawnspire, claiming 'the tiles are warm'.",
+  },
+  {
+    "id": 13,
+    "title": "Gnomes Invent Singing Mailboxes",
+    "description": "Tinkering gnomes in Gearhold have unveiled singing mailboxes. Reactions range from amused to extremely annoyed.",
+  },
+  {
+    "id": 14,
+    "title": "Bard Wins Duel with Power Ballad",
+    "description": "Instead of swords, two duelists agreed to settle their score through musical performance. The bard’s power ballad left no dry eyes.",
+  },
+  {
+    "id": 15,
+    "title": "Goat Elected Mayor in Small Village",
+    "description": "Residents of Mudhollow accidentally voted for a goat named Sir Cheddar during a local election. Approval ratings are high.",
+  },
+  {
+    "id": 16,
+    "title": "Magical Mirror Spills Gossip in Town Square",
+    "description": "A cursed mirror was placed in public by accident, revealing embarrassing secrets to passing pedestrians.",
+  },
+  {
+    "id": 17,
+    "title": "Potion of Invisibility Causes Traffic Jam",
+    "description": "A shipment of invisibility potions spilled onto the streets of Valendor, causing a massive pile-up of invisible carts.",
+  },
+  {
+    "id": 18,
+    "title": "Elven Squirrel Appointed Forest Warden",
+    "description": "In an act of symbolic diplomacy, the elves of Elaria have named a highly intelligent squirrel their Forest Warden.",
+  },
+  {
+    "id": 19,
+    "title": "Cursed Lute Won't Stop Playing Polka",
+    "description": "A cursed instrument recovered from a sunken ruin plays nothing but loud polka music—and can’t be silenced.",
   }
 ]

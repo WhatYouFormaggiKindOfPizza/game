@@ -42,7 +42,7 @@ func _ready() -> void:
 	
 	if show_logs: 
 		log_ready()
-	vote_simulator.init(entity_groups)
+	vote_simulator.init(entity_groups, kings)
 
 
 func load_kings_and_entities() -> void:
@@ -211,7 +211,12 @@ func end_round() -> void:
 
 
 	# TODO: show event resolutions
-	# TODO: show week summary (relationships changes of all pretenders)
+	
+	#show week summary (relationships changes of all pretenders)
+	var actual_week_supp_difrence = []
+	for king in kings:
+		actual_week_supp_difrence.append(vote_simulator.show_week_supp_difrence(king, int(day / 7.0)))
+	print(actual_week_supp_difrence)
 	
 
 	#TODO: on "next" button click, reset posts and start next turn

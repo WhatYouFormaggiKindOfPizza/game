@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bj0a4yagnp3yd"]
+[gd_scene load_steps=4 format=3 uid="uid://bj0a4yagnp3yd"]
 
 [ext_resource type="Script" uid="uid://m83nmlpmgf13" path="res://scripts/screens/week_end_screen.gd" id="1_e0st0"]
 [ext_resource type="PackedScene" uid="uid://4r1bip8toahv" path="res://scenes/board.tscn" id="1_uwbnm"]
+[ext_resource type="Texture2D" uid="uid://l64x45fsi3qg" path="res://assets/Tablica ogłoszeń.png" id="3_cgntx"]
 
 [node name="WeekEnd" type="Control" node_paths=PackedStringArray("board")]
 layout_mode = 3
@@ -28,5 +29,10 @@ offset_right = -95.0
 offset_bottom = -49.0
 mouse_default_cursor_shape = 2
 text = "Next round"
+
+[node name="Background" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(683, 384)
+texture = ExtResource("3_cgntx")
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

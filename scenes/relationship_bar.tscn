@@ -7,7 +7,7 @@
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_psk0c"]
 bg_color = Color(0.84349, 0.502874, 0.271292, 1)
 
-[node name="RelationshipBar" type="Control" node_paths=PackedStringArray("change_value_label", "icon", "progress_bar", "race_name")]
+[node name="RelationshipBar" type="Control" node_paths=PackedStringArray("change_value_label", "icon", "progress_bar", "label")]
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 3
 anchor_right = 0.176
@@ -19,7 +19,7 @@ script = ExtResource("1_3tvy7")
 change_value_label = NodePath("HBoxContainer/ChangeValueLabel")
 icon = NodePath("HBoxContainer/AspectRatioContainer/Icon")
 progress_bar = NodePath("HBoxContainer/VBoxContainer/ProgressBar")
-race_name = NodePath("HBoxContainer/VBoxContainer/Name")
+label = NodePath("HBoxContainer/VBoxContainer/Name")
 metadata/_edit_group_ = true
 metadata/_edit_use_anchors_ = true
 

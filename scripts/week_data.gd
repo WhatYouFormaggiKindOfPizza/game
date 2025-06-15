@@ -18,10 +18,6 @@ func set_start_week_entity_groups(groups: Array[EntityGroup]) -> void:
 		else:
 			push_error("Expected EntityGroup, got: " + str(group))
 
-	# var _clone = groups.duplicate(true)
-	# start_week_entity_groups = _clone
-	# print(_clone)
-	# print(groups)
 
 func add_post(post: Post) -> void:
 	posts.append(post)

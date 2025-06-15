@@ -46,19 +46,12 @@ func update_week_change(week_data: WeekData) -> void:
 	var current_value: int = entity_group.get_player_relationship_value()
 	var start_value: int = week_data.get_prev_player_relationship_value(entity_group)
 
-	print("Entity group: " + entity_group.group_name)
-	print("Current value: " + str(current_value))
-	print("Start value: " + str(start_value))
-	print("change: " + str(current_value - start_value))
-
-
 	var change = current_value - start_value
 	set_change_value_label(change)
 
 
 func set_change_value_label(value: int) -> void:
 	change_value_label.text = str(value)
-	print("Setting change value label to: " + change_value_label.text)
 
 	if value > 0:
 		change_value_label.change_color(good_color)

@@ -21,7 +21,6 @@ func init(_entity_groups: Array[EntityGroup], _gm: GameManager) -> void:
 
 func init_entities() -> void:
 	for entity_group in entity_groups:
-		print("Initializing RelationshipBar for entity group: " + entity_group.group_name)
 		var relBar : RelationshipBar = relationship_bar_scene.instantiate()
 		relBar.init(show_week_changed, game_manager)
 		relBar.entity_group = entity_group

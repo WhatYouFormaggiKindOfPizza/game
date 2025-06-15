@@ -67,4 +67,15 @@ layout_mode = 2
 [node name="UI" type="Node" parent="."]
 
 [node name="Phone" parent="UI" instance=ExtResource("6_p57ef")]
+unique_name_in_owner = true
 position = Vector2(678, 297)
+
+[node name="Label" parent="UI/Phone" index="1"]
+offset_left = -137.0
+offset_top = -234.0
+offset_right = 137.0
+offset_bottom = 227.0
+autowrap_mode = 3
+
+[editable path="PostsContainer/ExamplePost1"]
+[editable path="UI/Phone"]

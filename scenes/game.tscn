@@ -1,11 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://cmiqiuj17qh2n"]
+[gd_scene load_steps=9 format=3 uid="uid://cmiqiuj17qh2n"]
 
+[ext_resource type="PackedScene" uid="uid://dlbpqwf70tpg4" path="res://scenes/start_screen.tscn" id="1_u5sy4"]
 [ext_resource type="Script" uid="uid://b1ysc02d5wrap" path="res://scripts/game_manager.gd" id="1_uwrxv"]
 [ext_resource type="Script" uid="uid://bhwsjj21cl1uf" path="res://scripts/vote_simulator.gd" id="2_lbhrr"]
-[ext_resource type="PackedScene" uid="uid://cmls1u4lo4hfb" path="res://scenes/entity_group.tscn" id="2_lnu2h"]
-[ext_resource type="PackedScene" uid="uid://b1nthy2jq0imn" path="res://scenes/king.tscn" id="3_lbhrr"]
+[ext_resource type="PackedScene" uid="uid://kispiyeqssep" path="res://scenes/entity_group.tscn" id="2_lnu2h"]
+[ext_resource type="PackedScene" uid="uid://dondqjjubrg3g" path="res://scenes/king.tscn" id="3_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://b5qlpe8xpnqn" path="res://scenes/post.tscn" id="4_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://cvkh1np46j6hr" path="res://scenes/phone.tscn" id="6_p57ef"]
+[ext_resource type="PackedScene" uid="uid://d2ikom615rg55" path="res://scenes/days_until.tscn" id="8_gee14"]
 
 [node name="Game" type="Node2D"]
 
@@ -44,7 +46,18 @@ color = Color(0.555277, 0.303395, 0.123633, 1)
 position = Vector2(317, 251)
 group_name = "Alties"
 
-[node name="PostsContainer" type="HBoxContainer" parent="."]
+[node name="UI" type="Node" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="UI"]
+anchors_preset = -1
+anchor_right = 0.969253
+anchor_bottom = 0.951823
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0.521166, 1, 0.999434, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="PostsContainer" type="HBoxContainer" parent="UI"]
 unique_name_in_owner = true
 anchors_preset = 10
 anchor_right = 1.0
@@ -55,27 +68,34 @@ offset_bottom = 714.0
 grow_horizontal = 2
 theme_override_constants/separation = 50
 
-[node name="ExamplePost2" parent="PostsContainer" instance=ExtResource("4_lbhrr")]
+[node name="ExamplePost2" parent="UI/PostsContainer" instance=ExtResource("4_lbhrr")]
 layout_mode = 2
 
-[node name="ExamplePost3" parent="PostsContainer" instance=ExtResource("4_lbhrr")]
+[node name="ExamplePost3" parent="UI/PostsContainer" instance=ExtResource("4_lbhrr")]
 layout_mode = 2
 
-[node name="ExamplePost1" parent="PostsContainer" instance=ExtResource("4_lbhrr")]
+[node name="ExamplePost1" parent="UI/PostsContainer" instance=ExtResource("4_lbhrr")]
 layout_mode = 2
-
-[node name="UI" type="Node" parent="."]
 
 [node name="Phone" parent="UI" instance=ExtResource("6_p57ef")]
-unique_name_in_owner = true
 position = Vector2(678, 297)
 
-[node name="Label" parent="UI/Phone" index="1"]
-offset_left = -137.0
-offset_top = -234.0
-offset_right = 137.0
-offset_bottom = 227.0
-autowrap_mode = 3
+[node name="DaysUntil" parent="UI" instance=ExtResource("8_gee14")]
+unique_name_in_owner = true
+anchor_left = 0.498
+anchor_right = 0.5
+offset_left = -349.268
+offset_top = -6.0
+offset_right = 352.0
+offset_bottom = 55.0
 
-[editable path="PostsContainer/ExamplePost1"]
-[editable path="UI/Phone"]
+[node name="StartScreen" parent="." instance=ExtResource("1_u5sy4")]
+unique_name_in_owner = true
+z_index = 4096
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_right = 1366.0
+offset_bottom = 768.0
+grow_horizontal = 1
+grow_vertical = 1

@@ -14,7 +14,6 @@ class_name GameManager extends Node
 @onready var vote_simulator: VoteSimulator = $VoteSimulator
 @onready var scene_manager: SceneManager = %SceneManager
 
-
 var entity_groups: Array[EntityGroup]
 var kings: Array[King]
 var posts: Array[Post] = []
@@ -25,6 +24,7 @@ var current_posts: Array[Post]
 
 var week_data: WeekData = WeekData.new()
 
+var relationship_bar_container: RelBarContainer
 var posts_container: HBoxContainer
 var days_until: DaysUntil
 
@@ -44,6 +44,7 @@ func _ready() -> void:
 	if show_logs: 
 		log_ready()
 	vote_simulator.init(entity_groups, kings)
+	
 
 
 func load_kings_and_entities() -> void:
@@ -119,7 +120,6 @@ func get_entity_group(entity_group_name: String) -> EntityGroup:
 	
 	push_error('Warning: no entity group for name: ' + entity_group_name)
 	return null
-	
 
 # logs
 func log_ready() -> void:
@@ -145,6 +145,8 @@ func start_game() -> void:
 	scene_manager.show_screen(scene_manager.game_screen)
 	posts_container = scene_manager.game_screen.posts_container
 	days_until = scene_manager.game_screen.days_until
+	scene_manager.game_screen.game_manager = self
+	relationship_bar_container = scene_manager.game_screen.rel_bar_container
 
 	if show_logs:
 		print("Game started")
@@ -185,7 +187,7 @@ func end_turn() -> void:
 	handle_opponents_actions();
 
 	vote_simulator.update_support_history(kings)
-
+	relationship_bar_container.refresh_relationship_bars()
 	if day >= max_turns:
 		end_game()
 
@@ -205,10 +207,9 @@ func end_round() -> void:
 	var number_of_resolutions = RandomNumberGenerator.new().randi_range(1, max_resolutions_per_week)
 	var event_resolutions = []
 	for i in range(number_of_resolutions):
-		var idx = RandomNumberGenerator.new().randi() % week_data.posts.size()
+		var idx = RandomNumberGenerator.new().randi() % week_data.event_resolutions.size()
 		var er = week_data.event_resolutions.pop_at(idx)
 		event_resolutions.append(er)
-		
 
 	# TODO: Apply effects of the event resolution
 	for er in event_resolutions:
@@ -226,7 +227,6 @@ func end_round() -> void:
 
 	if show_logs:
 		print("Week support differences: " + str(actual_week_supp_difrence))
-	
 
 	#TODO: on "next" button click, reset posts and start next turn
 	week_data.clear()

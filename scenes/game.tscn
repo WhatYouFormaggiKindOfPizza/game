@@ -1,12 +1,15 @@
-[gd_scene load_steps=8 format=3 uid="uid://cmiqiuj17qh2n"]
+[gd_scene load_steps=11 format=3 uid="uid://cmiqiuj17qh2n"]
 
 [ext_resource type="PackedScene" uid="uid://dlbpqwf70tpg4" path="res://scenes/start_screen.tscn" id="1_u5sy4"]
 [ext_resource type="Script" uid="uid://b1ysc02d5wrap" path="res://scripts/game_manager.gd" id="1_uwrxv"]
 [ext_resource type="Script" uid="uid://bhwsjj21cl1uf" path="res://scripts/vote_simulator.gd" id="2_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://kispiyeqssep" path="res://scenes/entity_group.tscn" id="2_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://dondqjjubrg3g" path="res://scenes/king.tscn" id="3_lbhrr"]
-[ext_resource type="Script" uid="uid://b8irytrdokeni" path="res://scripts/scene_manager.gd" id="3_u5sy4"]
+[ext_resource type="Script" path="res://scripts/scene_manager.gd" id="3_u5sy4"]
+[ext_resource type="Texture2D" uid="uid://b6m550tdk1oyd" path="res://assets/Entity 2.png" id="5_dinhu"]
 [ext_resource type="PackedScene" uid="uid://ba4q4t8ckjmi0" path="res://scenes/game_screen.tscn" id="5_p57ef"]
+[ext_resource type="Texture2D" uid="uid://cvucsxlwvamyp" path="res://assets/Entity 3.png" id="6_kvuet"]
+[ext_resource type="Texture2D" uid="uid://cyfnjq4qfnjj8" path="res://assets/Entity 4.png" id="7_trtic"]
 
 [node name="Game" type="Node2D"]
 
@@ -39,21 +42,26 @@ unique_name_in_owner = true
 [node name="Elfs" parent="EntityGroups" instance=ExtResource("2_lnu2h")]
 position = Vector2(317, 251)
 group_name = "Elfs"
+icon = ExtResource("5_dinhu")
 
 [node name="Dwarfs" parent="EntityGroups" instance=ExtResource("2_lnu2h")]
 position = Vector2(317, 251)
 group_name = "Dwarfs"
+icon = ExtResource("6_kvuet")
 color = Color(0.555277, 0.303395, 0.123633, 1)
 
 [node name="Alties" parent="EntityGroups" instance=ExtResource("2_lnu2h")]
 position = Vector2(317, 251)
 group_name = "Alties"
+icon = ExtResource("7_trtic")
 
-[node name="GameScreen" parent="." instance=ExtResource("5_p57ef")]
+[node name="GameScreen" parent="." node_paths=PackedStringArray("entity_groups_node") instance=ExtResource("5_p57ef")]
 unique_name_in_owner = true
+entity_groups_node = NodePath("../EntityGroups")
 
 [node name="StartScreen" parent="." instance=ExtResource("1_u5sy4")]
 unique_name_in_owner = true
+visible = false
 z_index = 4096
 anchors_preset = 0
 anchor_right = 0.0

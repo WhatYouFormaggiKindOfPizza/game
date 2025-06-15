@@ -12,9 +12,7 @@ class_name GameManager extends Node
 @onready var kings_parent: Node = %Pretenders
 @onready var entity_groups_parent: Node = %EntityGroups
 @onready var vote_simulator: VoteSimulator = $VoteSimulator
-@onready var posts_container: HBoxContainer = %PostsContainer
-@onready var days_until: DaysUntil = %DaysUntil
-@onready var start_screen: StartScreen = %StartScreen
+@onready var scene_manager: SceneManager = %SceneManager
 
 
 var entity_groups: Array[EntityGroup]
@@ -26,6 +24,9 @@ var current_event: Event
 var current_posts: Array[Post]
 
 var week_data: WeekData = WeekData.new()
+
+var posts_container: HBoxContainer
+var days_until: DaysUntil
 
 var day: int = 0
 
@@ -141,7 +142,10 @@ func log_ready() -> void:
 
 
 func start_game() -> void:
-	start_screen.hide()
+	scene_manager.show_screen(scene_manager.game_screen)
+	posts_container = scene_manager.game_screen.posts_container
+	days_until = scene_manager.game_screen.days_until
+
 	if show_logs:
 		print("Game started")
 	next_turn()

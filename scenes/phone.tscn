@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://cvkh1np46j6hr"]
 
-[ext_resource type="Script" uid="uid://d0s1rj5wy14bw" path="res://scenes/phone.gd" id="1_eud1m"]
+[ext_resource type="Script" uid="uid://d0s1rj5wy14bw" path="res://scripts/phone.gd" id="1_eud1m"]
 [ext_resource type="Texture2D" uid="uid://cxn5lrxti5oo6" path="res://assets/PhoneCase.png" id="1_ewalk"]
 [ext_resource type="PackedScene" uid="uid://bibasatxhl56l" path="res://scenes/pixel_label.tscn" id="2_eud1m"]
 

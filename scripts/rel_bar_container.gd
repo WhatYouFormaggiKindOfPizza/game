@@ -1,6 +1,6 @@
 class_name RelBarContainer extends Control
 
-@export var game_screen: Node
+@export var screen: Node
 var entity_groups_node: Node #tutaj trzeba podać tego noda który trzyma wszystkie entityGroups
 @export var title : String
 
@@ -10,7 +10,9 @@ const relationship_bar = preload("res://scenes/relationship_bar.tscn")
 var entity_groups: Array[Node]
 
 func _ready() -> void:
-	entity_groups_node = game_screen.entity_groups_node
+	entity_groups_node = screen.entity_groups_node
+
+	clear_container()
 
 	title_node.text = title
 	entity_groups = entity_groups_node.get_children()
@@ -26,3 +28,8 @@ func refresh_relationship_bars() -> void:
 	for relBar in box_container.get_children():
 		if(relBar is RelationshipBar):
 			relBar.load_data_from_entity_group()
+
+func clear_container() -> void:
+	for child in box_container.get_children():
+		if child is RelationshipBar:
+			child.queue_free()

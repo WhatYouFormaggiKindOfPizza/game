@@ -1,12 +1,15 @@
 class_name RelBarContainer extends Control
 
 @export var entity_groups_node: Node #tutaj trzeba podać tego noda który trzyma wszystkie entityGroups
+@export var title : String
 
 @onready var box_container = $VBoxContainer
+@onready var title_node = $VBoxContainer/Title
 const relationship_bar = preload("res://scenes/relationship_bar.tscn")
 var entity_groups: Array[Node]
 
 func _ready() -> void:
+    title_node.text = title
     entity_groups = entity_groups_node.get_children()
     for entity_group in entity_groups:
         if(entity_group is EntityGroup):

@@ -9,7 +9,6 @@ var game_manager: GameManager
 @onready var win_screen: WinScreen = %WinScreen
 @onready var lose_sceen: LoseScreen = %LoseScreen
 
-
 func init(gm: GameManager) -> void:
 	game_manager = gm
 
@@ -34,7 +33,3 @@ func show_screen(screen: Node) -> void:
 	hide_all_scenes()
 	if screen:
 		screen.show()
-
-
-
-	

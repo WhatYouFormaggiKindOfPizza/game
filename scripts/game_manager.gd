@@ -14,6 +14,7 @@ class_name GameManager extends Node
 @onready var vote_simulator: VoteSimulator = $VoteSimulator
 @onready var posts_container: HBoxContainer = %PostsContainer
 @onready var days_until: DaysUntil = %DaysUntil
+@onready var start_screen: StartScreen = %StartScreen
 
 
 var entity_groups: Array[EntityGroup]
@@ -42,7 +43,6 @@ func _ready() -> void:
 	if show_logs: 
 		log_ready()
 	vote_simulator.init(entity_groups)
-	start_game()
 
 
 func load_kings_and_entities() -> void:
@@ -142,6 +142,7 @@ func log_ready() -> void:
 
 
 func start_game() -> void:
+	start_screen.hide()
 	if show_logs:
 		print("Game started")
 	next_turn()

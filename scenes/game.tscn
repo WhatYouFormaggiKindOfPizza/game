@@ -86,6 +86,7 @@ grow_horizontal = 2
 
 [node name="StartScreen" parent="." instance=ExtResource("8_gee14")]
 unique_name_in_owner = true
+visible = false
 z_index = 4096
 anchors_preset = 0
 anchor_right = 0.0

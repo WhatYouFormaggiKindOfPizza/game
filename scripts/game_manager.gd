@@ -154,7 +154,7 @@ func next_turn() -> void:
 	current_event = events[randi_range(0, events.size() - 1)]
 
 	#check if event has 3 required posts
-	assert(current_event.posts.size() == 3, "Event with id: " + str(current_event.id) + " need 3 posts assigned, found: " + str(current_event.posts.size()))
+	assert(current_event.posts.size() == 3, "Event with id: " + str(current_event.id) + ", needs 3 posts assigned, found: " + str(current_event.posts.size()))
 
 	# Mocked posts for now | update noone is mocking my posts anymore
 	current_posts = current_event.posts

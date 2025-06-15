@@ -3,7 +3,7 @@ extends Node
 
 var groups: Array[EntityGroup]
 var voters: Array[String] = [] # Jacy są głosujący
-var num_voters: int = 10 # Ile jest głosujących łącznie
+var num_voters: int = 10000 # Ile jest głosujących łącznie
 var num_entity: Array[int] = [] # Ile jest głosujących w każdej grupie
 var percent_relationship: Array[float] = [] # Jakie jest poparcie w każdej grupie
 var support_history = [] # Tab zawierająca łączną liczbę wyborców [King][w turze]
@@ -44,9 +44,9 @@ func compute_support(king: King) -> int:
 	for entity in num_entity.size():
 		var group_voters = num_entity[entity]
 		var group_percent = percent_relationship[entity] / 100.0  # zamieniamy % na ułamek
-		total_voters += int(round(group_voters * group_percent))
+		total_voters += group_voters * group_percent
 
-	return total_voters
+	return int(round(total_voters))
 
 #zapisuje w tablicy support_history[[]] ile realnie wyborców miał [krol][w turze]
 func update_support_history(kings: Array[King]) -> void:

@@ -143,16 +143,18 @@ func log_ready() -> void:
 
 
 func start_game() -> void:
+	scene_manager.init(self)
 	scene_manager.show_screen(scene_manager.game_screen)
 	posts_container = scene_manager.game_screen.posts_container
 	days_until = scene_manager.game_screen.days_until
-	scene_manager.game_screen.game_manager = self
 	relationship_bar_container = scene_manager.game_screen.rel_bar_container
 	phone = scene_manager.game_screen.phone
+	scene_manager.run_delayed_inits()
 
 	if show_logs:
 		print("Game started")
-	next_turn()
+	
+	next_round()
 		
 
 func next_turn() -> void:
@@ -201,11 +203,20 @@ func end_turn() -> void:
 	else:
 		next_turn()
 
+func next_round() -> void:
+	run_support_simulation()
+	week_data.clear()
+	week_data.set_start_week_entity_groups(entity_groups)
+	scene_manager.show_screen(scene_manager.game_screen)
+	next_turn()
+
 func end_round() -> void:
 	var week_number = int(day / 7.0)
 
 	if show_logs:
 		print("Round ended. Week: " + str(week_number))
+
+	scene_manager.show_screen(scene_manager.week_end_screen)
 
 
 	# Get some random event resolutions
@@ -232,11 +243,6 @@ func end_round() -> void:
 
 	if show_logs:
 		print("Week support differences: " + str(actual_week_supp_difrence))
-
-	#TODO: on "next" button click, reset posts and start next turn
-	week_data.clear()
-	run_support_simulation()
-	next_turn()
 
 
 func end_game() -> void:

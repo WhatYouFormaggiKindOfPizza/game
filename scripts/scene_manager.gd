@@ -1,23 +1,36 @@
 class_name SceneManager extends Node
 
+var game_manager: GameManager
 
 @onready var game_screen: GameScreen = %GameScreen
 @onready var start_screen: StartScreen = %StartScreen
+@onready var week_end_screen: WeekEndScreen = %WeekEndScreen
+
+
+func init(gm: GameManager) -> void:
+	game_manager = gm
+
+func run_delayed_inits() -> void:
+	if game_screen:
+		game_screen.init(game_manager)
+	if week_end_screen:
+		week_end_screen.init(game_manager)
 
 func hide_all_scenes() -> void:
-    game_screen.hide()
-    start_screen.hide()
+	game_screen.hide()
+	start_screen.hide()
+	week_end_screen.hide()
 
 
 func show_screen(screen: Node) -> void:
-    if not screen:
-        push_error("Screen is null, cannot show.")
-        return
+	if not screen:
+		push_error("Screen is null, cannot show.")
+		return
 
-    hide_all_scenes()
-    if screen:
-        screen.show()
+	hide_all_scenes()
+	if screen:
+		screen.show()
 
 
 
-    
+	

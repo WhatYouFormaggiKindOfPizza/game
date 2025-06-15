@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://bj0a4yagnp3yd"]
+
+[ext_resource type="Script" uid="uid://m83nmlpmgf13" path="res://scripts/screens/week_end_screen.gd" id="1_e0st0"]
+[ext_resource type="PackedScene" uid="uid://4r1bip8toahv" path="res://scenes/board.tscn" id="1_uwbnm"]
+
+[node name="WeekEnd" type="Control" node_paths=PackedStringArray("board")]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1366.0
+offset_bottom = 768.0
+script = ExtResource("1_e0st0")
+board = NodePath("Board")
+
+[node name="Board" parent="." instance=ExtResource("1_uwbnm")]
+unique_name_in_owner = true
+layout_mode = 1
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -300.0
+offset_top = -103.0
+offset_right = -95.0
+offset_bottom = -49.0
+mouse_default_cursor_shape = 2
+text = "Next round"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

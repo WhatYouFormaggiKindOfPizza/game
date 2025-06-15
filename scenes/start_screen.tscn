@@ -1,6 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://cossoaxys8lj8"]
+[gd_scene load_steps=3 format=3 uid="uid://dlbpqwf70tpg4"]
 
-[ext_resource type="Script" uid="uid://ha4hyb2hftw4" path="res://scenes/start_screen.gd" id="1_o7i0r"]
+[ext_resource type="Script" path="res://scenes/start_screen.gd" id="1_o7i0r"]
 [ext_resource type="PackedScene" uid="uid://bibasatxhl56l" path="res://scenes/pixel_label.tscn" id="1_tx5wa"]
 
 [node name="StartScreen" type="Control"]

@@ -33,9 +33,8 @@ func change_relationship_value(value: int, king: King) -> void:
             relationship["relationship"] += value
 
 func get_player_relationship_value() -> int:
-    var r_idx = relationships.find(
-        func(r):
-            return r["king"].is_player == true
-    )
-    
-    return relationships[r_idx]["relationship"]
+    var relationship_value : int;
+    for relationship in relationships:
+        if(relationship["king"].is_player == true):
+            relationship_value = relationship['relationship']
+    return relationship_value

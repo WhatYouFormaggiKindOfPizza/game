@@ -20,7 +20,7 @@ func init(kings: Array[King]) -> void:
 	for k in kings:
 		var relationship = {
 			"king": k,
-			"relationship": randi_range(0, 100)
+			"relationship": randi_range(45, 55)
 		}
 
 		relationships.append(relationship)

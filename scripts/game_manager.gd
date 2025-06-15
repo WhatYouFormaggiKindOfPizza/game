@@ -201,7 +201,7 @@ func end_round() -> void:
 	var number_of_resolutions = RandomNumberGenerator.new().randi_range(1, max_resolutions_per_week)
 	var event_resolutions = []
 	for i in range(number_of_resolutions):
-		var idx = RandomNumberGenerator.new().randi() % week_data.posts.size()
+		var idx = RandomNumberGenerator.new().randi() % week_data.event_resolutions.size()
 		var er = week_data.event_resolutions.pop_at(idx)
 		event_resolutions.append(er)
 		

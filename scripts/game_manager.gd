@@ -1,17 +1,25 @@
 class_name GameManager extends Node
 
+@export var max_resolutions_per_week: int = 2
+@export var max_turns: int = 16 #TODO: use in turn_end()
 @export var show_logs: bool = true
 @export var posts_json_path: String = "res://data/posts.json"
+
+@export var post_scene: PackedScene = load("res://scenes/post.tscn")
+
 
 @onready var kings_parent: Node = %Pretenders
 @onready var entity_groups_parent: Node = %EntityGroups
 @onready var vote_simulator: VoteSimulator = $VoteSimulator
-
+@onready var posts_container: HBoxContainer = %PostsContainer
 
 var entity_groups: Array[EntityGroup]
 var kings: Array[King]
 var posts: Array[Post] = []
 
+var week_data: WeekData = WeekData.new()
+
+var day: int = 0
 
 func init_entity_groups() -> void:
 	for e in entity_groups:
@@ -25,6 +33,7 @@ func _ready() -> void:
 	if show_logs: 
 		log_ready()
 	vote_simulator.init(entity_groups)
+	start_game()
 
 
 func load_kings_and_entities() -> void:
@@ -50,7 +59,8 @@ func load_posts_from_json() -> void:
 		return
 
 	for post_data in json_as_dict:
-		var post = Post.new(post_data, self)
+		var post = post_scene.instantiate().with_data(post_data, self)
+		print(post)
 		posts.append(post)
 
 	
@@ -73,6 +83,7 @@ func get_entity_group(entity_group_name: String) -> EntityGroup:
 	print('Warning: no entity group for name: ' + entity_group_name)
 	return null
 	
+
 # logs
 func log_ready() -> void:
 	print("GameManager is ready")
@@ -93,6 +104,87 @@ func log_ready() -> void:
 		print("Post: " + p.title + " with ID: " + str(p.id))
 
 
+func start_game() -> void:
+	if show_logs:
+		print("Game started")
+	next_turn()
+		
+
+func next_turn() -> void:
+	day += 1
+
+	if show_logs:
+		print("Next turn started. Day: " + str(day))
+	
+	#TODO: get random event
+
+	#TODO: from event get posts
+
+	# Mocked posts for now 
+	var current_posts: Array[Post] = posts.slice(0, 3)
+
+	for c in posts_container.get_children():
+		posts_container.remove_child(c)
+
+	for post in current_posts:
+		posts_container.add_child(post)
+		post.setup_scene() 
+
+	# TODO: send player messages from lobbyists
+
+
 func end_turn() -> void:
-	print("Ending turn...")  # Placeholder for ending the turn logic
-	pass
+	if show_logs:
+		print("Ending turn...")
+	
+	if day >= max_turns:
+		end_game()
+
+	elif day % 7 == 0:
+		end_round()
+	else:
+		next_turn()
+
+func end_round() -> void:
+	if show_logs:
+		print("Round ended. Week: " + str(int(day / 7.0)))
+
+
+	# Get some random event resolutions
+	var number_of_resolutions = RandomNumberGenerator.new().randi_range(1, max_resolutions_per_week)
+	var event_resolutions = []
+	for i in range(number_of_resolutions):
+		var idx = RandomNumberGenerator.new().randi() % week_data.event_resolutions.size()
+		var er = week_data.event_resolutions.pop_at(idx)
+		event_resolutions.append(er)
+		
+
+	# TODO: Apply effects of the event resolution
+	for er in event_resolutions:
+		if show_logs:
+			print("Event Resolution: " + str(er))
+		#HERE
+
+
+	# TODO: show event resolutions
+	# TODO: show week summary (relationships changes of all pretenders)
+	
+
+	#TODO: on "next" button click, reset posts and start next turn
+	week_data.clear()
+	next_turn()
+
+
+func end_game() -> void:
+	if show_logs:
+		print("Game ended after " + str(day) + " days.")
+
+	# TODO: Show final scores and rankings
+
+
+func run_support_simulation() -> void:
+	for king in kings:
+		var support = vote_simulator.compute_support(king)
+		king.current_support = support
+		if show_logs:
+			print("King: " + king.king_name + " has support: " + str(support))

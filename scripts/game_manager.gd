@@ -113,8 +113,9 @@ func get_entity_group(entity_group_name: String) -> EntityGroup:
 	for entity_group in entity_groups:
 		if (entity_group.group_name == entity_group_name):
 			return entity_group
+		else:
+			push_error('Warning: no entity group for name: ' + entity_group_name)
 	
-	print('Warning: no entity group for name: ' + entity_group_name)
 	return null
 	
 

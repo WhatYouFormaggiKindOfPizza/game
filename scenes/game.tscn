@@ -46,10 +46,13 @@ group_name = "Alties"
 
 [node name="PostsContainer" type="HBoxContainer" parent="."]
 unique_name_in_owner = true
+anchors_preset = 10
+anchor_right = 1.0
 offset_left = 148.0
-offset_top = 516.0
+offset_top = 514.0
 offset_right = 1208.0
-offset_bottom = 716.0
+offset_bottom = 714.0
+grow_horizontal = 2
 theme_override_constants/separation = 50
 
 [node name="ExamplePost2" parent="PostsContainer" instance=ExtResource("4_lbhrr")]

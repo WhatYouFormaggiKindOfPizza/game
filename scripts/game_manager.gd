@@ -179,6 +179,11 @@ func next_turn() -> void:
 
 	phone.load_and_display_event(current_event.id)
 
+	if current_event.posts.size() > 3:
+		# get random 3 posts from the event
+		current_event.posts.shuffle()
+		current_event.posts = current_event.posts.slice(0, 3)
+
 	#check if event has 3 required posts
 	assert(current_event.posts.size() == 3, "Event with id: " + str(current_event.id) + ", needs 3 posts assigned, found: " + str(current_event.posts.size()))
 

@@ -171,6 +171,12 @@ func next_turn() -> void:
 	
 	#get random event
 	current_event = events[randi_range(0, events.size() - 1)]
+	
+	while !current_event.is_available:
+		current_event = events[randi_range(0, events.size() - 1)]
+
+	current_event.is_available = false
+
 	phone.load_and_display_event(current_event.id)
 
 	#check if event has 3 required posts

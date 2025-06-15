@@ -31,3 +31,10 @@ func change_relationship_value(value: int, king: King) -> void:
 	for relationship in relationships:
 		if relationship.get('king') == king:
 			relationship["relationship"] += value
+			print ('before', relationship["relationship"])
+			#check bounds of relationship value
+			if (relationship["relationship"] > 100):
+				relationship["relationship"] = 100
+			elif (relationship["relationship"] < 0):
+				relationship["relationship"] = 0
+			print('after', relationship["relationship"])

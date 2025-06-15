@@ -191,6 +191,8 @@ func end_turn() -> void:
 
 	vote_simulator.update_support_history(kings)
 	relationship_bar_container.refresh_relationship_bars()
+	run_support_simulation()
+
 	if day >= max_turns:
 		end_game()
 
@@ -233,6 +235,7 @@ func end_round() -> void:
 
 	#TODO: on "next" button click, reset posts and start next turn
 	week_data.clear()
+	run_support_simulation()
 	next_turn()
 
 

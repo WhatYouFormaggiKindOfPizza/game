@@ -114,3 +114,4 @@ func _on_button_pressed() -> void:
 	populate_effects(player)
 	game_manager.run_support_simulation()
 	game_manager.end_turn()
+	game_manager.week_data.add_post(self)

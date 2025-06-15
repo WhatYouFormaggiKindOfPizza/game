@@ -16,3 +16,7 @@ func _ready() -> void:
             relBar.entity_group = entity_group
             relBar.load_data_from_entity_group()
         
+func refresh_relationship_bars() -> void:
+    for relBar in box_container.get_children():
+        if(relBar is RelationshipBar):
+            relBar.load_data_from_entity_group()

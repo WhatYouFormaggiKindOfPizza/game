@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dlbpqwf70tpg4"]
 
-[ext_resource type="Script" path="res://scenes/start_screen.gd" id="1_o7i0r"]
+[ext_resource type="Script" uid="uid://ha4hyb2hftw4" path="res://scripts/start_screen.gd" id="1_o7i0r"]
 [ext_resource type="PackedScene" uid="uid://bibasatxhl56l" path="res://scenes/pixel_label.tscn" id="1_tx5wa"]
 
 [node name="StartScreen" type="Control"]
@@ -11,6 +11,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
+mouse_default_cursor_shape = 2
 script = ExtResource("1_o7i0r")
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -18,9 +20,8 @@ layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.002
 anchor_bottom = 1.0
-offset_left = 7.0
-offset_top = 1.0
-offset_right = 7.26782
+offset_right = 0.267822
+offset_bottom = -1.0
 color = Color(0.29191, 0.472719, 0.999999, 1)
 
 [node name="PixelLabel" parent="ColorRect" instance=ExtResource("1_tx5wa")]

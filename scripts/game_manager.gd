@@ -83,6 +83,7 @@ func get_entity_group(entity_group_name: String) -> EntityGroup:
 	print('Warning: no entity group for name: ' + entity_group_name)
 	return null
 	
+
 # logs
 func log_ready() -> void:
 	print("GameManager is ready")

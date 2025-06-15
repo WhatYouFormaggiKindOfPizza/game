@@ -1,10 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://cmiqiuj17qh2n"]
+[gd_scene load_steps=8 format=3 uid="uid://cmiqiuj17qh2n"]
 
 [ext_resource type="Script" uid="uid://b1ysc02d5wrap" path="res://scripts/game_manager.gd" id="1_uwrxv"]
 [ext_resource type="Script" path="res://scripts/vote_simulator.gd" id="2_lbhrr"]
-[ext_resource type="PackedScene" uid="uid://kispiyeqssep" path="res://scenes/entity_group.tscn" id="2_lnu2h"]
-[ext_resource type="PackedScene" uid="uid://dondqjjubrg3g" path="res://scenes/king.tscn" id="3_lbhrr"]
-[ext_resource type="PackedScene" uid="uid://b5qlpe8xpnqn" path="res://scenes/post.tscn" id="4_lbhrr"]
+[ext_resource type="PackedScene" uid="uid://cmls1u4lo4hfb" path="res://scenes/entity_group.tscn" id="2_lnu2h"]
+[ext_resource type="PackedScene" uid="uid://b1nthy2jq0imn" path="res://scenes/king.tscn" id="3_lbhrr"]
+[ext_resource type="PackedScene" uid="uid://boprbu57ewedb" path="res://scenes/post.tscn" id="4_lbhrr"]
+[ext_resource type="Texture2D" uid="uid://cxn5lrxti5oo6" path="res://assets/PhoneCase.png" id="6_u5sy4"]
+[ext_resource type="PackedScene" uid="uid://bibasatxhl56l" path="res://scenes/pixel_label.tscn" id="7_gee14"]
 
 [node name="Game" type="Node2D"]
 
@@ -55,3 +57,20 @@ position = Vector2(136, 430)
 
 [node name="ExamplePost1" parent="PostsContainer" instance=ExtResource("4_lbhrr")]
 position = Vector2(734, 438)
+
+[node name="UI" type="Node" parent="."]
+
+[node name="Phone" type="Node2D" parent="UI"]
+position = Vector2(540, 260)
+scale = Vector2(0.7, 0.7)
+
+[node name="Case" type="Sprite2D" parent="UI/Phone"]
+texture = ExtResource("6_u5sy4")
+
+[node name="Label" parent="UI/Phone" instance=ExtResource("7_gee14")]
+offset_left = -114.286
+offset_top = -217.143
+offset_right = 2.71429
+offset_bottom = -194.143
+theme_override_font_sizes/font_size = 24
+font_scale = 3

@@ -6,7 +6,7 @@ static var next_id: int = 0
 @onready var game_manager: GameManager
 @onready var title_label: PixelLabel
 @onready var content_label: PixelLabel
-@onready var tooltip: Tooltip
+@onready var tooltip: Tooltip = %PostTooltip
 
 var event_id: int
 
@@ -75,7 +75,6 @@ func setup_scene() -> void:
 	
 	title_label = get_node("Button/VBoxContainer/PostTitle")
 	content_label = get_node("Button/VBoxContainer/PostContent")
-	tooltip = get_node("PostTooltip")
 	assign_labels()
 	tooltip.setup_data(effects)
 
@@ -88,6 +87,7 @@ func assign_labels() -> void:
 
 
 func _on_button_mouse_entered() -> void:
+	SoundManager.instance.play(SoundManager.instance.ui_hover)
 	position.y -= 10  
 	tooltip.toggle(true)
 

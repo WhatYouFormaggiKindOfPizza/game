@@ -87,7 +87,7 @@ func assign_labels() -> void:
 
 
 func _on_button_mouse_entered() -> void:
-	SoundManager.instance.play(SoundManager.instance.ui_hover)
+	SoundManager.instance.play("choose_click")
 	position.y -= 10  
 	tooltip.toggle(true)
 

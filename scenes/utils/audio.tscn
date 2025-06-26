@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://d4nnmmiw1nphd"]
+
+[ext_resource type="Script" uid="uid://cua1p4wim5r2n" path="res://scripts/stores/audio.gd" id="1_qc0pm"]
+[ext_resource type="Script" uid="uid://bpb6chmr67dy8" path="res://scripts/models/audio_track.gd" id="2_bblyn"]
+[ext_resource type="AudioStream" uid="uid://n3a7c3o5fvhw" path="res://assets/SFX/click-choose.mp3" id="3_8dcdd"]
+[ext_resource type="AudioStream" uid="uid://fjqvyqr85pj0" path="res://assets/SFX/typing-sound.mp3" id="4_k38a2"]
+
+[node name="Audio" type="Node"]
+script = ExtResource("1_qc0pm")
+
+[node name="ChooseClick" type="Node" parent="."]
+script = ExtResource("2_bblyn")
+title = "choose_click"
+audio_stream = ExtResource("3_8dcdd")
+metadata/_custom_type_script = "uid://bpb6chmr67dy8"
+
+[node name="Typing" type="Node" parent="."]
+script = ExtResource("2_bblyn")
+title = "typing"
+audio_stream = ExtResource("4_k38a2")
+metadata/_custom_type_script = "uid://bpb6chmr67dy8"

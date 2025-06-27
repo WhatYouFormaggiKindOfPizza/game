@@ -1,9 +1,9 @@
-class_name Audio extends Node
+class_name AudioStore extends Node
 
 var tracks: Array[AudioTrack] = []
 
 func _ready() -> void:
-	print("Initializing Audio Store...")
+	print("Initializing AudioStore Store...")
 	# Load all audio tracks from the scene tree
 	for child in get_children():
 		print("Found child: %s" % child.name)
@@ -19,5 +19,5 @@ func get_track_by_name(_name: String) -> AudioTrack:
 		if track.title == _name || track.name == _name:
 			return track
 
-	push_error("Audio track with name '%s' not found. Add it to the audio store." % _name)
+	push_error("AudioStore track with name '%s' not found. Add it to the audio store." % _name)
 	return null

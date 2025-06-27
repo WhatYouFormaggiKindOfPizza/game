@@ -1,0 +1,62 @@
+[gd_scene load_steps=12 format=3 uid="uid://3jamm3ary63d"]
+
+[ext_resource type="Script" uid="uid://dntnq2rjn22eo" path="res://scripts/stores/entities.gd" id="1_kgy1x"]
+[ext_resource type="PackedScene" uid="uid://dondqjjubrg3g" path="res://scenes/king.tscn" id="2_b46uw"]
+[ext_resource type="Texture2D" uid="uid://c5r8yjheul53o" path="res://assets/King 1.png" id="3_2fakj"]
+[ext_resource type="Texture2D" uid="uid://devw3rk5klurg" path="res://assets/King 4.png" id="4_503hy"]
+[ext_resource type="Texture2D" uid="uid://dcsp06gyxvcbs" path="res://assets/King 3.png" id="5_we0sp"]
+[ext_resource type="Texture2D" uid="uid://b4w2wgvly3apb" path="res://assets/King 2.png" id="6_c5fjk"]
+[ext_resource type="PackedScene" uid="uid://kispiyeqssep" path="res://scenes/entity_group.tscn" id="7_cvgj8"]
+[ext_resource type="Texture2D" uid="uid://b6m550tdk1oyd" path="res://assets/Entity 2.png" id="8_c3b26"]
+[ext_resource type="Texture2D" uid="uid://chng8mt1mexc6" path="res://assets/Entity 1.png" id="9_4th4x"]
+[ext_resource type="Texture2D" uid="uid://cvucsxlwvamyp" path="res://assets/Entity 3.png" id="10_ccx4l"]
+[ext_resource type="Texture2D" uid="uid://cyfnjq4qfnjj8" path="res://assets/Entity 4.png" id="11_7tv0f"]
+
+[node name="Entities" type="Node"]
+script = ExtResource("1_kgy1x")
+
+[node name="Pretenders" type="Node" parent="."]
+unique_name_in_owner = true
+
+[node name="Player" parent="Pretenders" instance=ExtResource("2_b46uw")]
+position = Vector2(357, 247)
+king_name = "You"
+icon = ExtResource("3_2fakj")
+is_player = true
+
+[node name="Opponent" parent="Pretenders" instance=ExtResource("2_b46uw")]
+position = Vector2(357, 247)
+king_name = "Grurum"
+icon = ExtResource("4_503hy")
+
+[node name="King" parent="Pretenders" instance=ExtResource("2_b46uw")]
+king_name = "Laramir"
+icon = ExtResource("5_we0sp")
+
+[node name="King2" parent="Pretenders" instance=ExtResource("2_b46uw")]
+king_name = "Altranativa"
+icon = ExtResource("6_c5fjk")
+
+[node name="EntityGroups" type="Node" parent="."]
+unique_name_in_owner = true
+
+[node name="Elfs" parent="EntityGroups" instance=ExtResource("7_cvgj8")]
+position = Vector2(317, 251)
+group_name = "Elfs"
+icon = ExtResource("8_c3b26")
+
+[node name="Humans" parent="EntityGroups" instance=ExtResource("7_cvgj8")]
+position = Vector2(317, 251)
+group_name = "Humans"
+icon = ExtResource("9_4th4x")
+
+[node name="Dwarfs" parent="EntityGroups" instance=ExtResource("7_cvgj8")]
+position = Vector2(317, 251)
+group_name = "Dwarfs"
+icon = ExtResource("10_ccx4l")
+color = Color(0.555277, 0.303395, 0.123633, 1)
+
+[node name="Orcs" parent="EntityGroups" instance=ExtResource("7_cvgj8")]
+position = Vector2(317, 251)
+group_name = "Orcs"
+icon = ExtResource("11_7tv0f")

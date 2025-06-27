@@ -1,5 +1,10 @@
 extends ManagerBase
 
+
+var entities_store: EntitiesStore = load("res://scenes/stores/entities.tscn").instantiate()
+
+
+
 @export var max_resolutions_per_week: int = 2
 @export var max_turns: int = 16 #TODO: use in turn_end()
 @export var show_logs: bool = true
@@ -9,13 +14,9 @@ extends ManagerBase
 @export var post_scene: PackedScene = load("res://scenes/post.tscn")
 
 
-@onready var kings_parent: Node = %Pretenders
-@onready var entity_groups_parent: Node = %EntityGroups
 @onready var vote_simulator: VoteSimulator = $VoteSimulator
 @onready var scene_manager: SceneManager = %SceneManager
 
-var entity_groups: Array[EntityGroup]
-var kings: Array[King]
 var posts: Array[Post] = []
 var events: Array[Event] = []
 
@@ -35,35 +36,25 @@ signal end_round_signal(week_number: float)
 signal next_turn_signal()
 signal end_turn_signal()
 
-func init_entity_groups() -> void:
-	for e in entity_groups:
-		e.init(kings)
 
-		
+func _init() -> void:
+	super._init()
+	
+	add_child(entities_store)
+
+
 func _ready() -> void:
-	load_kings_and_entities()
-	init_entity_groups()
 	load_posts_from_json()
 	load_events_from_json()
 	
 	if show_logs: 
 		log_ready()
+
+	var kings = entities_store.kings
+	var entity_groups = entities_store.entity_groups
 	vote_simulator.init(entity_groups, kings)
 	
 
-
-func load_kings_and_entities() -> void:
-	for child in entity_groups_parent.get_children():
-		if child is EntityGroup:
-			entity_groups.append(child)
-		else:
-			push_error("Unknown child type: " + str(child))
-	
-	for child in kings_parent.get_children():
-		if child is King:
-			kings.append(child)
-		else:
-			push_error("Unknown child type: " + str(child))
 
 
 func load_posts_from_json() -> void:
@@ -107,19 +98,13 @@ func assign_events_posts() -> void:
 			if (event.id == post.event_id):
 				event.add_post(post)
 	
+
 func get_player() -> King:
-	var player = null
-	
-	for king in kings:
-		if (king.is_player):
-			player = king
-			
-	assert(player, "Brak gracza!")
-	
-	return player
+	return entities_store.get_player()
+
 	
 func get_entity_group(entity_group_name: String) -> EntityGroup:
-	for entity_group in entity_groups:
+	for entity_group in entities_store.entity_groups:
 		if (entity_group.group_name == entity_group_name):
 			return entity_group
 	
@@ -131,13 +116,13 @@ func log_ready() -> void:
 	print("GameManager is ready")
 	
 	print("--- Entity Groups ---")
-	print("Loaded " + str(entity_groups.size()) + " entity groups from scene.")
-	for e in entity_groups:
+	print("Loaded " + str(entities_store.entity_groups.size()) + " entity groups from scene.")
+	for e in entities_store.entity_groups:
 		print("EntityGroup: " + e.group_name + " with ID: " + str(e.id))
 
 	print("--- Kings ---")
-	print("Loaded " + str(kings.size()) + " kings from scene.")
-	for k in kings:
+	print("Loaded " + str(entities_store.kings.size()) + " kings from scene.")
+	for k in entities_store.kings:
 		print("King: " + k.king_name + " with ID: " + str(k.id) + " and is_player: " + str(k.is_player))
 		
 	print("--- Posts ---")
@@ -151,7 +136,7 @@ func start_game() -> void:
 	scene_manager.show_screen(scene_manager.game_screen)
 	posts_container = scene_manager.game_screen.posts_container
 	days_until = scene_manager.game_screen.days_until
-	week_data.set_start_week_entity_groups(entity_groups)
+	week_data.set_start_week_entity_groups(entities_store.entity_groups)
 	phone = scene_manager.game_screen.phone
 	scene_manager.run_delayed_inits()
 
@@ -209,7 +194,7 @@ func end_turn() -> void:
 	#handles opponents actions
 	handle_opponents_actions();
 
-	vote_simulator.update_support_history(kings)
+	vote_simulator.update_support_history(entities_store.kings)
 	run_support_simulation()
 
 	if day >= max_turns:
@@ -224,7 +209,7 @@ func next_round() -> void:
 	next_round_signal.emit((day / 7.0) + 1)
 	run_support_simulation()
 	week_data.clear()
-	week_data.set_start_week_entity_groups(entity_groups)
+	week_data.set_start_week_entity_groups(entities_store.entity_groups)
 	scene_manager.show_screen(scene_manager.game_screen)
 	next_turn()
 
@@ -256,7 +241,7 @@ func end_round() -> void:
 	
 	#show week summary (relationships changes of all pretenders)
 	var actual_week_supp_difrence = []
-	for king in kings:
+	for king in entities_store.kings:
 		actual_week_supp_difrence.append(vote_simulator.show_week_supp_difrence(king, week_number))
 
 	if show_logs:
@@ -270,11 +255,11 @@ func end_game() -> void:
 	var has_player_won = false
 
 	var final_score = []
-	for king in kings:
+	for king in entities_store.kings:
 		final_score.append(vote_simulator.compute_support(king))
 	var max_score = final_score.max()
 	var max_index = final_score.find(max_score)
-	if kings[max_index].is_player:
+	if entities_store.kings[max_index].is_player:
 		has_player_won = true # Defaulty false
 	if has_player_won == true:
 		scene_manager.show_screen(scene_manager.win_screen)
@@ -283,7 +268,7 @@ func end_game() -> void:
 
 
 func run_support_simulation() -> void:
-	for king in kings:
+	for king in entities_store.kings:
 		var support = vote_simulator.compute_support(king)
 		king.current_support_percent = float(support) / vote_simulator.num_voters * 100.0
 		king.current_support = support
@@ -291,7 +276,7 @@ func run_support_simulation() -> void:
 			print("King: " + king.king_name + " has support: " + str(support))
 
 func handle_opponents_actions() -> void:
-	for king in kings:
+	for king in entities_store.kings:
 		if !king.is_player:
 			var opponent_post = current_event.posts[randi_range(0, current_event.posts.size() - 1)]
 			opponent_post.populate_effects(king)

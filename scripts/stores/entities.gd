@@ -26,12 +26,12 @@ func get_player() -> Candidate:
 
 
 func _ready() -> void:
-	load_kings()
+	load_candidates()
 	load_entities()
 	init_entity_groups()
 
 
-func load_kings() -> void:
+func load_candidates() -> void:
 	if candidates_parent:
 		for child in candidates_parent.get_children():
 			if child is Candidate:

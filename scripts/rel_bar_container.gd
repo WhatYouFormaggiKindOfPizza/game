@@ -9,16 +9,18 @@ class_name RelBarContainer extends Control
 @onready var title_node = $VBoxContainer/Title
 var objects
 
-func init(_objects: Array[EntityGroup]) -> void:
-	title_node.text = title
-	
+func _init() -> void:
 	if(is_entity_group_container):
-		self.objects = GameManager.instance.entity_groups
+		objects = GameManager.instance.entity_groups
 	else:
-		self.objects = GameManager.instance.kings
+		objects = GameManager.instance.candidates
 	
+
+func _ready() -> void:
+	title_node.text = title
 	clear_container()
 	init_entities()
+
 	
 
 func init_entities() -> void:

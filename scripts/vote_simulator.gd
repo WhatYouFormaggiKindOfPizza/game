@@ -8,7 +8,7 @@ var num_entity: Array[int] = [] # Ile jest głosujących w każdej grupie
 var percent_relationship: Array[float] = [] # Jakie jest poparcie w każdej grupie
 var support_history = [] # Tab zawierająca łączną liczbę wyborców [Candidate][w turze]
 
-func init(entity_groups: Array[EntityGroup], kings: Array[Candidate]) -> void:
+func init(entity_groups: Array[EntityGroup], candidates: Array[Candidate]) -> void:
 	groups = entity_groups
 	for i in groups.size():
 		num_entity.append(0)
@@ -18,7 +18,7 @@ func init(entity_groups: Array[EntityGroup], kings: Array[Candidate]) -> void:
 		var random_group = groups[random_index].group_name
 		voters.append(random_group)
 		num_entity[random_index] += 1
-	for king in kings:
+	for king in candidates:
 		support_history.append([])
 
 #oblicza ile procent poparcia ma dany kandydat
@@ -49,10 +49,10 @@ func compute_support(king: Candidate) -> int:
 	return int(round(total_voters))
 
 #zapisuje w tablicy support_history[[]] ile realnie wyborców miał [krol][w turze]
-func update_support_history(kings: Array[Candidate]) -> void:
-	for k in kings:
-		var support = compute_support(k)
-		support_history[k.id].append(support)
+func update_support_history(candidates: Array[Candidate]) -> void:
+	for c in candidates:
+		var support = compute_support(c)
+		support_history[c.id].append(support)
 
 #zwraca jakie poparcie mial krol king w turze turn
 func show_support_history(king: Candidate, turn: int) -> int:

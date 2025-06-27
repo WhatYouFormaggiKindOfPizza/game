@@ -1,31 +1,21 @@
 extends ManagerBase
 
-
-@onready var game_screen: GameScreen = load("res://scenes/screens/game_screen.tscn").instantiate()
-@onready var start_screen: StartScreen = load("res://scenes/screens/start_screen.tscn").instantiate()
-@onready var week_end_screen: WeekEndScreen = load("res://scenes/screens/week_end_screen.tscn").instantiate()
-@onready var how_to_play_pop_up: HowToPlayPopUp = load("res://scenes/screens/how_to_play_pop_up.tscn").instantiate()
-@onready var win_screen: WinScreen = load("res://scenes/screens/win_screen.tscn").instantiate()
-@onready var lose_screen: LoseScreen = load("res://scenes/screens/lose_screen.tscn").instantiate()
-
-func run_delayed_inits() -> void:
-	if game_screen:
-		game_screen.init()
-	if week_end_screen:
-		week_end_screen.init()
-
-func hide_all_scenes() -> void:
-	game_screen.hide()
-	start_screen.hide()
-	week_end_screen.hide()
-	how_to_play_pop_up.hide()
+var game_screen: String = "res://scenes/screens/game_screen.tscn"
+var start_screen: String = "res://scenes/screens/start_screen.tscn"
+var week_end_screen: String = "res://scenes/screens/week_end_screen.tscn"
+var how_to_play_pop_up: String = "res://scenes/screens/how_to_play_pop_up.tscn"
+var win_screen: String = "res://scenes/screens/win_screen.tscn"
+var lose_screen: String = "res://scenes/screens/lose_screen.tscn"
 
 
-func show_screen(screen: Node) -> void:
-	if not screen:
-		push_error("Screen is null, cannot show.")
-		return
+func load_scene(scene_path: String) -> void:
+	if not ResourceLoader.exists(scene_path):
+		push_error("Scene not found: " + scene_path)
 
-	hide_all_scenes()
-	if screen:
-		screen.show()
+	var status = get_tree().change_scene_to_file(scene_path)
+	assert( status == OK, "Failed to load scene: " + scene_path)
+
+	
+	
+
+

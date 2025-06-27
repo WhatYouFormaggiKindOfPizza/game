@@ -18,19 +18,15 @@ var posts: Array[Post] = []
 var events: Array[Event] = []
 
 var current_event: Event
-var current_posts: Array[Post]
 
 var week_data: WeekData = WeekData.new()
 
-var posts_container: HBoxContainer
-var days_until: DaysUntil
-var phone: Phone
 
 var day: int = 0
 
-signal next_round_signal(week_number: float)
+signal begin_round_signal(week_number: float)
 signal end_round_signal(week_number: float)
-signal next_turn_signal()
+signal begin_turn_signal()
 signal end_turn_signal()
 
 
@@ -39,7 +35,7 @@ var entity_groups: Array[EntityGroup] :
 	get :
 		return entities_store.entity_groups
 
-var kings: Array[Candidate] :
+var candidates: Array[Candidate] :
 	get :
 		return entities_store.candidates
 
@@ -57,7 +53,7 @@ func _ready() -> void:
 	if show_logs: 
 		log_ready()
 
-	vote_simulator.init(entity_groups, kings)
+	vote_simulator.init(entity_groups, candidates)
 	
 
 
@@ -125,8 +121,8 @@ func log_ready() -> void:
 	for e in entities_store.entity_groups:
 		print("EntityGroup: " + e.group_name + " with ID: " + str(e.id))
 
-	print("--- Kings ---")
-	print("Loaded " + str(entities_store.candidates.size()) + " kings from scene.")
+	print("--- Candidates ---")
+	print("Loaded " + str(entities_store.candidates.size()) + " candidates from scene.")
 	for k in entities_store.candidates:
 		print("Candidate: " + k.king_name + " with ID: " + str(k.id) + " and is_player: " + str(k.is_player))
 		
@@ -137,13 +133,8 @@ func log_ready() -> void:
 
 
 func start_game() -> void:
-	SceneManager.instance.init(self)
-	SceneManager.instance.show_screen(SceneManager.instance.game_screen)
-	posts_container = SceneManager.instance.game_screen.posts_container
-	days_until = SceneManager.instance.game_screen.days_until
+	SceneManager.instance.load_scene(SceneManager.game_screen)
 	week_data.set_start_week_entity_groups(entities_store.entity_groups)
-	phone = SceneManager.instance.game_screen.phone
-	SceneManager.instance.run_delayed_inits()
 
 	if show_logs:
 		print("Game started")
@@ -152,41 +143,21 @@ func start_game() -> void:
 		
 
 func next_turn() -> void:
-	days_until.set_days(day, max_turns)
-	day += 1
-	next_turn_signal.emit()
-
-	if show_logs:
-		print("Next turn started. Day: " + str(day))
-	
-	#get random event
+	#get random event	
 	current_event = events[randi_range(0, events.size() - 1)]
-	
 	while !current_event.is_available:
 		current_event = events[randi_range(0, events.size() - 1)]
 
 	current_event.is_available = false
 
-	phone.load_and_display_event(current_event.id)
+	# increment day
+	day += 1
+	if show_logs:
+		print("Next turn started. Day: " + str(day))
 
-	if current_event.posts.size() > 3:
-		# get random 3 posts from the event
-		current_event.posts.shuffle()
-		current_event.posts = current_event.posts.slice(0, 3)
-
-	#check if event has 3 required posts
-	assert(current_event.posts.size() == 3, "Event with id: " + str(current_event.id) + ", needs 3 posts assigned, found: " + str(current_event.posts.size()))
-
-	# Mocked posts for now | update noone is mocking my posts anymore
-	current_posts = current_event.posts
+	# emit signal
+	begin_turn_signal.emit()
 	
-	for c in posts_container.get_children():
-		posts_container.remove_child(c)
-
-	for post in current_posts:
-		posts_container.add_child(post)
-		post.setup_scene() 
-
 	# TODO: send player messages from lobbyists
 
 
@@ -211,22 +182,20 @@ func end_turn() -> void:
 		next_turn()
 
 func next_round() -> void:
-	next_round_signal.emit((day / 7.0) + 1)
+	SceneManager.instance.load_scene(SceneManager.game_screen)
+	begin_round_signal.emit((day / 7.0) + 1)
+
 	run_support_simulation()
 	week_data.clear()
 	week_data.set_start_week_entity_groups(entities_store.entity_groups)
-	SceneManager.instance.show_screen(SceneManager.instance.game_screen)
 	next_turn()
 
 func end_round() -> void:
+	SceneManager.instance.load_scene(SceneManager.week_end_screen)
+	
 	var week_number = int(day / 7.0)
-	end_round_signal.emit((day / 7.0) + 1)
-
-
 	if show_logs:
 		print("Round ended. Week: " + str(week_number))
-
-	SceneManager.instance.show_screen(SceneManager.instance.week_end_screen)
 
 
 	# # Get some random event resolutions
@@ -242,6 +211,9 @@ func end_round() -> void:
 	# 	if show_logs:
 	# 		print("Event Resolution: " + str(er))
 	# 	#HERE
+
+	end_round_signal.emit((day / 7.0) + 1)
+
 
 	
 	#show week summary (relationships changes of all pretenders)
@@ -264,12 +236,14 @@ func end_game() -> void:
 		final_score.append(vote_simulator.compute_support(king))
 	var max_score = final_score.max()
 	var max_index = final_score.find(max_score)
+
 	if entities_store.candidates[max_index].is_player:
 		has_player_won = true # Defaulty false
+
 	if has_player_won == true:
-		SceneManager.instance.show_screen(SceneManager.instance.win_screen)
+		SceneManager.instance.load_scene(SceneManager.win_screen)
 	else:
-		SceneManager.instance.show_screen(SceneManager.instance.lose_screen)
+		SceneManager.instance.load_scene(SceneManager.lose_screen)
 
 
 func run_support_simulation() -> void:

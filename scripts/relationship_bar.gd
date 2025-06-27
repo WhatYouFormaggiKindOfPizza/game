@@ -20,7 +20,7 @@ func init(show_week_change: bool) -> void:
 
 
 func assign_data_refresh_to_signals_kurwa_wszystkich() -> void:
-	GameManager.instance.next_turn_signal.connect(refresh)
+	GameManager.instance.begin_turn_signal.connect(refresh)
 	GameManager.instance.end_turn_signal.connect(refresh)
 	pass
 

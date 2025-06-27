@@ -1,4 +1,4 @@
-extends Node
+extends ManagerBase
 
 var game_manager: GameManager
 

@@ -1,22 +1,17 @@
-extends Node
+extends ManagerBase
 
-var instance: SoundManager
 var player: AudioStreamPlayer
 
 var audio: Audio = load("res://scenes/utils/audio.tscn").instantiate()
 var sound_handler_script: GDScript = load("res://scripts/models/sound_handler.gd")
 
 func _init() -> void:
-	if instance:
-		push_error("SoundManager instance already exists. Only one instance is allowed.")
-		return
-	else:
-		instance = self
+	super._init()
 	
-		player = AudioStreamPlayer.new()
-		player.name = "SFXPlayer"
-		add_child(player)
-		add_child(audio)
+	player = AudioStreamPlayer.new()
+	player.name = "SFXPlayer"
+	add_child(player)
+	add_child(audio)
 
 
 	

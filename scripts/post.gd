@@ -3,7 +3,6 @@ class_name Post extends Control
 var id: int
 static var next_id: int = 0
 
-@onready var game_manager: GameManager
 @onready var title_label: PixelLabel
 @onready var content_label: PixelLabel
 @onready var tooltip: Tooltip = %PostTooltip
@@ -33,10 +32,9 @@ enum EffectType {
 }
 
 
-func with_data(post_data: Dictionary = {}, gm: GameManager = null) -> Post:
+func with_data(post_data: Dictionary = {}) -> Post:
 	id = next_id
 	next_id += 1
-	game_manager = gm	
 	event_id = post_data.get("event_id")
 	
 	if post_data.is_empty():
@@ -97,13 +95,13 @@ func _on_button_mouse_exited() -> void:
 	tooltip.toggle(false)
 
 		
-func populate_effects(king: King) -> void:
+func populate_effects(king: Candidate) -> void:
 	for effect in effects:
 		if int(effect.get("type", EffectType.NONE)) != EffectType.CHANGE_RELATIONSHIP:
 			continue
 			
 		var target_name = effect.get('target')
-		var target = game_manager.get_entity_group(target_name)
+		var target = GameManager.instance.get_entity_group(target_name)
 		if (target != null):
 			target.change_relationship_value(effect.get("value"), king)
 				
@@ -111,8 +109,8 @@ func populate_effects(king: King) -> void:
 
 func _on_button_pressed() -> void:
 	SoundManager.instance.play("typing")
-	var player = game_manager.get_player()
+	var player = GameManager.instance.get_player()
 	populate_effects(player)
-	game_manager.run_support_simulation()
-	game_manager.end_turn()
-	game_manager.week_data.add_post(self)
+	GameManager.instance.run_support_simulation()
+	GameManager.instance.end_turn()
+	GameManager.instance.week_data.add_post(self)

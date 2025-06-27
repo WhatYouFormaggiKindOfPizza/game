@@ -10,10 +10,7 @@ var object #entity_group albo king
 @export var progress_bar: ProgressBar
 @export var label: PixelLabel
 
-var game_manager: GameManager
-
-func init(show_week_change: bool, gm : GameManager) -> void:
-	game_manager = gm
+func init(show_week_change: bool) -> void:
 	if show_week_change:
 		change_value_label.show()
 	else:
@@ -23,8 +20,8 @@ func init(show_week_change: bool, gm : GameManager) -> void:
 
 
 func assign_data_refresh_to_signals_kurwa_wszystkich() -> void:
-	game_manager.next_turn_signal.connect(refresh)
-	game_manager.end_turn_signal.connect(refresh)
+	GameManager.instance.begin_turn_signal.connect(refresh)
+	GameManager.instance.end_turn_signal.connect(refresh)
 	pass
 
 
@@ -34,25 +31,25 @@ func load_data_from_object() -> void:
 	if(object is EntityGroup):
 		progress_bar.value = object.get_player_relationship_value()
 		label.text = object.group_name
-	if(object is King):
+	if(object is Candidate):
 		progress_bar.value = object.current_support_percent
 		label.text = object.king_name
 	
-func refresh() -> void:
+func refresh(_turn: int) -> void:
 	load_data_from_object()
-	update_week_change(game_manager.week_data)
+	update_week_change()
 	pass
 
-func update_week_change(week_data: WeekData) -> void:
+func update_week_change() -> void:
 	if(object is EntityGroup):
 		var current_value: int = object.get_player_relationship_value()
-		var start_value: int = week_data.get_prev_player_relationship_value(object)
+		var start_value: int = GameManager.instance.week_data.get_prev_player_relationship_value(object)
 
 		var change = current_value - start_value
 		set_change_value_label(change)
-	if(object is King && game_manager.day%7 == 0 && game_manager.day != 0):
+	if(object is Candidate && GameManager.instance.current_turn%7 == 0 && GameManager.instance.current_turn != 0):
 		var current_value: float = object.current_support_percent
-		var start_value: float = game_manager.vote_simulator.show_support_history_percetages(object, game_manager.day - 7)
+		var start_value: float = GameManager.instance.vote_simulator.show_support_history_percetages(object, GameManager.instance.current_turn - 7)
 
 		var change = current_value - start_value
 		set_change_value_label(change)

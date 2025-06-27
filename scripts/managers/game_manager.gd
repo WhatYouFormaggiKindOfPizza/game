@@ -279,7 +279,7 @@ func end_game() -> void:
 	if has_player_won == true:
 		scene_manager.show_screen(scene_manager.win_screen)
 	else:
-		scene_manager.show_screen(scene_manager.lose_sceen)
+		scene_manager.show_screen(scene_manager.lose_screen)
 
 
 func run_support_simulation() -> void:

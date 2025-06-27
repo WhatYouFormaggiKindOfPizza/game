@@ -2,12 +2,12 @@ extends ManagerBase
 
 var game_manager: GameManager
 
-@onready var game_screen: GameScreen = %GameScreen
-@onready var start_screen: StartScreen = %StartScreen
-@onready var week_end_screen: WeekEndScreen = %WeekEndScreen
-@onready var how_to_play_pop_up: HowToPlayPopUp = %HowToPlayPopUp
-@onready var win_screen: WinScreen = %WinScreen
-@onready var lose_sceen: LoseScreen = %LoseScreen
+@onready var game_screen: GameScreen = load("res://scenes/screens/game_screen.tscn").instantiate()
+@onready var start_screen: StartScreen = load("res://scenes/screens/start_screen.tscn").instantiate()
+@onready var week_end_screen: WeekEndScreen = load("res://scenes/screens/week_end_screen.tscn").instantiate()
+@onready var how_to_play_pop_up: HowToPlayPopUp = load("res://scenes/screens/how_to_play_pop_up.tscn").instantiate()
+@onready var win_screen: WinScreen = load("res://scenes/screens/win_screen.tscn").instantiate()
+@onready var lose_screen: LoseScreen = load("res://scenes/screens/lose_screen.tscn").instantiate()
 
 func init(gm: GameManager) -> void:
 	game_manager = gm

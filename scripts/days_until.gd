@@ -1,6 +1,8 @@
 class_name DaysUntil extends PanelContainer
 
+
 @onready var days_label: Label = %Days
+
 
 func set_days(current_day, max_days) -> void:
 	if not days_label:

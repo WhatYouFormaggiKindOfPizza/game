@@ -7,17 +7,22 @@ class_name GameScreen extends Node2D
 var current_posts: Array[Post]
 
 
-func _init() -> void:
-	GameManager.instance.begin_turn_signal.connect(on_turn_begin)
+func _ready() -> void:
+	_update_days_until()
+	GameManager.instance.begin_turn_signal.connect(_on_turn_begin)
 
 
-func on_turn_begin() -> void:
-	days_until.set_days(GameManager.instance.day, GameManager.instance.max_turns)
+func _on_turn_begin() -> void:
+	_update_days_until()
 	phone.load_and_display_event(GameManager.instance.current_event.id)
-	handle_turn_event()
+	_handle_turn_event()
 
 
-func handle_turn_event() -> void:
+func _update_days_until() -> void:
+	days_until.set_days(GameManager.instance.day, GameManager.instance.max_turns)
+
+
+func _handle_turn_event() -> void:
 	var current_event = GameManager.instance.current_event
 
 	if current_event.posts.size() > 3:

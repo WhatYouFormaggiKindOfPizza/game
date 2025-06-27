@@ -12,14 +12,14 @@ func _ready() -> void:
 	GameManager.instance.begin_turn_signal.connect(_on_turn_begin)
 
 
-func _on_turn_begin() -> void:
+func _on_turn_begin(_turn: int) -> void:
 	_update_days_until()
 	phone.load_and_display_event(GameManager.instance.current_event.id)
 	_handle_turn_event()
 
 
 func _update_days_until() -> void:
-	days_until.set_days(GameManager.instance.day, GameManager.instance.max_turns)
+	days_until.set_days(GameManager.instance.current_turn, GameManager.TURNS_MAX)
 
 
 func _handle_turn_event() -> void:

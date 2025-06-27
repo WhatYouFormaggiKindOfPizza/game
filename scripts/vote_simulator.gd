@@ -55,14 +55,14 @@ func update_support_history(candidates: Array[Candidate]) -> void:
 		support_history[c.id].append(support)
 
 #zwraca jakie poparcie mial krol candidate w turze turn
-func show_support_history(candidate: Candidate, turn: int) -> int:
+func get_support_history(candidate: Candidate, turn: int) -> int:
 	return support_history[candidate.id][turn]
 
 #zwraca jakie procentowe poparcie mial krol candidate w turze turn
-func show_support_history_percetages(candidate: Candidate, turn: int) -> float:
+func get_support_history_percentages(candidate: Candidate, turn: int) -> float:
 	return float(support_history[candidate.id][turn])/float(num_voters) * 100
 
 #zwraca roznice poparcia krola candidate w rundzie week
-func show_week_supp_difrence(candidate: Candidate, week: int) -> int:
+func get_week_support_diff(candidate: Candidate, week: int) -> int:
 	var supp_dif: int = support_history[candidate.id][week*7-1] - support_history[candidate.id][week*7 - 7]
 	return supp_dif

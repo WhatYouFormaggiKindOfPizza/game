@@ -29,7 +29,7 @@ func init_entities() -> void:
 		relBar.init(show_week_changed)
 		relBar.object = object
 		relBar.load_data_from_object()
-		relBar.update_week_change(GameManager.instance.week_data)
+		relBar.update_week_change() # <---- this makes troubles with week_data (too early trying to access it)
 		box_container.add_child(relBar)
 
 
@@ -37,7 +37,7 @@ func refresh_relationship_bars() -> void:
 	for relBar in box_container.get_children():
 		if(relBar is RelationshipBar):
 			relBar.load_data_from_object()
-			relBar.update_week_change(GameManager.instance.week_data)
+			relBar.update_week_change()
 
 func clear_container() -> void:
 	for child in box_container.get_children():

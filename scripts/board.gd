@@ -10,5 +10,6 @@ func init() -> void:
 	GameManager.instance.begin_round_signal.connect(change_week_number)
 
 
-func change_week_number(week_number: int) -> void:
-	week_number_label.text = str(week_number)
+func change_week_number(round_no: int) -> void:
+	week_number_label.text = str(round_no)
+

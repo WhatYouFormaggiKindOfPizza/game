@@ -1,12 +1,14 @@
 extends ManagerBase
 
+const TURNS_IN_ROUND: int = 7
+const TURNS_MAX: int = 16
+
 
 var entities_store: EntitiesStore = load("res://scenes/stores/entities.tscn").instantiate()
 var vote_simulator: VoteSimulator = preload("res://scripts/vote_simulator.gd").new()
 
 
 @export var max_resolutions_per_week: int = 2
-@export var max_turns: int = 16 #TODO: use in turn_end()
 @export var show_logs: bool = true
 @export var posts_json_path: String = "res://data/posts.json"
 @export var events_json_path: String = "res://data/events.json"
@@ -21,13 +23,13 @@ var current_event: Event
 
 var week_data: WeekData = WeekData.new()
 
+var current_turn: int = 0
+var current_round: int = 0
 
-var day: int = 0
-
-signal begin_round_signal(week_number: float)
-signal end_round_signal(week_number: float)
-signal begin_turn_signal()
-signal end_turn_signal()
+signal begin_round_signal(round: int)
+signal end_round_signal(round: int)
+signal begin_turn_signal(turn: int)
+signal end_turn_signal(turn: int)
 
 
 
@@ -132,12 +134,10 @@ func log_ready() -> void:
 		print("Post: " + p.title + " with ID: " + str(p.id))
 
 
+# entry point for game loop
 func start_game() -> void:
-	SceneManager.instance.load_scene(SceneManager.game_screen)
-	week_data.set_start_week_entity_groups(entities_store.entity_groups)
-
 	if show_logs:
-		print("Game started")
+		print("Game started")		
 	
 	next_round()
 		
@@ -150,22 +150,22 @@ func next_turn() -> void:
 
 	current_event.is_available = false
 
-	# increment day
-	day += 1
+	# increment current_turn
+	current_turn += 1
 	if show_logs:
-		print("Next turn started. Day: " + str(day))
+		print("Next current_turn started. Day: " + str(current_turn))
 
 	# emit signal
-	begin_turn_signal.emit()
+	begin_turn_signal.emit(current_turn)
 	
 	# TODO: send player messages from lobbyists
 
 
 func end_turn() -> void:
 	if show_logs:
-		print("Ending turn...")
+		print("Ending current_turn...")
 	
-	end_turn_signal.emit()
+	end_turn_signal.emit(current_turn)
 		
 	#handles opponents actions
 	handle_opponents_actions();
@@ -173,30 +173,33 @@ func end_turn() -> void:
 	vote_simulator.update_support_history(entities_store.candidates)
 	run_support_simulation()
 
-	if day >= max_turns:
+	if current_turn >= TURNS_MAX:
 		end_game()
 
-	elif day % 7 == 0:
+	elif current_turn % TURNS_IN_ROUND == 0:
 		end_round()
 	else:
 		next_turn()
 
 func next_round() -> void:
-	SceneManager.instance.load_scene(SceneManager.game_screen)
-	begin_round_signal.emit((day / 7.0) + 1)
+	current_round += 1
+	if show_logs:
+		print("Next current_round started. Week: " + str(current_round))
+
+	begin_round_signal.emit(current_round)
 
 	run_support_simulation()
 	week_data.clear()
 	week_data.set_start_week_entity_groups(entities_store.entity_groups)
+
+	SceneManager.instance.load_scene(SceneManager.game_screen)
 	next_turn()
 
 func end_round() -> void:
-	SceneManager.instance.load_scene(SceneManager.week_end_screen)
-	
-	var week_number = int(day / 7.0)
 	if show_logs:
-		print("Round ended. Week: " + str(week_number))
+		print("Round ended. Week: " + str(current_round))
 
+	end_round_signal.emit(current_round)
 
 	# # Get some random event resolutions
 	# var number_of_resolutions = RandomNumberGenerator.new().randi_range(1, max_resolutions_per_week)
@@ -212,22 +215,13 @@ func end_round() -> void:
 	# 		print("Event Resolution: " + str(er))
 	# 	#HERE
 
-	end_round_signal.emit((day / 7.0) + 1)
+	SceneManager.instance.load_scene(SceneManager.week_end_screen)
 
-
-	
-	#show week summary (relationships changes of all pretenders)
-	var actual_week_supp_difrence = []
-	for king in entities_store.candidates:
-		actual_week_supp_difrence.append(vote_simulator.show_week_supp_difrence(king, week_number))
-
-	if show_logs:
-		print("Week support differences: " + str(actual_week_supp_difrence))
 
 
 func end_game() -> void:
 	if show_logs:
-		print("Game ended after " + str(day) + " days.")
+		print("Game ended after " + str(current_turn) + " days.")
 		
 	var has_player_won = false
 

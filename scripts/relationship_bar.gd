@@ -35,21 +35,21 @@ func load_data_from_object() -> void:
 		progress_bar.value = object.current_support_percent
 		label.text = object.king_name
 	
-func refresh() -> void:
+func refresh(_turn: int) -> void:
 	load_data_from_object()
-	update_week_change(GameManager.instance.week_data)
+	update_week_change()
 	pass
 
-func update_week_change(week_data: WeekData) -> void:
+func update_week_change() -> void:
 	if(object is EntityGroup):
 		var current_value: int = object.get_player_relationship_value()
-		var start_value: int = week_data.get_prev_player_relationship_value(object)
+		var start_value: int = GameManager.instance.week_data.get_prev_player_relationship_value(object)
 
 		var change = current_value - start_value
 		set_change_value_label(change)
-	if(object is Candidate && GameManager.instance.day%7 == 0 && GameManager.instance.day != 0):
+	if(object is Candidate && GameManager.instance.current_turn%7 == 0 && GameManager.instance.current_turn != 0):
 		var current_value: float = object.current_support_percent
-		var start_value: float = GameManager.instance.vote_simulator.show_support_history_percetages(object, GameManager.instance.day - 7)
+		var start_value: float = GameManager.instance.vote_simulator.show_support_history_percetages(object, GameManager.instance.current_turn - 7)
 
 		var change = current_value - start_value
 		set_change_value_label(change)

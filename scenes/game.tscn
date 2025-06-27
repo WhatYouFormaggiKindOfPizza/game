@@ -1,26 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://cmiqiuj17qh2n"]
+[gd_scene load_steps=3 format=3 uid="uid://cmiqiuj17qh2n"]
 
 [ext_resource type="PackedScene" uid="uid://dlbpqwf70tpg4" path="res://scenes/screens/start_screen.tscn" id="1_u5sy4"]
-[ext_resource type="PackedScene" uid="uid://ba4q4t8ckjmi0" path="res://scenes/screens/game_screen.tscn" id="5_p57ef"]
-[ext_resource type="PackedScene" uid="uid://bj0a4yagnp3yd" path="res://scenes/screens/week_end_screen.tscn" id="11_kvpfn"]
-[ext_resource type="PackedScene" uid="uid://cun81plm88yy6" path="res://scenes/screens/how_to_play_pop_up.tscn" id="12_dinhu"]
-[ext_resource type="PackedScene" uid="uid://cgvh6br7q6txe" path="res://scenes/screens/win_screen.tscn" id="13_kvuet"]
-[ext_resource type="PackedScene" uid="uid://btv8yl3etccs6" path="res://scenes/screens/lose_screen.tscn" id="14_trtic"]
 [ext_resource type="AudioStream" uid="uid://c4ok8y25lb0qw" path="res://assets/fantasy-medieval-epic-music-239599.mp3" id="16_ca42v"]
 
 [node name="Game" type="Node2D"]
-
-[node name="GameScreen" parent="." instance=ExtResource("5_p57ef")]
-unique_name_in_owner = true
-visible = false
-
-[node name="WeekEndScreen" parent="." instance=ExtResource("11_kvpfn")]
-unique_name_in_owner = true
-visible = false
-
-[node name="HowToPlayPopUp" parent="." instance=ExtResource("12_dinhu")]
-unique_name_in_owner = true
-visible = false
 
 [node name="StartScreen" parent="." instance=ExtResource("1_u5sy4")]
 unique_name_in_owner = true
@@ -32,14 +15,6 @@ offset_right = 1366.0
 offset_bottom = 768.0
 grow_horizontal = 1
 grow_vertical = 1
-
-[node name="WinScreen" parent="." instance=ExtResource("13_kvuet")]
-unique_name_in_owner = true
-visible = false
-
-[node name="LoseScreen" parent="." instance=ExtResource("14_trtic")]
-unique_name_in_owner = true
-visible = false
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("16_ca42v")

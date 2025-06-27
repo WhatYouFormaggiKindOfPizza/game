@@ -8,6 +8,10 @@ var win_screen: String = "res://scenes/screens/win_screen.tscn"
 var lose_screen: String = "res://scenes/screens/lose_screen.tscn"
 
 
+func _init() -> void:
+	super._init()
+
+
 func load_scene(scene_path: String) -> void:
 	if not ResourceLoader.exists(scene_path):
 		push_error("Scene not found: " + scene_path)
@@ -17,5 +21,3 @@ func load_scene(scene_path: String) -> void:
 
 	
 	
-
-

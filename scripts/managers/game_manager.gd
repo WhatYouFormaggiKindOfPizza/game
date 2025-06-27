@@ -1,4 +1,4 @@
-class_name GameManager extends Node
+extends Node
 
 @export var max_resolutions_per_week: int = 2
 @export var max_turns: int = 16 #TODO: use in turn_end()

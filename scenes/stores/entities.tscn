@@ -15,25 +15,25 @@
 [node name="Entities" type="Node"]
 script = ExtResource("1_kgy1x")
 
-[node name="Pretenders" type="Node" parent="."]
+[node name="Candidates" type="Node" parent="."]
 unique_name_in_owner = true
 
-[node name="Player" parent="Pretenders" instance=ExtResource("2_b46uw")]
+[node name="Player" parent="Candidates" instance=ExtResource("2_b46uw")]
 position = Vector2(357, 247)
 king_name = "You"
 icon = ExtResource("3_2fakj")
 is_player = true
 
-[node name="Opponent" parent="Pretenders" instance=ExtResource("2_b46uw")]
+[node name="Grurum" parent="Candidates" instance=ExtResource("2_b46uw")]
 position = Vector2(357, 247)
 king_name = "Grurum"
 icon = ExtResource("4_503hy")
 
-[node name="King" parent="Pretenders" instance=ExtResource("2_b46uw")]
+[node name="Laramir" parent="Candidates" instance=ExtResource("2_b46uw")]
 king_name = "Laramir"
 icon = ExtResource("5_we0sp")
 
-[node name="King2" parent="Pretenders" instance=ExtResource("2_b46uw")]
+[node name="Altranativa" parent="Candidates" instance=ExtResource("2_b46uw")]
 king_name = "Altranativa"
 icon = ExtResource("6_c5fjk")
 

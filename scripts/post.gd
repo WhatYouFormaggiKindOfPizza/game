@@ -95,7 +95,7 @@ func _on_button_mouse_exited() -> void:
 	tooltip.toggle(false)
 
 		
-func populate_effects(king: King) -> void:
+func populate_effects(king: Candidate) -> void:
 	for effect in effects:
 		if int(effect.get("type", EffectType.NONE)) != EffectType.CHANGE_RELATIONSHIP:
 			continue

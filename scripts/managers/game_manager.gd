@@ -39,7 +39,7 @@ var entity_groups: Array[EntityGroup] :
 	get :
 		return entities_store.entity_groups
 
-var kings: Array[King] :
+var kings: Array[Candidate] :
 	get :
 		return entities_store.kings
 
@@ -104,7 +104,7 @@ func assign_events_posts() -> void:
 				event.add_post(post)
 	
 
-func get_player() -> King:
+func get_player() -> Candidate:
 	return entities_store.get_player()
 
 	
@@ -128,7 +128,7 @@ func log_ready() -> void:
 	print("--- Kings ---")
 	print("Loaded " + str(entities_store.kings.size()) + " kings from scene.")
 	for k in entities_store.kings:
-		print("King: " + k.king_name + " with ID: " + str(k.id) + " and is_player: " + str(k.is_player))
+		print("Candidate: " + k.king_name + " with ID: " + str(k.id) + " and is_player: " + str(k.is_player))
 		
 	print("--- Posts ---")
 	print("Loaded " + str(posts.size()) + " posts from JSON.")
@@ -278,7 +278,7 @@ func run_support_simulation() -> void:
 		king.current_support_percent = float(support) / vote_simulator.num_voters * 100.0
 		king.current_support = support
 		if show_logs:
-			print("King: " + king.king_name + " has support: " + str(support))
+			print("Candidate: " + king.king_name + " has support: " + str(support))
 
 func handle_opponents_actions() -> void:
 	for king in entities_store.kings:
@@ -288,6 +288,6 @@ func handle_opponents_actions() -> void:
 
 # TODO
 func restart_game() -> void:
-	King.reset_id()
+	Candidate.reset_id()
 	EntityGroup.reset_id()
 	get_tree().reload_current_scene()

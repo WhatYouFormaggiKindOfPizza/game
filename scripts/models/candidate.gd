@@ -1,4 +1,4 @@
-class_name King extends Node
+class_name Candidate extends Node
 
 static var next_id: int = 0
 

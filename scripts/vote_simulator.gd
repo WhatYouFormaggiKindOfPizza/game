@@ -6,9 +6,9 @@ var voters: Array[String] = [] # Jacy są głosujący
 var num_voters: int = 10000 # Ile jest głosujących łącznie
 var num_entity: Array[int] = [] # Ile jest głosujących w każdej grupie
 var percent_relationship: Array[float] = [] # Jakie jest poparcie w każdej grupie
-var support_history = [] # Tab zawierająca łączną liczbę wyborców [King][w turze]
+var support_history = [] # Tab zawierająca łączną liczbę wyborców [Candidate][w turze]
 
-func init(entity_groups: Array[EntityGroup], kings: Array[King]) -> void:
+func init(entity_groups: Array[EntityGroup], kings: Array[Candidate]) -> void:
 	groups = entity_groups
 	for i in groups.size():
 		num_entity.append(0)
@@ -22,7 +22,7 @@ func init(entity_groups: Array[EntityGroup], kings: Array[King]) -> void:
 		support_history.append([])
 
 #oblicza ile procent poparcia ma dany kandydat
-func count_percent(king: King) -> void:
+func count_percent(king: Candidate) -> void:
 	for group in groups:
 		var total_group_rel = 0
 		var king_rel = 0
@@ -37,7 +37,7 @@ func count_percent(king: King) -> void:
 		percent_relationship[index] = percent
 
 #Oblicza ile realnie wyborców ma dany kandydat
-func compute_support(king: King) -> int:
+func compute_support(king: Candidate) -> int:
 	count_percent(king)
 	var total_voters = 0
 
@@ -49,20 +49,20 @@ func compute_support(king: King) -> int:
 	return int(round(total_voters))
 
 #zapisuje w tablicy support_history[[]] ile realnie wyborców miał [krol][w turze]
-func update_support_history(kings: Array[King]) -> void:
+func update_support_history(kings: Array[Candidate]) -> void:
 	for k in kings:
 		var support = compute_support(k)
 		support_history[k.id].append(support)
 
 #zwraca jakie poparcie mial krol king w turze turn
-func show_support_history(king: King, turn: int) -> int:
+func show_support_history(king: Candidate, turn: int) -> int:
 	return support_history[king.id][turn]
 
 #zwraca jakie procentowe poparcie mial krol king w turze turn
-func show_support_history_percetages(king: King, turn: int) -> float:
+func show_support_history_percetages(king: Candidate, turn: int) -> float:
 	return float(support_history[king.id][turn])/float(num_voters) * 100
 
 #zwraca roznice poparcia krola king w rundzie week
-func show_week_supp_difrence(king: King, week: int) -> int:
+func show_week_supp_difrence(king: Candidate, week: int) -> int:
 	var supp_dif: int = support_history[king.id][week*7-1] - support_history[king.id][week*7 - 7]
 	return supp_dif

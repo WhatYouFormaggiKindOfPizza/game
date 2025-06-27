@@ -4,10 +4,10 @@ class_name EntitiesStore extends Node
 @onready var entity_groups_parent: Node = %EntityGroups
 
 var entity_groups: Array[EntityGroup] = [] 
-var kings: Array[King] = []
+var kings: Array[Candidate] = []
 
 
-func get_player() -> King:
+func get_player() -> Candidate:
 	var player = null
 	
 	for king in kings:
@@ -34,7 +34,7 @@ func _ready() -> void:
 func load_kings() -> void:
 	if kings_parent:
 		for child in kings_parent.get_children():
-			if child is King:
+			if child is Candidate:
 				kings.append(child)
 			else:
 				push_error("Unknown child type in kings_parent: " + str(child))

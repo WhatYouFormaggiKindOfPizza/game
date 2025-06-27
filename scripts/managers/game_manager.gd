@@ -47,7 +47,6 @@ var kings: Array[King] :
 
 func _init() -> void:
 	super._init()
-	
 	add_child(entities_store)
 
 
@@ -58,8 +57,6 @@ func _ready() -> void:
 	if show_logs: 
 		log_ready()
 
-	var kings = entities_store.kings
-	var entity_groups = entities_store.entity_groups
 	vote_simulator.init(entity_groups, kings)
 	
 

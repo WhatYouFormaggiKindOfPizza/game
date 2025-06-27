@@ -1,19 +1,19 @@
 class_name EntitiesStore extends Node
 
-@onready var kings_parent: Node = %Pretenders
+@onready var candidates_parent: Node = %Candidates
 @onready var entity_groups_parent: Node = %EntityGroups
 
 var entity_groups: Array[EntityGroup] = [] 
-var kings: Array[Candidate] = []
+var candidates: Array[Candidate] = []
 
 
 func get_player() -> Candidate:
 	var player = null
-	
-	for king in kings:
-		if (king.is_player):
-			player = king
-			
+
+	for candidate in candidates:
+		if (candidate.is_player):
+			player = candidate
+
 	if not player:
 		push_error("No player found!") 
 		return null
@@ -32,12 +32,12 @@ func _ready() -> void:
 
 
 func load_kings() -> void:
-	if kings_parent:
-		for child in kings_parent.get_children():
+	if candidates_parent:
+		for child in candidates_parent.get_children():
 			if child is Candidate:
-				kings.append(child)
+				candidates.append(child)
 			else:
-				push_error("Unknown child type in kings_parent: " + str(child))
+				push_error("Unknown child type in candidates_parent: " + str(child))
 
 
 func load_entities() -> void:
@@ -51,6 +51,6 @@ func load_entities() -> void:
 
 func init_entity_groups() -> void:
 	for e in entity_groups:
-		e.init(kings)
+		e.init(candidates)
 
 		

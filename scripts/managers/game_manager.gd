@@ -41,7 +41,7 @@ var entity_groups: Array[EntityGroup] :
 
 var kings: Array[Candidate] :
 	get :
-		return entities_store.kings
+		return entities_store.candidates
 
 
 
@@ -126,8 +126,8 @@ func log_ready() -> void:
 		print("EntityGroup: " + e.group_name + " with ID: " + str(e.id))
 
 	print("--- Kings ---")
-	print("Loaded " + str(entities_store.kings.size()) + " kings from scene.")
-	for k in entities_store.kings:
+	print("Loaded " + str(entities_store.candidates.size()) + " kings from scene.")
+	for k in entities_store.candidates:
 		print("Candidate: " + k.king_name + " with ID: " + str(k.id) + " and is_player: " + str(k.is_player))
 		
 	print("--- Posts ---")
@@ -199,7 +199,7 @@ func end_turn() -> void:
 	#handles opponents actions
 	handle_opponents_actions();
 
-	vote_simulator.update_support_history(entities_store.kings)
+	vote_simulator.update_support_history(entities_store.candidates)
 	run_support_simulation()
 
 	if day >= max_turns:
@@ -246,7 +246,7 @@ func end_round() -> void:
 	
 	#show week summary (relationships changes of all pretenders)
 	var actual_week_supp_difrence = []
-	for king in entities_store.kings:
+	for king in entities_store.candidates:
 		actual_week_supp_difrence.append(vote_simulator.show_week_supp_difrence(king, week_number))
 
 	if show_logs:
@@ -260,11 +260,11 @@ func end_game() -> void:
 	var has_player_won = false
 
 	var final_score = []
-	for king in entities_store.kings:
+	for king in entities_store.candidates:
 		final_score.append(vote_simulator.compute_support(king))
 	var max_score = final_score.max()
 	var max_index = final_score.find(max_score)
-	if entities_store.kings[max_index].is_player:
+	if entities_store.candidates[max_index].is_player:
 		has_player_won = true # Defaulty false
 	if has_player_won == true:
 		SceneManager.instance.show_screen(SceneManager.instance.win_screen)
@@ -273,7 +273,7 @@ func end_game() -> void:
 
 
 func run_support_simulation() -> void:
-	for king in entities_store.kings:
+	for king in entities_store.candidates:
 		var support = vote_simulator.compute_support(king)
 		king.current_support_percent = float(support) / vote_simulator.num_voters * 100.0
 		king.current_support = support
@@ -281,7 +281,7 @@ func run_support_simulation() -> void:
 			print("Candidate: " + king.king_name + " has support: " + str(support))
 
 func handle_opponents_actions() -> void:
-	for king in entities_store.kings:
+	for king in entities_store.candidates:
 		if !king.is_player:
 			var opponent_post = current_event.posts[randi_range(0, current_event.posts.size() - 1)]
 			opponent_post.populate_effects(king)

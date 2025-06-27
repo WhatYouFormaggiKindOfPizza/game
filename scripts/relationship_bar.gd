@@ -10,10 +10,7 @@ var object #entity_group albo king
 @export var progress_bar: ProgressBar
 @export var label: PixelLabel
 
-var game_manager: GameManager
-
-func init(show_week_change: bool, gm : GameManager) -> void:
-	game_manager = gm
+func init(show_week_change: bool) -> void:
 	if show_week_change:
 		change_value_label.show()
 	else:
@@ -23,8 +20,8 @@ func init(show_week_change: bool, gm : GameManager) -> void:
 
 
 func assign_data_refresh_to_signals_kurwa_wszystkich() -> void:
-	game_manager.next_turn_signal.connect(refresh)
-	game_manager.end_turn_signal.connect(refresh)
+	GameManager.instance.next_turn_signal.connect(refresh)
+	GameManager.instance.end_turn_signal.connect(refresh)
 	pass
 
 
@@ -40,7 +37,7 @@ func load_data_from_object() -> void:
 	
 func refresh() -> void:
 	load_data_from_object()
-	update_week_change(game_manager.week_data)
+	update_week_change(GameManager.instance.week_data)
 	pass
 
 func update_week_change(week_data: WeekData) -> void:
@@ -50,9 +47,9 @@ func update_week_change(week_data: WeekData) -> void:
 
 		var change = current_value - start_value
 		set_change_value_label(change)
-	if(object is King && game_manager.day%7 == 0 && game_manager.day != 0):
+	if(object is King && GameManager.instance.day%7 == 0 && GameManager.instance.day != 0):
 		var current_value: float = object.current_support_percent
-		var start_value: float = game_manager.vote_simulator.show_support_history_percetages(object, game_manager.day - 7)
+		var start_value: float = GameManager.instance.vote_simulator.show_support_history_percetages(object, GameManager.instance.day - 7)
 
 		var change = current_value - start_value
 		set_change_value_label(change)

@@ -2,7 +2,7 @@ extends ManagerBase
 
 
 var entities_store: EntitiesStore = load("res://scenes/stores/entities.tscn").instantiate()
-
+var vote_simulator: VoteSimulator = preload("res://scripts/vote_simulator.gd").new()
 
 
 @export var max_resolutions_per_week: int = 2
@@ -13,9 +13,6 @@ var entities_store: EntitiesStore = load("res://scenes/stores/entities.tscn").in
 
 @export var post_scene: PackedScene = load("res://scenes/post.tscn")
 
-
-@onready var vote_simulator: VoteSimulator = $VoteSimulator
-@onready var scene_manager: SceneManager = %SceneManager
 
 var posts: Array[Post] = []
 var events: Array[Event] = []
@@ -35,6 +32,17 @@ signal next_round_signal(week_number: float)
 signal end_round_signal(week_number: float)
 signal next_turn_signal()
 signal end_turn_signal()
+
+
+
+var entity_groups: Array[EntityGroup] :
+	get :
+		return entities_store.entity_groups
+
+var kings: Array[King] :
+	get :
+		return entities_store.kings
+
 
 
 func _init() -> void:
@@ -66,7 +74,7 @@ func load_posts_from_json() -> void:
 		return
 
 	for post_data in json_as_dict:
-		var post = post_scene.instantiate().with_data(post_data, self)
+		var post = post_scene.instantiate().with_data(post_data)
 		print(post)
 		posts.append(post)
 
@@ -132,13 +140,13 @@ func log_ready() -> void:
 
 
 func start_game() -> void:
-	scene_manager.init(self)
-	scene_manager.show_screen(scene_manager.game_screen)
-	posts_container = scene_manager.game_screen.posts_container
-	days_until = scene_manager.game_screen.days_until
+	SceneManager.instance.init(self)
+	SceneManager.instance.show_screen(SceneManager.instance.game_screen)
+	posts_container = SceneManager.instance.game_screen.posts_container
+	days_until = SceneManager.instance.game_screen.days_until
 	week_data.set_start_week_entity_groups(entities_store.entity_groups)
-	phone = scene_manager.game_screen.phone
-	scene_manager.run_delayed_inits()
+	phone = SceneManager.instance.game_screen.phone
+	SceneManager.instance.run_delayed_inits()
 
 	if show_logs:
 		print("Game started")
@@ -210,7 +218,7 @@ func next_round() -> void:
 	run_support_simulation()
 	week_data.clear()
 	week_data.set_start_week_entity_groups(entities_store.entity_groups)
-	scene_manager.show_screen(scene_manager.game_screen)
+	SceneManager.instance.show_screen(SceneManager.instance.game_screen)
 	next_turn()
 
 func end_round() -> void:
@@ -221,7 +229,7 @@ func end_round() -> void:
 	if show_logs:
 		print("Round ended. Week: " + str(week_number))
 
-	scene_manager.show_screen(scene_manager.week_end_screen)
+	SceneManager.instance.show_screen(SceneManager.instance.week_end_screen)
 
 
 	# # Get some random event resolutions
@@ -262,9 +270,9 @@ func end_game() -> void:
 	if entities_store.kings[max_index].is_player:
 		has_player_won = true # Defaulty false
 	if has_player_won == true:
-		scene_manager.show_screen(scene_manager.win_screen)
+		SceneManager.instance.show_screen(SceneManager.instance.win_screen)
 	else:
-		scene_manager.show_screen(scene_manager.lose_screen)
+		SceneManager.instance.show_screen(SceneManager.instance.lose_screen)
 
 
 func run_support_simulation() -> void:

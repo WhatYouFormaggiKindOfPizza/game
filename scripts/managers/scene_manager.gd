@@ -1,6 +1,5 @@
 extends ManagerBase
 
-var game_manager: GameManager
 
 @onready var game_screen: GameScreen = load("res://scenes/screens/game_screen.tscn").instantiate()
 @onready var start_screen: StartScreen = load("res://scenes/screens/start_screen.tscn").instantiate()
@@ -9,14 +8,11 @@ var game_manager: GameManager
 @onready var win_screen: WinScreen = load("res://scenes/screens/win_screen.tscn").instantiate()
 @onready var lose_screen: LoseScreen = load("res://scenes/screens/lose_screen.tscn").instantiate()
 
-func init(gm: GameManager) -> void:
-	game_manager = gm
-
 func run_delayed_inits() -> void:
 	if game_screen:
-		game_screen.init(game_manager)
+		game_screen.init()
 	if week_end_screen:
-		week_end_screen.init(game_manager)
+		week_end_screen.init()
 
 func hide_all_scenes() -> void:
 	game_screen.hide()

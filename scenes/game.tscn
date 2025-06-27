@@ -10,10 +10,9 @@
 
 [node name="Game" type="Node2D"]
 
-[node name="GameScreen" parent="." node_paths=PackedStringArray("entity_groups_node") instance=ExtResource("5_p57ef")]
+[node name="GameScreen" parent="." instance=ExtResource("5_p57ef")]
 unique_name_in_owner = true
 visible = false
-entity_groups_node = NodePath("")
 
 [node name="WeekEndScreen" parent="." instance=ExtResource("11_kvpfn")]
 unique_name_in_owner = true
